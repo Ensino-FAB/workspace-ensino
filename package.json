@@ -7,10 +7,12 @@
     "build": "ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test:cursos": "jest --config ./projects/cursos/jest.config.js",
-    "test:cursos:coverage": "jest --coverage --config ./projects/cursos/jest.config.js",
-    "test": "npm run test:cursos",
-    "coverage": "npm run test:cursos:coverage"
+    "test:cursos": "jest --config ./projects/cursos/jest.config.js --passWithNoTests",
+    "test:ensino-commons": "jest  --config ./projects/ensino-commons/jest.config.js --passWithNoTests",
+    "test:cursos:coverage": "jest --coverage --config ./projects/cursos/jest.config.js --passWithNoTests",
+    "test:ensino-commons:coverage": "jest --coverage --config ./projects/ensino-commons/jest.config.js --passWithNoTests",
+    "test": "npm run test:cursos && npm run test:ensino-commons",
+    "coverage": "npm run test:cursos:coverage && npm run test:ensino-commons:coverage"
   },
   "private": true,
   "dependencies": {
