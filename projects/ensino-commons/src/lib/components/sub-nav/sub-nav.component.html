@@ -1,0 +1,23 @@
+<nav class="sub-nav" *ngIf="menuItems?.length != 0">
+  <ul class="flex-container row middle between">
+    <li>
+      <a [routerLink]="root">
+        <com-button transparent flat>
+          <com-icon outlined slot="icon">home</com-icon>
+        </com-button>
+      </a>
+    </li>
+    <li>
+      <com-breadcrumb>
+        <!-- TODO: aceitar disabled para o path -->
+        <com-breadcrumb-item
+          *ngFor="let item of menuItems"
+          [routerLink]="item.url"
+          [active]="item.url === router.url"
+        >
+          {{ item.label }}
+        </com-breadcrumb-item>
+      </com-breadcrumb>
+    </li>
+  </ul>
+</nav>
