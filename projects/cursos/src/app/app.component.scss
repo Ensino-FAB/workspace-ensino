@@ -1,0 +1,132 @@
+@import '../assets/scss/breakpoints.scss';
+
+$row-height: 5.5rem;
+
+@mixin main-text {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.main-header,
+.main-footer {
+  height: $row-height;
+
+  padding: 0 var(--padding);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+.main-header {
+  position: relative;
+  background: var(--white);
+
+  .main-header-logo {
+    height: 2.7rem;
+    width: auto;
+  }
+
+  .main-header-title {
+    padding-left: 1rem;
+
+    @include main-text();
+  }
+
+  .main-header-subtitle {
+    @include main-text();
+
+    color: var(--primary);
+    padding-left: 0.7rem;
+  }
+
+  .main-header-jet {
+    height: 2.2rem;
+    width: auto;
+    margin-left: 0.8rem;
+
+    opacity: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    height: 100%;
+    width: 14.4rem;
+
+    background: var(--white);
+  }
+
+  .main-header-logo,
+  .main-header-title {
+    z-index: 2;
+  }
+
+  .notification-btn,
+  .user-profile-btn {
+    padding-right: 3.5rem;
+  }
+
+  .user-profile-btn {
+    padding-left: 1.5rem;
+  }
+
+  .session-label,
+  .session-timer,
+  .user-profile-btn,
+  .notification-btn,
+  .user-identity {
+    display: none;
+  }
+
+  .session-timer {
+    margin: 0 2.5rem;
+    color: var(--grey);
+
+    p {
+      margin: 0 1rem;
+    }
+  }
+
+  @include respond-to(md) {
+    .session-timer,
+    .user-profile-btn,
+    .user-identity {
+      display: flex;
+    }
+  }
+
+  @include respond-to(lg) {
+    .notification-btn {
+      display: flex;
+    }
+    .session-timer {
+      .session-label {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.main-footer {
+  background: var(--primary);
+
+  .main-footer-text {
+    color: var(--white);
+
+    @include main-text();
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 2 * #{$row-height});
+}
