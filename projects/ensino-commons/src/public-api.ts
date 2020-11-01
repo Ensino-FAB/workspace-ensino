@@ -4,6 +4,10 @@
 
 // Components
 
+export * from './lib/components/nav/nav-item.component';
+export * from './lib/components/nav/nav.component';
+export * from './lib/components/nav/nav.module';
+
 export * from './lib/components/sub-nav/sub-nav.component';
 export * from './lib/components/sub-nav/sub-nav.module';
 
