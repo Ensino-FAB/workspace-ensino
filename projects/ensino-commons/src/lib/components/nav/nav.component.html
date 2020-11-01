@@ -1,0 +1,30 @@
+<nav class="nav flex-container row middle">
+  <com-icon
+    slot="icon"
+    class="nav-modules-btn"
+    size="3.1"
+    (click)="$event.stopPropagation(); toggleModulesPanel()"
+    >apps</com-icon
+  >
+  <div
+    [@toggleModulesPanel]
+    class="nav-modules-container"
+    *ngIf="isModulesPanelOpen"
+  >
+    <com-card>
+      <nav>
+        <ul class="flex-container row wrap nav-modules-wrapper">
+          <li>
+            <a class="flex-container col middle" routerLink="/planejamento">
+              <img class="nav-module-icon" src="assets/images/siga-logo.png" />
+              <span>planejamento</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </com-card>
+  </div>
+  <ul class="nav-items-container flex-container row middle">
+    <ng-content></ng-content>
+  </ul>
+</nav>

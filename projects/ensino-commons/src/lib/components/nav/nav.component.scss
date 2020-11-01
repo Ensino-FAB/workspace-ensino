@@ -1,0 +1,83 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 400;
+
+  .nav {
+    height: 5.5rem;
+    padding: 0 var(--padding);
+
+    background: var(--primary);
+
+    .nav-modules-btn {
+      color: var(--white);
+      transition: background var(--transition-defs);
+      padding: 0.4rem;
+
+      border-radius: 0.5rem;
+
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(196, 196, 196, 0.2);
+      }
+    }
+
+    .nav-modules-container {
+      position: absolute;
+      top: calc(5.5rem + var(--padding) / 2);
+      left: 2.2rem;
+
+      z-index: 1;
+
+      max-width: 30rem;
+
+      .nav-modules-wrapper {
+        margin: -1.5rem;
+
+        .nav-module-icon {
+          height: 4.4rem;
+          width: auto;
+        }
+
+        a {
+          margin: 0.5rem;
+          padding: 1.5rem;
+          padding-top: 1rem;
+          width: 8.5rem;
+          height: 8.5rem;
+
+          cursor: pointer;
+
+          font-size: 1.2rem;
+          font-weight: 600;
+
+          background: rgba(196, 196, 196, 0.2);
+          border-radius: 0.5rem;
+          transition: background var(--transition-defs);
+
+          span {
+            display: block;
+            width: 6.5rem;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            line-height: 1.2rem;
+            text-transform: uppercase;
+          }
+
+          &:hover {
+            background: rgba(196, 196, 196, 0.5);
+          }
+        }
+      }
+    }
+
+    .nav-items-container {
+      padding: 0 1rem;
+    }
+  }
+}
