@@ -125,7 +125,7 @@
       "projectType": "library",
       "root": "projects/ensino-commons",
       "sourceRoot": "projects/ensino-commons/src",
-      "prefix": "lib",
+      "prefix": "ensino",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
