@@ -1,0 +1,119 @@
+@import '../../../../../assets/scss/breakpoints.scss';
+
+.home-header {
+  height: 5.5rem;
+
+  background: var(--primary);
+}
+
+.home-sections-wrapper {
+  flex-direction: column;
+
+  .home-side-section,
+  .home-content {
+    padding: var(--padding);
+  }
+
+  .home-side-section {
+    flex-grow: 0;
+    flex-basis: 34.5rem;
+
+    height: 100%;
+
+    background: var(--lighter-grey);
+
+    h1 {
+      margin: 1rem 0;
+
+      font-size: 3.6rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1.6rem;
+      padding-left: 0.15rem;
+
+      font-size: 1.6rem;
+      color: var(--grey);
+    }
+
+    nav li {
+      margin: -1rem;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+
+      border-radius: 0.5rem;
+      transition: background var(--transition-defs);
+
+      .nav-module-icon {
+        height: 4.4rem;
+        width: auto;
+
+        margin-right: 1rem;
+      }
+
+      .nav-module-name {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: #c4c4c444;
+      }
+    }
+  }
+
+  .home-content {
+    flex-grow: 1;
+    flex-basis: auto;
+
+    .home-content-section {
+      max-width: 53rem;
+
+      .brand-card-wrapper {
+        display: none;
+
+        .brand-card {
+          padding: 0 4.55rem;
+
+          .brand-card-gladio {
+            height: 5.6rem;
+            width: auto;
+          }
+
+          .brand-card-slogan {
+            margin-left: 2.5rem;
+
+            h3 {
+              font-size: 2.4rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              white-space: nowrap;
+            }
+
+            p {
+              font-size: 1.6rem;
+              font-weight: 500;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(lg) {
+  .home-sections-wrapper {
+    flex-direction: row;
+
+    .home-side-section,
+    .home-content {
+      min-height: calc(100vh - 3 * 5.5rem);
+    }
+
+    .home-content .home-content-section .brand-card-wrapper {
+      display: flex;
+    }
+  }
+}
