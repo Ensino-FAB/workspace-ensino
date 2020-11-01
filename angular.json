@@ -28,7 +28,8 @@
               "projects/cursos/src/assets"
             ],
             "styles": [
-              "projects/cursos/src/styles.scss"
+              "projects/cursos/src/styles.scss",
+              "projects/cursos/src/assets/scss/global.scss"
             ],
             "scripts": []
           },
@@ -91,9 +92,7 @@
               "projects/cursos/src/favicon.ico",
               "projects/cursos/src/assets"
             ],
-            "styles": [
-              "projects/cursos/src/styles.scss"
-            ],
+            "styles": ["projects/cursos/src/styles.scss"],
             "scripts": []
           }
         },
@@ -105,9 +104,7 @@
               "projects/cursos/tsconfig.spec.json",
               "projects/cursos/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -123,7 +120,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": false
   },
