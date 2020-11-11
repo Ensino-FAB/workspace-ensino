@@ -16,3 +16,6 @@ export * from './lib/components/not-found/not-found.module';
 
 export * from './lib/components/not-mobile-responsive/not-mobile-responsive.component';
 export * from './lib/components/not-mobile-responsive/not-mobile-responsive.module';
+
+export * from './lib/components/no-dashboard-yet/no-dashboard-yet.component';
+export * from './lib/components/no-dashboard-yet/no-dashboard-yet.module';

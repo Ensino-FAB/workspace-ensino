@@ -130,3 +130,9 @@ $row-height: 5.5rem;
 .main-content {
   min-height: calc(100vh - 2 * #{$row-height});
 }
+
+.home-header {
+  height: 5.5rem;
+
+  background: var(--primary);
+}

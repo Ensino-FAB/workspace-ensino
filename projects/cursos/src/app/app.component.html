@@ -40,6 +40,12 @@
   </div>
 </header>
 <div class="main-content">
+  <ensino-nav>
+    <ensino-nav-item [routerLink]="'proposta'"> Proposta </ensino-nav-item>
+    <ensino-nav-item [routerLink]="'curso'">Curso</ensino-nav-item>
+    <ensino-nav-item [routerLink]="'catalogo'">Catálogo</ensino-nav-item>
+  </ensino-nav>
+  <ensino-sub-nav root="/planejamento"></ensino-sub-nav>
   <router-outlet></router-outlet>
 </div>
 <footer class="main-footer">
