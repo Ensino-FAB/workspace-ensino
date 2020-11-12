@@ -16,6 +16,28 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/curso/curso.module').then((m) => m.CursoModule),
   },
+
+  {
+    path: 'catalogo',
+    data: {
+      breadcrumb: 'catalogo',
+    },
+    loadChildren: () =>
+      import('./modules/catalogo/catalogo.module').then(
+        (m) => m.CatalogoModule
+      ),
+  },
+
+  {
+    path: 'atividade-complementar',
+    data: {
+      breadcrumb: 'atividade-complementar',
+    },
+    loadChildren: () =>
+      import(
+        './modules/atividade-complementar/atividade-complementar.module'
+      ).then((m) => m.AtividadeComplementarModule),
+  },
 ];
 
 @NgModule({
