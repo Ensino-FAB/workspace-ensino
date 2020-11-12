@@ -2,7 +2,7 @@ import { NavModule } from './../../../ensino-commons/src/lib/components/nav/nav.
 import { SubNavModule } from './../../../ensino-commons/src/lib/components/sub-nav/sub-nav.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
@@ -21,6 +21,7 @@ import {
     SubNavModule,
     NavModule,
     DropmenuModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

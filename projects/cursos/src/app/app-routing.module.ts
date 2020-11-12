@@ -8,6 +8,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'curso',
+    data: {
+      breadcrumb: 'curso',
+    },
+    loadChildren: () =>
+      import('./modules/curso/curso.module').then((m) => m.CursoModule),
+  },
 ];
 
 @NgModule({

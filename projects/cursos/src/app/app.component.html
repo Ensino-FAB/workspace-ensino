@@ -45,8 +45,10 @@
     <ensino-nav-item [routerLink]="'curso'">Curso</ensino-nav-item>
     <ensino-nav-item [routerLink]="'catalogo'">Catálogo</ensino-nav-item>
   </ensino-nav>
-  <ensino-sub-nav root="/planejamento"></ensino-sub-nav>
-  <router-outlet></router-outlet>
+  <ensino-sub-nav root="/curso"></ensino-sub-nav>
+  <section class="main-section">
+    <router-outlet></router-outlet>
+  </section>
 </div>
 <footer class="main-footer">
   <span class="main-footer-text">CCA-RJ</span>
