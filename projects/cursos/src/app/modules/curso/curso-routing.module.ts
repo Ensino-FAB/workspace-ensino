@@ -1,20 +1,21 @@
-import { CursoShowcaseComponent } from './containers/curso-showcase/curso-showcase.component';
-import { CursoEditComponent } from './containers/curso-edit/curso-edit.component';
-import { CursoIndexComponent } from './containers/curso-index/curso-index.component';
+import { GestaoComponent } from './containers/gestao/gestao.component';
+import { EdicaoComponent } from './containers/edicao/edicao.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 
 export const CURSO_ROUTES: Routes = [
-  { path: '', component: CursoIndexComponent, data: { breadcrumb: null } },
+  { path: '', component: GestaoComponent, data: { breadcrumb: null } },
   {
     path: 'criar',
     data: {
       breadcrumb: 'criar',
     },
-    component: CursoEditComponent,
+    component: EdicaoComponent,
   },
-  { path: 'listar', component: CursoShowcaseComponent },
+  { path: 'listar', component: DetalheComponent },
 ];
 @NgModule({
   declarations: [],

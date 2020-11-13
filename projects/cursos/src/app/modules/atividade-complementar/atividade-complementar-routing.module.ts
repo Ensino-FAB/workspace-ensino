@@ -1,14 +1,14 @@
-import { AtividadeComplementarShowcaseComponent } from './containers/atividade-complementar-showcase/atividade-complementar-showcase.component';
-import { AtividadeComplementarIndexComponent } from './containers/atividade-complementar-index/atividade-complementar-index.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
-import { AtividadeComplementarEditComponent } from './containers/atividade-complementar-edit/atividade-complementar-edit.component';
+import { GestaoComponent } from './containers/gestao/gestao.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
+import { CadastroComponent } from './containers/cadastro/cadastro.component';
 
 export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
   {
     path: '',
-    component: AtividadeComplementarIndexComponent,
+    component: GestaoComponent,
     data: { breadcrumb: null },
   },
   {
@@ -16,9 +16,9 @@ export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
     data: {
       breadcrumb: 'criar',
     },
-    component: AtividadeComplementarEditComponent,
+    component: CadastroComponent,
   },
-  { path: 'listar', component: AtividadeComplementarShowcaseComponent },
+  { path: 'listar', component: DetalheComponent },
 ];
 
 @NgModule({
