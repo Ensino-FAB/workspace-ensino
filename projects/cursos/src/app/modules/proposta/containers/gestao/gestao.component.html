@@ -1,0 +1,30 @@
+<ul
+  style="
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 100rem;
+    list-style-type: none;
+  "
+>
+  <!--Primary-->
+  <li style="padding: 0.5rem">
+    <com-button
+      fill
+      [routerLink]="['/proposta', 'criar']"
+      routerLinkActive="router-link-active"
+    >
+      <ng-container slot="text">criar proposta</ng-container>
+    </com-button>
+  </li>
+
+  <!--Secondary-->
+  <li style="padding: 0.5rem">
+    <com-button
+      fill
+      [routerLink]="['/proposta', 'listar']"
+      routerLinkActive="router-link-active"
+    >
+      <ng-container slot="text">listar propostas</ng-container>
+    </com-button>
+  </li>
+</ul>
