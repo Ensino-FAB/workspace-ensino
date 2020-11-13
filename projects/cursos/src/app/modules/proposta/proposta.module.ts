@@ -1,6 +1,11 @@
-import { CATALOGO_ROUTES } from './catalogo-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PropostaRoutingModule } from './proposta-routing.module';
+import { CadastroComponent } from './containers/cadastro/cadastro.component';
+import { ConsultaComponent } from './containers/consulta/consulta.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
+import { EdicaoComponent } from './containers/edicao/edicao.component';
+import { GestaoComponent } from './containers/gestao/gestao.component';
 
 import {
   ButtonModule,
@@ -16,24 +21,18 @@ import {
   TextareaModule,
   TooltipModule,
 } from '@cca-fab/cca-fab-components-common';
-import { RouterModule } from '@angular/router';
-import { CadastroComponent } from './containers/cadastro/cadastro.component';
-import { ConsultaComponent } from './containers/consulta/consulta.component';
-import { EdicaoComponent } from './containers/edicao/edicao.component';
-import { DetalheComponent } from './containers/detalhe/detalhe.component';
-import { GestaoComponent } from './containers/gestao/gestao.component';
 
 @NgModule({
   declarations: [
     CadastroComponent,
     ConsultaComponent,
-    EdicaoComponent,
     DetalheComponent,
+    EdicaoComponent,
     GestaoComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(CATALOGO_ROUTES),
+    PropostaRoutingModule,
     ButtonModule,
     IconModule,
     TooltipModule,
@@ -48,4 +47,4 @@ import { GestaoComponent } from './containers/gestao/gestao.component';
     InputModule,
   ],
 })
-export class CatalogoModule {}
+export class PropostaModule {}

@@ -29,6 +29,17 @@ const routes: Routes = [
   },
 
   {
+    path: 'proposta',
+    data: {
+      breadcrumb: 'proposta',
+    },
+    loadChildren: () =>
+      import('./modules/proposta/proposta.module').then(
+        (m) => m.PropostaModule
+      ),
+  },
+
+  {
     path: 'atividade-complementar',
     data: {
       breadcrumb: 'atividade-complementar',
