@@ -19,3 +19,6 @@ export * from './lib/components/not-mobile-responsive/not-mobile-responsive.modu
 
 export * from './lib/components/no-dashboard-yet/no-dashboard-yet.component';
 export * from './lib/components/no-dashboard-yet/no-dashboard-yet.module';
+
+// Models
+export * from './lib/models/pageable.model';
