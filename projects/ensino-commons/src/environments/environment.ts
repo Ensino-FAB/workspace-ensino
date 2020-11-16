@@ -6,9 +6,8 @@ export const environment = {
   production: false,
 
   SIGPES_API: 'http://localhost:8085/api/v1',
-  CURSO_API: 'http://localhost:8080/curso',
+  CURSO_API: 'http://localhost:8080/curso-api',
   // CURSO_API: 'https://localhost:8443/curso',
-  SIGA_API: 'http://localhost:8082/api/v1',
 };
 
 /*

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NavModule } from './../../../ensino-commons/src/lib/components/nav/nav.module';
 import { SubNavModule } from './../../../ensino-commons/src/lib/components/sub-nav/sub-nav.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +23,7 @@ import {
     NavModule,
     DropmenuModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
