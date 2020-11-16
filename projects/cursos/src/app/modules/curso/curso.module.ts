@@ -21,6 +21,7 @@ import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
+import { CursoFacade } from './curso.facade';
 
 @NgModule({
   declarations: [
@@ -46,5 +47,6 @@ import { GestaoComponent } from './containers/gestao/gestao.component';
     TextareaModule,
     InputModule,
   ],
+  providers: [CursoFacade],
 })
 export class CursoModule {}

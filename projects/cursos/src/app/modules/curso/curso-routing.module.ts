@@ -1,5 +1,6 @@
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
+import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 
 import { NgModule } from '@angular/core';
@@ -15,7 +16,13 @@ export const CURSO_ROUTES: Routes = [
     },
     component: EdicaoComponent,
   },
-  { path: 'listar', component: DetalheComponent },
+  {
+    path: 'listar',
+    data: {
+      breadcrumb: 'consultar',
+    },
+    component: ConsultaComponent,
+  },
 ];
 @NgModule({
   declarations: [],
