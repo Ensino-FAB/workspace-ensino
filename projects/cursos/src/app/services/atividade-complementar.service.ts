@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { CursoSearch } from '../models/curso-search.model';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from '../../../../ensino-commons/src/environments/environment';
-import { Curso } from '../models/curso.model';
 import { Pageable } from 'projects/ensino-commons/src/lib/models/pageable.model';
+import { AtividadeComplementar } from '../models/atividade-complementar.model';
+import { AtividadeComplementarSearch } from '../models/atividade-complementar-search.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CursoService {
+export class AtividadeComplementarService {
   constructor(protected http: HttpClient) {}
 
-  private endpoint = `${environment.CURSO_API}/curso`;
+  private endpoint = `${environment.CURSO_API}/atividade-complementar`;
 
   /* istanbul ignore next */
   removeEmptyFields(data): void {
@@ -27,12 +27,14 @@ export class CursoService {
     );
   }
 
-  findById(id: number): Observable<Curso> {
+  findById(id: number): Observable<AtividadeComplementar> {
     return this.http.get<any>(`${environment.CURSO_API}/curso/${id}`);
   }
 
   /* istanbul ignore next */
-  findAll(search: CursoSearch): Observable<Pageable<Curso>> {
+  findAll(
+    search: AtividadeComplementarSearch
+  ): Observable<Pageable<AtividadeComplementar>> {
     this.removeEmptyFields(search);
     const params = new HttpParams({ fromObject: search });
     return this.http.get<any>(this.endpoint, {
@@ -42,22 +44,24 @@ export class CursoService {
 
   // tslint:disable-next-line: typedef
   find(id: number) {
-    return this.http.get<Curso>(`${this.endpoint}/${id}`).pipe(take(1));
+    return this.http
+      .get<AtividadeComplementar>(`${this.endpoint}/${id}`)
+      .pipe(take(1));
   }
 
   /* istanbul ignore next */
-  create(record: Curso): Observable<Curso> {
+  create(record: AtividadeComplementar): Observable<AtividadeComplementar> {
     return this.http.post(this.endpoint, record).pipe(take(1)) as Observable<
-      Curso
+      AtividadeComplementar
     >;
   }
 
   // tslint:disable-next-line: typedef
-  update(record: Curso) {
+  update(record: AtividadeComplementar) {
     return this.http.put(`${this.endpoint}/${record.id}`, record).pipe(take(1));
   }
 
-  save(record: Curso): any {
+  save(record: AtividadeComplementar): any {
     if (record.id) {
       return this.update(record);
     }
