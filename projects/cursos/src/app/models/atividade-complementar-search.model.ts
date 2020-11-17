@@ -3,5 +3,5 @@ import { BaseSearch } from './../../../../ensino-commons/src/lib/models/base-sea
 export interface AtividadeComplementarSearch extends BaseSearch {
   nome?: string;
   descricao?: string;
-  cargaHorario?: number;
+  cargaHoraria?: number;
 }

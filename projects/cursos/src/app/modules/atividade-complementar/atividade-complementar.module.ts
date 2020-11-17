@@ -1,3 +1,4 @@
+import { AtividadeComplementarFacade } from './atividade-complementar.facade';
 import { ATIVIDADE_COMPLEMENTAR_ROUTES } from './atividade-complementar-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -47,5 +48,6 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
     TextareaModule,
     InputModule,
   ],
+  providers: [AtividadeComplementarFacade],
 })
 export class AtividadeComplementarModule {}

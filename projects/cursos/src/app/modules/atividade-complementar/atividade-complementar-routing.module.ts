@@ -1,8 +1,8 @@
+import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 import { GestaoComponent } from './containers/gestao/gestao.component';
-import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 
 export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
@@ -18,7 +18,7 @@ export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
     },
     component: CadastroComponent,
   },
-  { path: 'listar', component: DetalheComponent },
+  { path: 'listar', component: ConsultaComponent },
 ];
 
 @NgModule({
