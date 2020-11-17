@@ -93,7 +93,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           codigo: `${item.codigo}`,
-          // status: `${item.status}`,
+          codigoCnpq: `${item.codigoCnpq}`,
           nome: `${item.nome}`,
         }));
 
