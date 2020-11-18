@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  CURSO_API: 'http://localhost:8080/curso-api',
+  KEYCLOAK_URL: 'http://localhost:8084/auth',
+  KEYCLOAK_REALM: 'FAB',
+  KEYCLOAK_CLIENT_ID: 'ensino-client',
+  KEYCLOAK_REDIRECT_URI:
+    'http://localhost:4200/e-sistens-cursos/assets/silent-check-sso.html',
 };
 
 /*

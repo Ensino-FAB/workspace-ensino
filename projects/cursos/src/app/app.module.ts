@@ -14,19 +14,19 @@ import {
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ToastModule } from 'projects/ensino-commons/src/lib/components/toast/toast.module';
 import { ToastService } from 'projects/ensino-commons/src/lib/services/toast.service';
+import { environment } from '../environments/environment';
 
 function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8084/auth',
-        realm: 'FAB',
-        clientId: 'ensino-client',
+        url: environment.KEYCLOAK_URL,
+        realm: environment.KEYCLOAK_REALM,
+        clientId: environment.KEYCLOAK_CLIENT_ID,
       },
       initOptions: {
         onLoad: 'login-required',
-        silentCheckSsoRedirectUri:
-          'http://localhost:4200/assets/silent-check-sso.html',
+        silentCheckSsoRedirectUri: environment.KEYCLOAK_REDIRECT_URI,
       },
     });
 }
