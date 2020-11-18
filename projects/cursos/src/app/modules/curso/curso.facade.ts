@@ -36,4 +36,8 @@ export class CursoFacade {
   public delete(id: number): Observable<any> {
     return this.cursoService.remove(id);
   }
+
+  public findCurso(id: number): Observable<Curso> {
+    return this.cursoService.findById(id);
+  }
 }

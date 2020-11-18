@@ -3,7 +3,7 @@ import { CursoFacade } from './../../curso.facade';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
 
 @Component({
@@ -19,35 +19,15 @@ export class EdicaoComponent implements OnInit {
   formId: 'curso-form';
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private facade: CursoFacade,
-    private toast: ToastService
+    private toast: ToastService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   curso: Curso;
 
   ngOnInit(): void {
-    // this.route.params.subscribe((params) => {
-    //   this.id = params.id;
-    //   if (this.id) {
-    //     const getCurso$ = this.facade.getCurso(params.id).pipe(share());
-    //     const isLoading$ = of(
-    //       timer(150).pipe(mapTo(true), takeUntil(getCurso$)),
-    //       getCurso$.pipe(mapTo(false))
-    //     ).pipe(mergeAll());
-
-    //     this.subs$.push(
-    //       isLoading$.subscribe((status) => {
-    //         this.isLoading = status;
-    //       }),
-    //       getCurso$.subscribe((curso) => {
-    //         if (curso) {
-    //           this.curso = curso;
-    //         }
-    //       })
-    //     );
-    //   }
-    // });
     this.cursoForm = new FormGroup({
       id: new FormControl(''),
       codigo: new FormControl(''),
@@ -60,15 +40,32 @@ export class EdicaoComponent implements OnInit {
       preRequisito: new FormControl(''),
       cargaHoraria: new FormControl(''),
     });
+
+    this.subs$.push(
+      this.activeRoute.params.subscribe((params) => (this.id = params.id))
+    );
+
+    this.facade
+      .findCurso(this.id)
+      .subscribe((resp) => this.cursoForm.setValue(resp));
   }
 
-  handleSubmit(value: any): void {
-    const salvarCurso$ = this.facade.save(value);
-    this.subs$.push(salvarCurso$);
-
-    this.toast.show({
-      message: 'O curso foi salvo com sucesso!',
-      type: 'error',
-    });
+  onSubmit(): void {
+    if (this.cursoForm.valid) {
+      this.subs$.push(
+        this.facade.save(this.cursoForm.value).subscribe((resp) => {
+          this.toast.show({
+            message: 'O curso foi salvo com sucesso!',
+            type: 'success',
+          });
+          this.router.navigate(['curso', 'listar']);
+        })
+      );
+    } else {
+      this.toast.show({
+        message: 'Erro ao tentar salvar o curso!',
+        type: 'alert',
+      });
+    }
   }
 }

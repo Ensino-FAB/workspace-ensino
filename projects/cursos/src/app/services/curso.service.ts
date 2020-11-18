@@ -54,7 +54,7 @@ export class CursoService {
 
   // tslint:disable-next-line: typedef
   update(record: Curso) {
-    return this.http.put(`${this.endpoint}/${record.id}`, record).pipe(take(1));
+    return this.http.put(`${this.endpoint}`, record).pipe(take(1));
   }
 
   save(record: Curso): any {
