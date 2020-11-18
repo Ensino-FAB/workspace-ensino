@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  CURSO_API: 'http://localhost:8080/curso-api',
+  CURSO_API: 'http://localhost:8080/esistens-cursos-api',
   KEYCLOAK_URL: 'http://localhost:8084/auth',
   KEYCLOAK_REALM: 'FAB',
   KEYCLOAK_CLIENT_ID: 'ensino-client',
   KEYCLOAK_REDIRECT_URI:
-    'http://localhost:4200/e-sistens-cursos/assets/silent-check-sso.html',
+    'http://localhost:4200/esistens-cursos/assets/silent-check-sso.html',
 };
 
 /*

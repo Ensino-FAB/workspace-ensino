@@ -17,11 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cursos",
+            "outputPath": "dist",
             "index": "projects/cursos/src/index.html",
             "main": "projects/cursos/src/main.ts",
             "polyfills": "projects/cursos/src/polyfills.ts",
-            "baseHref": "/e-sistens-cursos/",
+            "baseHref": "/esistens-cursos/",
             "tsConfig": "projects/cursos/tsconfig.app.json",
             "aot": true,
             "assets": [
