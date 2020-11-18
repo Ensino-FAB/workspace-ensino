@@ -12,7 +12,7 @@ export class CatalogoFacade {
 
   constructor(private injector: Injector) {}
 
-  private get catalgoService(): CatalogoCursoService {
+  private get catalagoService(): CatalogoCursoService {
     if (!this._catalogoService) {
       this._catalogoService = this.injector.get(CatalogoCursoService);
     }
@@ -22,6 +22,10 @@ export class CatalogoFacade {
   public getAllCatalogoService(
     search: CatalogoSearch
   ): Observable<Pageable<Catalogo>> {
-    return this.catalgoService.findAll(search);
+    return this.catalagoService.findAll(search);
+  }
+
+  public save(record: Catalogo): any {
+    return this.catalagoService.save(record);
   }
 }

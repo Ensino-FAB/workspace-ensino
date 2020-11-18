@@ -6,14 +6,24 @@
 </header>
 <div class="container">
   <div class="wrapper">
-    <com-form>
+    <com-form
+      [id]="formId"
+      [formGroup]="cursoForm"
+      (ngSubmit)="handleSubmit(cursoForm.value)"
+    >
       <com-form-section partly formTitle="Descrição" step="1">
-        <com-input label="Codigo"></com-input>
-        <com-input label="Nome"></com-input>
-        <com-input label="Codigo CNPQ"></com-input>
-        <com-input label="Disciplina"></com-input>
+        <com-input formControlName="codigo" label="Codigo"></com-input>
+        <com-input formControlName="nome" label="Nome"></com-input>
+        <com-input formControlName="codigoCnpq" label="Codigo CNPQ"></com-input>
+        <com-input formControlName="disciplina" label="Disciplina"></com-input>
+        <com-input
+          formControlName="cargaHoraria"
+          label="Carga horária"
+          type="number"
+        ></com-input>
         <div class="flex-container description">
           <com-textarea
+            formControlName="descricao"
             label="Descrição"
             maxlength="4000"
             helper="Campo em texto livre"
@@ -21,20 +31,23 @@
         </div>
       </com-form-section>
 
-      <com-form-section partly formTitle="titulo" step="2">
+      <com-form-section partly formTitle="Folha de rosto" step="2">
         <com-fieldset>
           <div class="flex-container wrap description">
             <com-textarea
+              formControlName="objetivo"
               label="Objetivo"
               maxlength="4000"
               helper="Campo em texto livre"
             ></com-textarea>
             <com-textarea
+              formControlName="observacao"
               label="Observação"
               maxlength="4000"
               helper="Campo em texto livre"
             ></com-textarea>
             <com-textarea
+              formControlName="preRequisito"
               label="Pre Requisito"
               maxlength="4000"
               helper="Campo em texto livre"
@@ -46,7 +59,7 @@
       <com-form-section block>
         <com-fieldset>
           <div class="flex-container row end middle">
-            <com-button fill confirm>
+            <com-button fill confirm type="submit" [form]="formId">
               <ng-container slot="text">confirmar e gerar curso</ng-container>
             </com-button>
           </div>

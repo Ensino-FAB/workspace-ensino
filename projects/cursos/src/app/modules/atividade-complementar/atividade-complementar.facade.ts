@@ -26,4 +26,8 @@ export class AtividadeComplementarFacade {
   ): Observable<Pageable<AtividadeComplementar>> {
     return this.atividadeComplementarService.findAll(search);
   }
+
+  public save(record: AtividadeComplementar): any {
+    return this.atividadeComplementarService.save(record);
+  }
 }

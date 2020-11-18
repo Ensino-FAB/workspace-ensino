@@ -5,6 +5,7 @@ import { Subscription, timer } from 'rxjs';
 import { mapTo, mergeAll, takeUntil, share, delay } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { CursoFacade } from '../../curso.facade';
+import { ToastService } from 'projects/ensino-commons/src/public-api';
 
 @Component({
   selector: 'app-consulta',
@@ -56,7 +57,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   orderBy: string[] = ['id'];
   totalPages = 1;
 
-  constructor(private facade: CursoFacade) {}
+  constructor(
+    private facade: CursoFacade,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.options = [
@@ -166,6 +170,18 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   clean() {
     this.cursoSearch.reset();
     this.refresh();
+  }
+
+  onDelete(id: number): void {
+    this.subs$.push(
+      this.facade.delete(id).subscribe(() => {
+        this.refresh();
+        this.toastService.show({
+          message: 'Curso deletado com sucesso!',
+          type: 'success',
+        });
+      })
+    );
   }
 
   ngOnDestroy(): void {
