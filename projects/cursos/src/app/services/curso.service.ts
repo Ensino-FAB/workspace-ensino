@@ -65,7 +65,7 @@ export class CursoService {
   }
 
   // tslint:disable-next-line: typedef
-  remove(id: number) {
-    return this.http.delete(`${this.endpoint}/${id}`).pipe(take(1));
+  remove(id: number): Observable<any> {
+    return this.http.delete(`${this.endpoint}/${id}`);
   }
 }

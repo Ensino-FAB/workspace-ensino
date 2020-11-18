@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CursoFacade } from './../../curso.facade';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   cursoForm: FormGroup;
   formId: 'curso-form';
@@ -57,5 +57,11 @@ export class CadastroComponent implements OnInit {
 
   resetForm(): void {
     this.cursoForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.subs$.forEach((sub) => {
+      sub.unsubscribe();
+    });
   }
 }

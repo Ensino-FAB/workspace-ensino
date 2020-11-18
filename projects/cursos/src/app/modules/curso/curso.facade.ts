@@ -32,4 +32,8 @@ export class CursoFacade {
   public save(record: Curso): any {
     return this.cursoService.save(record);
   }
+
+  public delete(id: number): Observable<any> {
+    return this.cursoService.remove(id);
+  }
 }
