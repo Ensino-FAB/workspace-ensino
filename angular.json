@@ -21,6 +21,7 @@
             "index": "projects/cursos/src/index.html",
             "main": "projects/cursos/src/main.ts",
             "polyfills": "projects/cursos/src/polyfills.ts",
+            "baseHref": "/e-sistens-cursos/",
             "tsConfig": "projects/cursos/tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -39,6 +40,34 @@
                 {
                   "replace": "projects/cursos/src/environments/environment.ts",
                   "with": "projects/cursos/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "homolog": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cursos/src/environments/environment.ts",
+                  "with": "projects/cursos/src/environments/environment.homolog.ts"
                 }
               ],
               "optimization": true,
