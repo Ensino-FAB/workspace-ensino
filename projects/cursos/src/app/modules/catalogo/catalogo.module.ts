@@ -22,6 +22,7 @@ import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
+import { CatalogoFacade } from './catalogo.facade';
 
 @NgModule({
   declarations: [
@@ -47,5 +48,6 @@ import { GestaoComponent } from './containers/gestao/gestao.component';
     TextareaModule,
     InputModule,
   ],
+  providers: [CatalogoFacade],
 })
 export class CatalogoModule {}

@@ -28,7 +28,9 @@ export class AtividadeComplementarService {
   }
 
   findById(id: number): Observable<AtividadeComplementar> {
-    return this.http.get<any>(`${environment.CURSO_API}/curso/${id}`);
+    return this.http.get<any>(
+      `${environment.CURSO_API}/atividade-complementar/${id}`
+    );
   }
 
   /* istanbul ignore next */
