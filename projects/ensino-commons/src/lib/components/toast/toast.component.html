@@ -1,0 +1,8 @@
+<com-toast
+  [@inOutAnimation]
+  [toastStyle]="data.type"
+  (closed)="close()"
+  *ngIf="_inView"
+>
+  {{ data.message }}
+</com-toast>

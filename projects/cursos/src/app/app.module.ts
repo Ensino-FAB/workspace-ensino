@@ -12,6 +12,8 @@ import {
   DropmenuModule,
 } from '@cca-fab/cca-fab-components-common';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { ToastModule } from 'projects/ensino-commons/src/lib/components/toast/toast.module';
+import { ToastService } from 'projects/ensino-commons/src/lib/services/toast.service';
 
 function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
@@ -41,8 +43,10 @@ function initializeKeycloak(keycloak: KeycloakService): any {
     BrowserAnimationsModule,
     HttpClientModule,
     KeycloakAngularModule,
+    ToastModule,
   ],
   providers: [
+    ToastService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,

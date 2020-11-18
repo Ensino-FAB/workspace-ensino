@@ -1,7 +1,7 @@
+import { Curso } from './../../models/curso.model';
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Curso } from '../../models/curso.model';
 import { CursoSearch } from '../../models/curso-search.model';
 import { Pageable } from 'projects/ensino-commons/src/lib/models/pageable.model';
 
@@ -23,5 +23,13 @@ export class CursoFacade {
 
   public getAllCurso(search: CursoSearch): Observable<Pageable<Curso>> {
     return this.cursoService.findAll(search);
+  }
+
+  public getCurso(id: number): Observable<Curso> {
+    return this.cursoService.findById(id);
+  }
+
+  public save(record: Curso): any {
+    return this.cursoService.save(record);
   }
 }
