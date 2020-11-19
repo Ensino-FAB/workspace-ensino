@@ -25,6 +25,10 @@ export class CatalogoFacade {
     return this.catalagoService.findAll(search);
   }
 
+  public delete(id: number): Observable<any> {
+    return this.catalagoService.remove(id);
+  }
+
   public save(record: Catalogo): any {
     return this.catalagoService.save(record);
   }
