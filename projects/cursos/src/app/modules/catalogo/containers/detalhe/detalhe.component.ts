@@ -36,7 +36,7 @@ export class DetalheComponent implements OnInit {
         getCatalogo$.subscribe((item) => {
           if (item) {
             this.catalogo = item;
-            this.catalogoLabel = item.nome + ' - ' + item.id;
+            this.catalogoLabel = item.nome;
           }
         })
       );

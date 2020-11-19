@@ -9,4 +9,5 @@ export interface Proposta extends BaseModel {
   preRequisito?: string;
   observacao?: string;
   status?: string;
+  disciplina?: string;
 }

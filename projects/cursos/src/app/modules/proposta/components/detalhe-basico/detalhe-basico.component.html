@@ -19,25 +19,13 @@
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Código CNPQ</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.codigoCnpq }}
+                {{ proposta?.codigoCnpq }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Disciplina</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.disciplina }}
-              </span>
-            </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
-              <com-label>Carga horária</com-label>
-              <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.cargaHoraria }}
-              </span>
-            </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
-              <com-label>Descrição do curso</com-label>
-              <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.descricao }}
+                {{ proposta?.disciplina }}
               </span>
             </div>
           </div>
@@ -52,26 +40,26 @@
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Objetivo</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.objetivo }}
+                {{ proposta?.objetivo }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
-              <com-label>Obeservação</com-label>
+              <com-label>Observação</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.observacao }}
+                {{ proposta?.observacao }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Pré-requisito</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ curso?.preRequisito }}
+                {{ proposta?.preRequisito }}
               </span>
             </div>
           </div>
         </div>
       </section>
       <div style="width: 100%; display: flex; justify-content: flex-end">
-        <com-button fill routerLink="/curso/listar">
+        <com-button fill routerLink="/proposta/listar">
           <ng-container slot="text">voltar</ng-container>
         </com-button>
       </div>

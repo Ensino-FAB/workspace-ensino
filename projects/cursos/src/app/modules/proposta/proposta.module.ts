@@ -23,6 +23,7 @@ import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
+import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basico.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GestaoComponent } from './containers/gestao/gestao.component';
     DetalheComponent,
     EdicaoComponent,
     GestaoComponent,
+    DetalheBasicoComponent,
   ],
   imports: [
     CommonModule,
