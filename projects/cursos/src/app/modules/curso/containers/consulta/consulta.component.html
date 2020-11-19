@@ -90,7 +90,7 @@
       <ng-template let-content name="nome">
         <div class="table-text-control">
           <a
-            routerLink="/curso/alteracao/detalhes/{{ content.data.id }}"
+            routerLink="/curso/detalhes/{{ content.data.id }}"
             class="table-link"
           >
             {{ content.field }}
@@ -102,7 +102,7 @@
       <ng-template let-content name="action">
         <div class="table-actions">
           <div>
-            <a routerLink="/curso/alteracao/detalhes/{{ content.data.id }}">
+            <a routerLink="/curso/detalhes/{{ content.data.id }}">
               <com-button transparent>
                 <com-icon outlined slot="icon">launch</com-icon>
               </com-button>

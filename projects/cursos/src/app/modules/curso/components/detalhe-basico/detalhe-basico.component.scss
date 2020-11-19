@@ -1,0 +1,111 @@
+@import 'projects/cursos/src/assets/scss/mixins.scss';
+
+:host {
+  display: block;
+}
+
+.container {
+  padding: 0 var(--padding);
+
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+  }
+}
+
+header {
+  h2,
+  h3 {
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  h3 {
+    span {
+      color: var(--grey);
+    }
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: -0.25rem;
+
+    & > * {
+      padding: 0.25rem;
+    }
+
+    .skeleton {
+      padding: 0;
+      margin: 0.25rem;
+    }
+  }
+}
+
+.row {
+  padding: 3rem 0;
+  padding-bottom: 1.5rem;
+  justify-content: space-around;
+
+  > .col {
+    width: 100%;
+  }
+
+  .negative-margin {
+    display: block;
+    margin-bottom: -0.5rem;
+  }
+
+  .margin-top {
+    margin-top: 1.5rem;
+  }
+}
+
+.row:first-child {
+  border-top: 2px solid var(--light-grey);
+}
+
+.row:last-child {
+  padding-bottom: 1.5rem;
+}
+
+.detail {
+  margin-bottom: var(--padding);
+}
+
+.skeleton {
+  position: relative;
+  width: 100%;
+  background: var(--light-grey);
+  display: inline-block;
+  color: transparent !important;
+
+  min-height: 3rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--grey);
+
+    @include skeleton();
+
+    animation: 3000ms ease-in-out skeleton infinite;
+  }
+}

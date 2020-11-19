@@ -1,0 +1,80 @@
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }}
+        </h2>
+      </header>
+      <section>
+        <div style="display: flex">
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              width: 50%;
+              flex-direction: column;
+            "
+          >
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Código CNPQ</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.codigoCnpq }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Disciplina</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.disciplina }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Carga horária</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.cargaHoraria }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Descrição do curso</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.descricao }}
+              </span>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              width: 50%;
+              flex-direction: column;
+            "
+          >
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Código CNPQ</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.objetivo }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Código CNPQ</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.observacao }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Código CNPQ</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ curso?.preRequisito }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="width: 100%; display: flex; justify-content: flex-end">
+        <com-button fill routerLink="/curso/listar">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>

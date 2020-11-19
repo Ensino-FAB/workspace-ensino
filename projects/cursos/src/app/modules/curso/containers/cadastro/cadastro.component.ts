@@ -37,16 +37,15 @@ export class CadastroComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     if (this.cursoForm.valid) {
-      const salvarCurso$ = this.facade.save(this.cursoForm.value);
-      this.subs$.push(salvarCurso$);
-
-      salvarCurso$.subscribe((resp) => {
-        this.toast.show({
-          message: 'O curso foi salvo com sucesso!',
-          type: 'success',
-        });
-        this.router.navigate(['curso', 'listar']);
-      });
+      this.subs$.push(
+        this.facade.save(this.cursoForm.value).subscribe((resp) => {
+          this.toast.show({
+            message: 'O curso foi salvo com sucesso!',
+            type: 'success',
+          });
+          this.router.navigate(['curso', 'listar']);
+        })
+      );
     } else {
       this.toast.show({
         message: 'Erro ao tentar salvar o curso!',

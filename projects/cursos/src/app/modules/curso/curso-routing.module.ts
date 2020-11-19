@@ -1,3 +1,4 @@
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
@@ -22,6 +23,13 @@ export const CURSO_ROUTES: Routes = [
       breadcrumb: 'editar',
     },
     component: EdicaoComponent,
+  },
+  {
+    path: 'detalhes/:id',
+    data: {
+      breadcrumb: 'detalhar',
+    },
+    component: DetalheComponent,
   },
   {
     path: 'listar',

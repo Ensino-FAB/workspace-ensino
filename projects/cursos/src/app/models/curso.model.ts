@@ -8,4 +8,6 @@ export interface Curso extends BaseModel {
   objetivo?: string;
   preRequisito?: string;
   observacao?: string;
+  cargaHoraria?: number;
+  disciplina?: string;
 }
