@@ -4,6 +4,7 @@ import { CatalogoCursoService } from './../../services/catalogo-curso.service';
 import { Injectable, Injector } from '@angular/core';
 import { Pageable } from 'projects/ensino-commons/src/public-api';
 import { Observable } from 'rxjs';
+import { Curso } from '../../models/curso.model';
 
 @Injectable()
 export class CatalogoFacade {
@@ -31,5 +32,9 @@ export class CatalogoFacade {
 
   public save(record: Catalogo): any {
     return this.catalagoService.save(record);
+  }
+
+  public findCatalogo(id: number): Observable<Catalogo> {
+    return this.catalagoService.findById(id);
   }
 }

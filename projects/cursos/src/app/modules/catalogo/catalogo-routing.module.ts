@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
 
 export const CATALOGO_ROUTES: Routes = [
   { path: '', component: GestaoComponent, data: { breadcrumb: null } },
@@ -14,6 +15,15 @@ export const CATALOGO_ROUTES: Routes = [
     },
     component: CadastroComponent,
   },
+
+  {
+    path: 'detalhes/:id',
+    data: {
+      breadcrumb: 'detalhar',
+    },
+    component: DetalheComponent,
+  },
+
   { path: 'listar', component: ConsultaComponent },
 ];
 
