@@ -21,6 +21,7 @@ import {
   TextareaModule,
   TooltipModule,
 } from '@cca-fab/cca-fab-components-common';
+import { PropostaFacade } from './proposta.facade';
 
 @NgModule({
   declarations: [
@@ -46,5 +47,6 @@ import {
     TextareaModule,
     InputModule,
   ],
+  providers: [PropostaFacade],
 })
 export class PropostaModule {}
