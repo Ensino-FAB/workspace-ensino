@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GestaoComponent } from '../proposta/containers/gestao/gestao.component';
-import { CadastroComponent } from '../proposta/containers/cadastro/cadastro.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
+import { CommonModule } from '@angular/common';
+import { GestaoComponent } from './containers/gestao/gestao.component';
+import { CadastroComponent } from './containers/cadastro/cadastro.component';
 
-const routes: Routes = [
-  { path: '', component: GestaoComponent, data: { breadcrumb: null } },
+export const PROPOSTA_ROUTES: Routes = [
+  {
+    path: '',
+    component: GestaoComponent,
+    data: { breadcrumb: null },
+  },
   {
     path: 'criar',
     data: {
@@ -13,11 +18,17 @@ const routes: Routes = [
     },
     component: CadastroComponent,
   },
-  { path: 'listar', component: ConsultaComponent },
+  {
+    path: 'listar',
+    data: {
+      breadcrumb: 'listar',
+    },
+    component: ConsultaComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  declarations: [],
+  imports: [CommonModule],
 })
 export class PropostaRoutingModule {}

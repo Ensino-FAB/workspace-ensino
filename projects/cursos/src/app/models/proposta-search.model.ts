@@ -6,4 +6,5 @@ export interface PropostaSearch extends BaseSearch {
   preRequisito?: string;
   observacao?: string;
   disciplina?: string;
+  status?: string;
 }

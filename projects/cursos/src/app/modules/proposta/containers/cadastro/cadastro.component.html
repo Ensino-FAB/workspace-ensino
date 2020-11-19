@@ -1,1 +1,92 @@
-<p>proposta cadastro works!</p>
+<header>
+  <div class="flex-container between">
+    <h1>cadastro de proposta</h1>
+    <div class="flex-container middle"></div>
+  </div>
+</header>
+<div class="container">
+  <div class="wrapper">
+    <com-form [id]="formId" [formGroup]="propostaForm" (ngSubmit)="onSubmit()">
+      <com-form-section partly formTitle="Descrição" step="1">
+        <com-input
+          formControlName="codigoCnpq"
+          label="Codigo CNPQ"
+          [invalid]="
+            (propostaForm.get('codigoCnpq').invalid &&
+              propostaForm.get('codigoCnpq').touched) ||
+            propostaForm.errors?.codigoCnpq
+          "
+        ></com-input>
+        <com-input
+          formControlName="disciplina"
+          label="Disciplina"
+          [invalid]="
+            (propostaForm.get('disciplina').invalid &&
+              propostaForm.get('disciplina').touched) ||
+            propostaForm.errors?.disciplina
+          "
+        ></com-input>
+
+        <div class="flex-container description">
+          <com-textarea
+            formControlName="objetivo"
+            label="Objetivo"
+            maxlength="4000"
+            helper="Campo em texto livre"
+            [invalid]="
+              (propostaForm.get('objetivo').invalid &&
+                propostaForm.get('objetivo').touched) ||
+              propostaForm.errors?.objetivo
+            "
+          >
+          </com-textarea>
+        </div>
+      </com-form-section>
+
+      <com-form-section partly formTitle="Folha de rosto" step="2">
+        <com-fieldset>
+          <div class="flex-container wrap description">
+            <com-textarea
+              formControlName="observacao"
+              label="Observação"
+              maxlength="4000"
+              helper="Campo em texto livre"
+              [invalid]="
+                (propostaForm.get('observacao').invalid &&
+                  propostaForm.get('observacao').touched) ||
+                propostaForm.errors?.observacao
+              "
+            ></com-textarea>
+            <com-textarea
+              formControlName="preRequisito"
+              label="Pre Requisito"
+              maxlength="4000"
+              helper="Campo em texto livre"
+              [invalid]="
+                (propostaForm.get('preRequisito').invalid &&
+                  propostaForm.get('preRequisito').touched) ||
+                propostaForm.errors?.preRequisito
+              "
+            ></com-textarea>
+          </div>
+        </com-fieldset>
+      </com-form-section>
+
+      <com-form-section block>
+        <com-fieldset>
+          <div class="flex-container row end middle">
+            <com-button
+              fill
+              confirm
+              type="submit"
+              [form]="formId"
+              [disabled]="propostaForm.invalid"
+            >
+              <ng-container slot="text">confirmar e gerar curso</ng-container>
+            </com-button>
+          </div>
+        </com-fieldset>
+      </com-form-section>
+    </com-form>
+  </div>
+</div>
