@@ -5,6 +5,7 @@ import { Subscription, timer } from 'rxjs';
 import { mapTo, mergeAll, takeUntil, share, delay } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { AtividadeComplementarFacade } from '../../atividade-complementar.facade';
+import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
 
 @Component({
   selector: 'app-consulta',
@@ -57,7 +58,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   orderBy: string[] = ['id'];
   totalPages = 1;
 
-  constructor(private facade: AtividadeComplementarFacade) {}
+  constructor(
+    private facade: AtividadeComplementarFacade,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.options = [
@@ -163,6 +167,18 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.page = 1;
     this.refresh();
+  }
+
+  onDelete(id: number): void {
+    this.subs$.push(
+      this.facade.delete(id).subscribe(() => {
+        this.refresh();
+        this.toastService.show({
+          message: 'Atividade Complementar deletada com sucesso!',
+          type: 'success',
+        });
+      })
+    );
   }
 
   // tslint:disable-next-line: typedef
