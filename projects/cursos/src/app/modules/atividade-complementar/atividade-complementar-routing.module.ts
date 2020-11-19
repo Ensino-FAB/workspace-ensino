@@ -1,3 +1,4 @@
+import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,7 +19,20 @@ export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
     },
     component: CadastroComponent,
   },
-  { path: 'listar', component: ConsultaComponent },
+  {
+    path: 'editar/:id',
+    data: {
+      breadcrumb: 'editar',
+    },
+    component: EdicaoComponent,
+  },
+  {
+    path: 'listar',
+    data: {
+      breadcrumb: 'listar',
+    },
+    component: ConsultaComponent,
+  },
 ];
 
 @NgModule({

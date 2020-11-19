@@ -82,14 +82,20 @@
       <ng-template let-content name="action">
         <div class="table-actions">
           <div>
-            <a routerLink="/curso/alteracao/detalhes/{{ content.data.id }}">
+            <a
+              routerLink="/atividade-complementar/detalhes/{{
+                content.data.id
+              }}"
+            >
               <com-button transparent>
                 <com-icon outlined slot="icon">launch</com-icon>
               </com-button>
             </a>
           </div>
           <div>
-            <a routerLink="/curso/alteracao/detalhes/{{ content.data.id }}">
+            <a
+              routerLink="/atividade-complementar/editar/{{ content.data.id }}"
+            >
               <com-button secondary transparent>
                 <com-icon outlined slot="icon">edit</com-icon>
               </com-button>

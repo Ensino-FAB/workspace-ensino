@@ -104,7 +104,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
           cargaHoraria: `${item.cargaHoraria}`,
         }));
 
-        this.totalPages = Math.ceil(this.count / this.pageSize);
+        this.totalPages = res.totalPages;
       })
     );
   }

@@ -1,6 +1,6 @@
 import { Curso } from './../../../../models/curso.model';
 import { CursoFacade } from './../../curso.facade';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { ToastService } from 'projects/ensino-commons/src/public-api';
   templateUrl: './edicao.component.html',
   styleUrls: ['./edicao.component.scss'],
 })
-export class EdicaoComponent implements OnInit {
+export class EdicaoComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   private id: number;
   private isLoading = false;
@@ -42,12 +42,11 @@ export class EdicaoComponent implements OnInit {
     });
 
     this.subs$.push(
-      this.activeRoute.params.subscribe((params) => (this.id = params.id))
+      this.activeRoute.params.subscribe((params) => (this.id = params.id)),
+      this.facade
+        .findCurso(this.id)
+        .subscribe((resp) => this.cursoForm.setValue(resp))
     );
-
-    this.facade
-      .findCurso(this.id)
-      .subscribe((resp) => this.cursoForm.setValue(resp));
   }
 
   onSubmit(): void {
@@ -55,7 +54,7 @@ export class EdicaoComponent implements OnInit {
       this.subs$.push(
         this.facade.save(this.cursoForm.value).subscribe((resp) => {
           this.toast.show({
-            message: 'O curso foi salvo com sucesso!',
+            message: 'O curso foi editado com sucesso!',
             type: 'success',
           });
           this.router.navigate(['curso', 'listar']);
@@ -63,9 +62,15 @@ export class EdicaoComponent implements OnInit {
       );
     } else {
       this.toast.show({
-        message: 'Erro ao tentar salvar o curso!',
+        message: 'Erro ao tentar editar o curso!',
         type: 'alert',
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subs$.forEach((sub) => {
+      sub.unsubscribe();
+    });
   }
 }

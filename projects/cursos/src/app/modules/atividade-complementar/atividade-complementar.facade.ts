@@ -34,4 +34,10 @@ export class AtividadeComplementarFacade {
   public delete(id: number): Observable<any> {
     return this.atividadeComplementarService.remove(id);
   }
+
+  public findAtividadeComplementar(
+    id: number
+  ): Observable<AtividadeComplementar> {
+    return this.atividadeComplementarService.findById(id);
+  }
 }
