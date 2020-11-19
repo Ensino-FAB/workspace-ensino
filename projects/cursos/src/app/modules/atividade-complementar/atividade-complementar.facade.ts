@@ -30,4 +30,8 @@ export class AtividadeComplementarFacade {
   public save(record: AtividadeComplementar): any {
     return this.atividadeComplementarService.save(record);
   }
+
+  public delete(id: number): Observable<any> {
+    return this.atividadeComplementarService.remove(id);
+  }
 }
