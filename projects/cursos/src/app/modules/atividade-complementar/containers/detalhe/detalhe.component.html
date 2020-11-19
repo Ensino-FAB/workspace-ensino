@@ -1,1 +1,10 @@
-<p>detalhe works!</p>
+<section class="flex-container row center main-container">
+  <div class="flex-container col wrap main-content">
+    <app-detalhe-basico-atividade-complementar
+      [loading]="isLoading"
+      [header]="atividadeComplementar?.nome"
+      [atividadeComplementar]="atividadeComplementar"
+    >
+    </app-detalhe-basico-atividade-complementar>
+  </div>
+</section>

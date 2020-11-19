@@ -23,6 +23,7 @@ import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
+import { DetalheBasicoAtividadeComplementarComponent } from './components/detalhe-basico/detalhe-basico-atividade-complementar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
     ConsultaComponent,
     EdicaoComponent,
     DetalheComponent,
+    DetalheBasicoAtividadeComplementarComponent,
   ],
   imports: [
     CommonModule,

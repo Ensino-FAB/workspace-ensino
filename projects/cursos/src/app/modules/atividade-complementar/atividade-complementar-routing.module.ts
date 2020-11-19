@@ -1,4 +1,5 @@
 import { EdicaoComponent } from './containers/edicao/edicao.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,13 @@ export const ATIVIDADE_COMPLEMENTAR_ROUTES: Routes = [
       breadcrumb: 'criar',
     },
     component: CadastroComponent,
+  },
+  {
+    path: 'detalhar/:id',
+    data: {
+      breadcrumb: 'detalhar',
+    },
+    component: DetalheComponent,
   },
   {
     path: 'editar/:id',
