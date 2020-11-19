@@ -12,7 +12,11 @@
     transition: background var(--transition-defs);
 
     &:hover {
-      background: rgba(196, 196, 196, 0.2);
+      background: rgba(206, 206, 206, 0.2);
     }
   }
+}
+
+li.nav-item > a.active {
+  background: rgba(161, 161, 161, 0.2);
 }
