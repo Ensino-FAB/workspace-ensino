@@ -115,6 +115,13 @@
           <div class="flex-container row end middle">
             <com-button
               fill
+              routerLink="/curso/listar"
+              style="margin-right: 1rem"
+            >
+              <ng-container slot="text">voltar</ng-container>
+            </com-button>
+            <com-button
+              fill
               confirm
               type="submit"
               [form]="formId"

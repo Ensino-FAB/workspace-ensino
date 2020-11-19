@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastData } from '../../models/toast-data.model';
 import { ToastRef } from '../../models/toast-ref.model';
 import { handleToastScreenTime } from '../../utils/helpers';
@@ -46,7 +46,7 @@ import {
     ]),
   ],
 })
-export class ToastComponent implements OnInit, OnDestroy {
+export class ToastComponent implements OnInit {
   inView = true;
 
   constructor(readonly data: ToastData, readonly ref: ToastRef) {}
@@ -56,8 +56,6 @@ export class ToastComponent implements OnInit, OnDestroy {
       this.close();
     }, handleToastScreenTime(this.data.message.length));
   }
-
-  ngOnDestroy(): void {}
 
   close(): void {
     this.inView = false;
