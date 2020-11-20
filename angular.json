@@ -28,10 +28,7 @@
               "projects/cursos/src/favicon.ico",
               "projects/cursos/src/assets"
             ],
-            "styles": [
-              "projects/cursos/src/styles.scss",
-              "projects/cursos/src/assets/scss/global.scss"
-            ],
+            "styles": ["projects/cursos/src/assets/scss/global.scss"],
             "scripts": []
           },
           "configurations": {
