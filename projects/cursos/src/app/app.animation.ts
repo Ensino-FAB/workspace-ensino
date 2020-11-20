@@ -4,12 +4,10 @@ import {
   style,
   animate,
   transition,
-  keyframes,
-  query,
-  stagger,
+  AnimationMetadata,
 } from '@angular/animations';
 
-export function transitionMenuFixed() {
+export function transitionMenuFixed(): AnimationMetadata {
   return trigger('transitionMenuFixed', [
     state(
       'shown',
@@ -29,7 +27,7 @@ export function transitionMenuFixed() {
   ]);
 }
 
-export function expand() {
+export function expand(): AnimationMetadata {
   return trigger('expand', [
     state('*', style({ opacity: 1, transform: 'translateX(0)' })),
     transition(':enter', [
@@ -42,7 +40,7 @@ export function expand() {
   ]);
 }
 
-export function fadeIn() {
+export function fadeIn(): AnimationMetadata {
   return trigger('fadeIn', [
     state('*', style({ opacity: 1 })),
     transition(':enter', [
@@ -51,7 +49,7 @@ export function fadeIn() {
     ]),
   ]);
 }
-export function fadeInOut() {
+export function fadeInOut(): AnimationMetadata {
   return trigger('fadeInOut', [
     state('void => *', style({ opacity: 1 })),
     transition(':enter', [style({ opacity: 0 }), animate('300ms 0s ease-in')]),
@@ -59,7 +57,7 @@ export function fadeInOut() {
   ]);
 }
 
-export function flyIn() {
+export function flyIn(): AnimationMetadata {
   return trigger('flyIn', [
     state('void => *', style({ transform: 'translateX(0)' })),
     transition(':enter', [
@@ -72,7 +70,7 @@ export function flyIn() {
   ]);
 }
 
-export function shrinkOut() {
+export function shrinkOut(): AnimationMetadata {
   return trigger('shrinkOut', [
     state('in', style({ height: '*' })),
     transition('* => void', [
@@ -81,49 +79,3 @@ export function shrinkOut() {
     ]),
   ]);
 }
-
-export const speedDialFabAnimations = [
-  trigger('fabToggler', [
-    state(
-      'inactive',
-      style({
-        transform: 'rotate(0deg)',
-      })
-    ),
-    state(
-      'active',
-      style({
-        transform: 'rotate(225deg)',
-      })
-    ),
-    transition('* <=> *', animate('200ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-  ]),
-  trigger('speedDialStagger', [
-    transition('* => *', [
-      query(':enter', style({ opacity: 0 }), { optional: true }),
-
-      query(
-        ':enter',
-        stagger('40ms', [
-          animate(
-            '200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-            keyframes([
-              style({ opacity: 0, transform: 'translateY(10px)' }),
-              style({ opacity: 1, transform: 'translateY(0)' }),
-            ])
-          ),
-        ]),
-        { optional: true }
-      ),
-
-      query(
-        ':leave',
-        animate(
-          '200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
-          keyframes([style({ opacity: 1 }), style({ opacity: 0 })])
-        ),
-        { optional: true }
-      ),
-    ]),
-  ]),
-];
