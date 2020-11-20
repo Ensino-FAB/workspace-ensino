@@ -24,11 +24,13 @@ export class CadastroComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.propostaForm = new FormGroup({
+      nome: new FormControl('', Validators.required),
       codigoCnpq: new FormControl('', Validators.required),
       disciplina: new FormControl('', Validators.required),
       objetivo: new FormControl('', Validators.required),
       observacao: new FormControl('', Validators.required),
       preRequisito: new FormControl('', Validators.required),
+      cargaHoraria: new FormControl('', Validators.required),
     });
   }
 

@@ -1,7 +1,6 @@
 import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
 
 export interface Proposta extends BaseModel {
-  codigo?: string;
   codigoCnpq?: string;
   nome?: string;
   descricao?: string;
@@ -10,4 +9,6 @@ export interface Proposta extends BaseModel {
   observacao?: string;
   status?: string;
   disciplina?: string;
+  cargaHoraria?: number;
+  instanciaProcessoId: string;
 }
