@@ -34,6 +34,7 @@ export class DetalheComponent implements OnInit {
           this.isLoading = status;
         }),
         getProposta$.subscribe((item) => {
+          console.log(item);
           if (item) {
             this.proposta = item;
             this.propostaLabel = 'Detalhar proposta';
