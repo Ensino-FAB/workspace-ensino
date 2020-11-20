@@ -71,15 +71,12 @@
       (previousPage)="handlePreviousPage()"
       (firstPage)="onFirstPage()"
       (lastPage)="onLastPage()"
-      *ngIf="!_isLoading"
+      *ngIf="!isLoading"
     >
       <ng-template let-content name="status">
         <div class="table-text-control">{{ content.field }}</div>
       </ng-template>
       <ng-template let-content name="codigoCnpq">
-        <div class="table-text-control">{{ content.field }}</div>
-      </ng-template>
-      <ng-template let-content name="objetivo">
         <div class="table-text-control">{{ content.field }}</div>
       </ng-template>
       <ng-template let-content name="nome">
@@ -91,6 +88,12 @@
             {{ content.field }}
           </a>
         </div>
+      </ng-template>
+      <ng-template let-content name="descricao">
+        <div class="table-text-control">{{ content.field }}</div>
+      </ng-template>
+      <ng-template let-content name="cargaHoraria">
+        <div class="table-text-control">{{ content.field }}</div>
       </ng-template>
 
       <!-- Ações -->
@@ -132,15 +135,21 @@
       [pageIndex]="1"
       [totalPages]="1"
       [columns]="columns"
-      *ngIf="_isLoading"
+      *ngIf="isLoading"
     >
+      <ng-template name="nome">
+        <div class="table-field-skeleton"></div>
+      </ng-template>
       <ng-template name="status">
         <div class="table-field-skeleton"></div>
       </ng-template>
       <ng-template name="codigoCnpq">
         <div class="table-field-skeleton"></div>
       </ng-template>
-      <ng-template name="objetivo">
+      <ng-template let-content name="descricao">
+        <div class="table-field-skeleton"></div>
+      </ng-template>
+      <ng-template let-content name="cargaHoraria">
         <div class="table-field-skeleton"></div>
       </ng-template>
       <ng-template let-content name="action"></ng-template>

@@ -15,8 +15,7 @@ import { PropostaFacade } from '../../proposta.facade';
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
-  // tslint:disable-next-line: variable-name
-  _isLoading = false;
+  public isLoading = false;
 
   propostaSearch = new FormGroup({
     q: new FormControl(''),
@@ -26,20 +25,29 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   columns: TableColumn[] = [
     {
-      field: 'status',
-      title: 'Status',
-      width: '10%',
+      field: 'nome',
+      title: 'Nome',
+      width: '20%',
+    },
+    {
+      field: 'descricao',
+      title: 'Descrição',
+      width: '20%',
     },
     {
       field: 'codigoCnpq',
       title: 'Código CNPQ',
       width: '10%',
     },
-
     {
-      field: 'objetivo',
-      title: 'Objetivo',
-      width: '60%',
+      field: 'cargaHoraria',
+      title: 'Carga horária',
+      width: '10%',
+    },
+    {
+      field: 'status',
+      title: 'Status',
+      width: '10%',
     },
   ];
 
@@ -67,7 +75,9 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.options = [
       { name: 'Status', value: 'status' },
       { name: 'Código CNPQ', value: 'codigoCnpq' },
-      { name: 'Objetivo', value: 'objetivo' },
+      { name: 'Nome', value: 'nome' },
+      { name: 'Descrição', value: 'descricao' },
+      { name: 'Carga horária', value: 'cargaHoraria' },
     ];
 
     this.refresh();
@@ -81,6 +91,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
+
     const getProposta$ = this.facade.getAllProposta(search).pipe(share());
     const isLoading$ = of(
       timer(150).pipe(mapTo(true), takeUntil(getProposta$)),
@@ -89,17 +100,18 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
     this.subs$.push(
       isLoading$.subscribe((status) => {
-        this._isLoading = status;
+        this.isLoading = status;
       }),
       getProposta$.subscribe((res) => {
         this.count = res.totalElements;
-        // console.log('Dados :' + JSON.stringify(res));
 
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           status: `${item?.status}`,
-          codigoCnpq: `${item.codigoCnpq}`,
-          objetivo: `${item.objetivo}`,
+          codigoCnpq: `${item?.codigoCnpq}`,
+          cargaHoraria: `${item?.cargaHoraria}`,
+          nome: `${item?.nome}`,
+          descricao: `${item?.descricao}`,
         }));
 
         this.totalPages = Math.ceil(this.count / this.pageSize);
