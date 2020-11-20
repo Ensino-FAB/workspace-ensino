@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100rem;
+  margin-top: 10rem;
+  list-style-type: none;
+}
