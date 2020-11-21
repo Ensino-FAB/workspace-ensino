@@ -6,6 +6,8 @@ import { Pageable } from '../../../../ensino-commons/src/lib/models/pageable.mod
 import { take } from 'rxjs/operators';
 import { Proposta } from '../models/proposta.model';
 import { PropostaSearch } from '../models/proposta-search.model';
+import { Curso } from '../models/curso.model';
+import { AtividadeComplementar } from '../models/atividade-complementar.model';
 
 @Injectable({
   providedIn: 'root',
@@ -53,13 +55,13 @@ export class PropostaCursoService {
   }
 
   // tslint:disable-next-line: typedef
-  update(record: Proposta) {
-    return this.http.put(`${this.endpoint}`, record).pipe(take(1));
+  update(id: number, record: Proposta) {
+    return this.http.put(`${this.endpoint}/${id}`, record).pipe(take(1));
   }
 
   save(record: Proposta): any {
     if (record.id) {
-      return this.update(record);
+      return this.update(record.id, record);
     }
     return this.create(record);
   }

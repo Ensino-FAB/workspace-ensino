@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
+import { EdicaoComponent } from './containers/edicao/edicao.component';
 
 export const PROPOSTA_ROUTES: Routes = [
   {
@@ -18,6 +19,14 @@ export const PROPOSTA_ROUTES: Routes = [
       breadcrumb: 'criar',
     },
     component: CadastroComponent,
+  },
+
+  {
+    path: 'editar/:id',
+    data: {
+      breadcrumb: 'editar',
+    },
+    component: EdicaoComponent,
   },
   {
     path: 'detalhes/:id',
