@@ -24,6 +24,9 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basico.component';
+import { DetalheProcessoComponent } from './containers/detalhe-processo/detalhe-processo.component';
+import { BpmnViewerModule } from 'projects/ensino-commons/src/public-api';
+import { FluxoProcessoComponent } from './containers/fluxo-processo/fluxo-processo.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basi
     EdicaoComponent,
     GestaoComponent,
     DetalheBasicoComponent,
+    DetalheProcessoComponent,
+    FluxoProcessoComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +54,7 @@ import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basi
     SelectModule,
     TextareaModule,
     InputModule,
+    BpmnViewerModule,
   ],
   providers: [PropostaFacade],
 })

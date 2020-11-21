@@ -1,0 +1,55 @@
+<div class="wrapper flex-container">
+  <div class="flex-container col grow">
+    <div class="page-title block m-bottom">Detalhamento de Processo</div>
+    <com-card class="process-status m-bottom">
+      <div class="flex-container middle">
+        <com-icon size="3.2">pending_actions</com-icon>
+        <span class="status-text"
+          >Este processo está em etapa de verificação, aguarde.</span
+        >
+      </div>
+    </com-card>
+    <com-card headerTitle="História" class="block m-bottom">
+      <div class="history flex-container col middle between">
+        <div class="card flex-container center middle">Em breve</div>
+        <div class="link"></div>
+        <div class="card flex-container center middle"></div>
+        <div class="link"></div>
+        <div class="begin flex-container center middle">Início</div>
+      </div>
+    </com-card>
+  </div>
+  <div class="flex-container col grow">
+    <com-card class="block m-bottom">
+      <div class="flex-container center middle diagram-card">
+        <div>
+          <img src="assets/svgs/bpmn.svg" />
+        </div>
+        <div class="flex-container col description">
+          <span>
+            Para visualizar o processo por completo, com todos os seus detalhes.
+          </span>
+
+          <com-button (click)="openDiagram()" fill>
+            <span slot="text">Ver Diagrama</span>
+          </com-button>
+        </div>
+        <div></div>
+      </div>
+    </com-card>
+    <com-table class="block m-bottom"></com-table>
+  </div>
+</div>
+
+<com-modal
+  header="Fluxo do Processo"
+  [noFooter]="true"
+  (confirm)="closeDiagram()"
+  (closed)="closeDiagram()"
+  *ngIf="_isDiagramOpen"
+>
+  <ensino-bpmn-viewer
+    (navigation)="onDiagramNavigation()"
+    [processDiagram]="currentDiagram"
+  ></ensino-bpmn-viewer>
+</com-modal>

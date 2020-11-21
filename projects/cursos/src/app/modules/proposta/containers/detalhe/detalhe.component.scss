@@ -1,5 +1,4 @@
-@import 'projects/cursos/src/assets/scss/breakpoints';
-
+@import 'projects/cursos/src/assets/scss/breakpoints.scss';
 :host {
   display: block;
   margin: 0 auto;
@@ -48,5 +47,37 @@
         margin: 0 1rem;
       }
     }
+  }
+}
+
+.bpmn {
+  .bpmn-status {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 2px solid var(--light-grey);
+    padding: 1.5rem var(--padding);
+
+    span {
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    span:first-child {
+      color: var(--grey);
+      margin-right: 0.5rem;
+    }
+
+    span:last-child {
+      color: var(--primary);
+    }
+  }
+
+  .img {
+    min-height: 10rem;
+  }
+
+  a {
+    margin: 0.5rem var(--padding);
   }
 }

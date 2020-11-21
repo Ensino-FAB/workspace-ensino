@@ -22,6 +22,9 @@ export * from './lib/components/no-dashboard-yet/no-dashboard-yet.module';
 export * from './lib/components/toast/toast.component';
 export * from './lib/components/toast/toast.module';
 
+export * from './lib/components/bpmn-viewer/bpmn-viewer.component';
+export * from './lib/components/bpmn-viewer/bpmn-viewer.module';
+
 // Services
 export * from './lib/services/toast.service';
 

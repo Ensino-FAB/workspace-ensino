@@ -59,7 +59,7 @@ export class PropostaCursoService {
     return this.http.put(`${this.endpoint}/${id}`, record).pipe(take(1));
   }
 
-  save(record: Proposta): any {
+  public save(record: Proposta): any {
     if (record.id) {
       return this.update(record.id, record);
     }

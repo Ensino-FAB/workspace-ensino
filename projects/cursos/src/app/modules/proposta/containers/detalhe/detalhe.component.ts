@@ -1,46 +1,59 @@
-import { PropostaFacade } from './../../proposta.facade';
-import { Proposta } from './../../../../models/proposta.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Proposta } from 'projects/cursos/src/app/models/proposta.model';
 import { Subscription, of, timer } from 'rxjs';
 import { share, mapTo, takeUntil, mergeAll } from 'rxjs/operators';
+import { PropostaFacade } from '../../proposta.facade';
 
 @Component({
   selector: 'app-detalhe',
   templateUrl: './detalhe.component.html',
   styleUrls: ['./detalhe.component.scss'],
 })
-export class DetalheComponent implements OnInit {
+export class DetalheComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
-  public isLoading = false;
-  public id: number;
-  public proposta: Proposta;
-  public propostaLabel: string;
+
+  _isLoading = false;
+
+  _id: number;
+  _rev: number;
 
   constructor(private route: ActivatedRoute, private facade: PropostaFacade) {}
 
+  alteracaoOrcamentaria: Proposta;
+  tasks: any[] = [];
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params.id;
+      this._rev = params.rev;
+      this._id = params.id;
 
-      const getProposta$ = this.facade.findProposta(this.id).pipe(share());
+      const getAlteracaoOrcamentaria$ = this.facade
+        .getProposta(params.id)
+        .pipe(share());
       const isLoading$ = of(
-        timer(150).pipe(mapTo(true), takeUntil(getProposta$)),
-        getProposta$.pipe(mapTo(false))
+        timer(150).pipe(mapTo(true), takeUntil(getAlteracaoOrcamentaria$)),
+        getAlteracaoOrcamentaria$.pipe(mapTo(false))
       ).pipe(mergeAll());
 
       this.subs$.push(
         isLoading$.subscribe((status) => {
-          this.isLoading = status;
+          this._isLoading = status;
         }),
-        getProposta$.subscribe((item) => {
-          console.log(item);
+        getAlteracaoOrcamentaria$.subscribe((item: any) => {
           if (item) {
-            this.proposta = item;
-            this.propostaLabel = 'Detalhar proposta';
+            console.log(item);
+            this.alteracaoOrcamentaria = item.entity;
+            this.tasks = item.tasks;
           }
         })
       );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subs$.forEach((sub$) => {
+      sub$.unsubscribe();
     });
   }
 }
