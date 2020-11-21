@@ -39,6 +39,7 @@ export class EdicaoComponent implements OnInit, OnDestroy {
       preRequisito: new FormControl(''),
       cargaHoraria: new FormControl(''),
       instanciaProcessoId: new FormControl(''),
+      status: new FormControl(''),
     });
 
     this.subs$.push(

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, HostListener } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(public keycloak: KeycloakService) {}
 
-  handleLogout(): void {}
+  handleLogout(): void {
+    this.keycloak.logout().then((res) => {
+      console.log(res);
+    });
+  }
 }
