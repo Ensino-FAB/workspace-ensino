@@ -20,8 +20,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   public isLoading = false;
 
   propostaSearch = new FormGroup({
-    q: new FormControl(''),
-    codigoCnpq: new FormControl(''),
+    descricao: new FormControl(''),
+    nome: new FormControl(''),
     status: new FormControl(''),
   });
 
@@ -60,6 +60,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   });
 
   options: object[];
+  optionsStatus: object[];
 
   asc = true;
   pageSize = 20;
@@ -80,6 +81,13 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Nome', value: 'nome' },
       { name: 'Descrição', value: 'descricao' },
       { name: 'Carga horária', value: 'cargaHoraria' },
+    ];
+
+    this.optionsStatus = [
+      { name: 'Em elaboração', value: 'Em elaboração' },
+      { name: 'Aguardando Análise', value: 'Aguardando Análise' },
+      { name: 'Aprovado', value: 'Aprovado' },
+      { name: 'Reprovado', value: 'Reprovado' },
     ];
 
     this.refresh();

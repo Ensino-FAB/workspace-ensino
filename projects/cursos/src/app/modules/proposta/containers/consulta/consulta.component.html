@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="main-content grid-item">
-        <com-form [formGroup]="">
+        <com-form [formGroup]="propostaSearch">
           <com-form-section formTitle="Filtrar">
             <com-input
               formControlName="nome"
@@ -38,10 +38,15 @@
               label="Nome da Proposta"
             ></com-input>
             <com-input
-              formControlName="q"
-              placeholder="Digite algo que refira a Proposta."
-              label="Palavra chave"
+              formControlName="descricao"
+              placeholder="Descrição da Proposta"
+              label="Descrição da Proposta"
             ></com-input>
+            <com-select
+              formControlName="status"
+              [options]="optionsStatus"
+              [label]="'Status da proposta'"
+            ></com-select>
           </com-form-section>
           <com-form-section block>
             <div class="flex-container row button-set">
