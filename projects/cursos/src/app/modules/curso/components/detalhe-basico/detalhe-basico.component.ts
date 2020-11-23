@@ -9,8 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DetalheCursoComponent implements OnInit {
   @Input() header: string;
   @Input() curso: Curso;
-
   @Input() loading: boolean;
+
   constructor() {}
 
   ngOnInit(): void {}
