@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CursoFacade } from '../../../curso/curso.facade';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
 import { Router } from '@angular/router';
 import { PropostaFacade } from '../../proposta.facade';
@@ -25,19 +24,20 @@ export class CadastroComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.propostaForm = new FormGroup({
       nome: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
       codigoCnpq: new FormControl('', Validators.required),
-      disciplina: new FormControl('', Validators.required),
-      objetivo: new FormControl('', Validators.required),
-      observacao: new FormControl('', Validators.required),
-      preRequisito: new FormControl('', Validators.required),
-      cargaHoraria: new FormControl('', Validators.required),
+      disciplina: new FormControl(''),
+      objetivo: new FormControl(''),
+      observacao: new FormControl(''),
+      preRequisito: new FormControl(''),
+      cargaHoraria: new FormControl(''),
     });
   }
 
   onSubmit(): void {
     if (this.propostaForm.valid) {
       this.subs$.push(
-        this.facade.save(this.propostaForm.value).subscribe((resp) => {
+        this.facade.save(this.propostaForm.value).subscribe(() => {
           this.toast.show({
             message: 'A proposta foi salva com sucesso!',
             type: 'success',

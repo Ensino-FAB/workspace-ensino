@@ -26,15 +26,33 @@
             propostaForm.errors?.codigoCnpq
           "
         ></com-input>
-        <com-input
-          formControlName="disciplina"
-          label="Disciplina"
-          [invalid]="
-            (propostaForm.get('disciplina').invalid &&
-              propostaForm.get('disciplina').touched) ||
-            propostaForm.errors?.disciplina
-          "
-        ></com-input>
+        <div class="flex-container description">
+          <com-textarea
+            formControlName="descricao"
+            label="Descrição"
+            maxlength="4000"
+            helper="Campo em texto livre"
+            [invalid]="
+              (propostaForm.get('descricao').invalid &&
+                propostaForm.get('descricao').touched) ||
+              propostaForm.errors?.descricao
+            "
+          ></com-textarea>
+        </div>
+        <div class="flex-container description">
+          <com-textarea
+            formControlName="disciplina"
+            label="Disciplina"
+            maxlength="4000"
+            helper="Campo em texto livre"
+            [invalid]="
+              (propostaForm.get('disciplina').invalid &&
+                propostaForm.get('disciplina').touched) ||
+              propostaForm.errors?.disciplina
+            "
+          ></com-textarea>
+        </div>
+
         <com-input
           formControlName="cargaHoraria"
           label="Carga Horária"
@@ -46,7 +64,6 @@
           "
         ></com-input>
       </com-form-section>
-
       <com-form-section partly formTitle="Folha de rosto" step="2">
         <com-fieldset>
           <div class="flex-container description">
@@ -63,7 +80,7 @@
             >
             </com-textarea>
           </div>
-          <div class="flex-container wrap description">
+          <div class="flex-container description">
             <com-textarea
               formControlName="observacao"
               label="Observação"
@@ -75,6 +92,8 @@
                 propostaForm.errors?.observacao
               "
             ></com-textarea>
+          </div>
+          <div class="flex-container description">
             <com-textarea
               formControlName="preRequisito"
               label="Pre Requisito"
@@ -89,7 +108,6 @@
           </div>
         </com-fieldset>
       </com-form-section>
-
       <com-form-section block>
         <com-fieldset>
           <div class="flex-container row end middle">
