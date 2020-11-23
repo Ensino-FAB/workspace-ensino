@@ -19,7 +19,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   _isLoading = false;
 
   cursoSearch = new FormGroup({
-    q: new FormControl(''),
     codigo: new FormControl(''),
     nome: new FormControl(''),
   });
@@ -91,7 +90,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         this._isLoading = status;
       }),
       getCurso$.subscribe((res) => {
-        this.count = res.totalElements;
         // console.log('Dados :' + JSON.stringify(res));
 
         this.data = res.content.map((item) => ({
@@ -101,7 +99,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
           nome: `${item.nome}`,
         }));
 
-        this.totalPages = Math.ceil(this.count / this.pageSize);
+        this.totalPages = res.totalPages;
       })
     );
   }
