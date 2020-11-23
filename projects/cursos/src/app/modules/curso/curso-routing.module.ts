@@ -9,7 +9,7 @@ import { Routes } from '@angular/router';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 
 export const CURSO_ROUTES: Routes = [
-  { path: '', component: GestaoComponent, data: { breadcrumb: null } },
+  { path: '', component: ConsultaComponent, data: { breadcrumb: null } },
   {
     path: 'criar',
     data: {
