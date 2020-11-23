@@ -27,12 +27,13 @@
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
     "@cca-fab/cca-fab-components-common": "^1.9.0",
+    "bpmn-js": "^7.4.0",
     "keycloak-angular": "8.0.1",
     "keycloak-js": "10.0.2",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "bpmn-js": "^7.4.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.7",

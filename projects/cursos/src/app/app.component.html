@@ -18,14 +18,14 @@
       <com-icon>schedule</com-icon>
       <p>
         <span class="session-label">Sessão expira em</span>
-        XXX
+        {{ tokenDuration?.humanize() }}
       </p>
     </div>
     <com-button disabled="true" class="notification-btn">
       <com-icon outlined slot="icon">notification_important</com-icon>
       <ng-container slot="text">notificações</ng-container>
     </com-button>
-    <span class="user-identity">Fernando Tomasio</span>
+    <span class="user-identity">{{ handleUserName() }}</span>
     <com-button secondary disabled="true" class="user-profile-btn">
       <com-icon outlined slot="icon">person</com-icon>
     </com-button>
