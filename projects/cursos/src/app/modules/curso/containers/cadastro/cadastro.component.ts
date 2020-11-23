@@ -1,68 +1,51 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CursoFacade } from './../../curso.facade';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ToastService } from '../../../../../../../ensino-commons/src/public-api';
-import { Router } from '@angular/router';
-import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
+import {
+  fadeIn,
+  fadeInOut,
+} from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
-  animations: [fadeIn()],
+  animations: [fadeIn(), fadeInOut()],
 })
 export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
-  cursoForm: FormGroup;
-  formId: 'curso-form';
+  capacitacaoForm: FormGroup;
+  options: object[];
+  formType = '';
 
-  constructor(
-    private facade: CursoFacade,
-    private toast: ToastService,
-    private router: Router
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.cursoForm = new FormGroup({
-      codigo: new FormControl('', Validators.required),
-      codigoCnpq: new FormControl('', Validators.required),
-      descricao: new FormControl('', Validators.required),
-      disciplina: new FormControl('', Validators.required),
-      nome: new FormControl('', Validators.required),
-      objetivo: new FormControl('', Validators.required),
-      observacao: new FormControl('', Validators.required),
-      preRequisito: new FormControl('', Validators.required),
-      cargaHoraria: new FormControl('', Validators.required),
+    this.capacitacaoForm = new FormGroup({
+      tipo: new FormControl('', Validators.required),
     });
-  }
 
-  onSubmit(): void {
-    if (this.cursoForm.valid) {
-      this.subs$.push(
-        this.facade.save(this.cursoForm.value).subscribe((resp) => {
-          this.toast.show({
-            message: 'O curso foi salvo com sucesso!',
-            type: 'success',
-          });
-          this.router.navigate(['curso', 'listar']);
-        })
-      );
-    } else {
-      this.toast.show({
-        message: 'Erro ao tentar salvar o curso!',
-        type: 'alert',
-      });
-    }
+    this.options = [
+      { name: 'Curso', value: 'CURSO' },
+      { name: 'Atividade Complementar', value: 'ATIVIDADE_COMPLEMENTAR' },
+    ];
   }
 
   resetForm(): void {
-    this.cursoForm.reset();
+    this.capacitacaoForm.reset();
   }
 
   ngOnDestroy(): void {
     this.subs$.forEach((sub) => {
       sub.unsubscribe();
     });
+  }
+
+  handleChange(event: any): void {
+    if (event == null) {
+      this.formType = '';
+    }
+
+    this.formType = event;
   }
 }

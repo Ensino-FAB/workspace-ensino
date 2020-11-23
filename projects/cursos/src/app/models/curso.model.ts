@@ -10,4 +10,5 @@ export interface Curso extends BaseModel {
   observacao?: string;
   cargaHoraria?: number;
   disciplina?: string;
+  tipo?: string;
 }

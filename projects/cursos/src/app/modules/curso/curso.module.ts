@@ -23,6 +23,8 @@ import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { CursoFacade } from './curso.facade';
 import { DetalheCursoComponent } from './components/detalhe-basico/detalhe-basico.component';
+import { CursoFormComponent } from './components/curso-form/curso-form.component';
+import { AtividadeFormComponent } from './components/atividade-form/atividade-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { DetalheCursoComponent } from './components/detalhe-basico/detalhe-basic
     EdicaoComponent,
     GestaoComponent,
     DetalheCursoComponent,
+    CursoFormComponent,
+    AtividadeFormComponent,
   ],
   imports: [
     CommonModule,

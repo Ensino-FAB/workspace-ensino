@@ -27,6 +27,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   columns: TableColumn[] = [
     {
+      field: 'tipo',
+      title: 'Tipo',
+      width: '10%',
+    },
+    {
       field: 'codigo',
       title: 'Código',
       width: '10%',
@@ -39,7 +44,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'nome',
       title: 'Nome',
-      width: '60%',
+      width: '50%',
     },
   ];
 
@@ -68,6 +73,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Código', value: 'codigo' },
       { name: 'Código CNPQ', value: 'codigoCnpq' },
       { name: 'Nome', value: 'nome' },
+      { name: 'Tipo', value: 'tipo' },
     ];
 
     this.refresh();
@@ -99,6 +105,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
           codigo: `${item.codigo}`,
           codigoCnpq: `${item.codigoCnpq}`,
           nome: `${item.nome}`,
+          tipo: `${item.tipo}`,
         }));
 
         this.totalPages = res.totalPages;

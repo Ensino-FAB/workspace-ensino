@@ -13,7 +13,7 @@ import { Pageable } from 'projects/ensino-commons/src/lib/models/pageable.model'
 export class CursoService {
   constructor(protected http: HttpClient) {}
 
-  private endpoint = `${environment.CURSO_API}/curso`;
+  private endpoint = `${environment.CURSO_API}/capacitacao`;
 
   /* istanbul ignore next */
   removeEmptyFields(data): void {
@@ -28,7 +28,7 @@ export class CursoService {
   }
 
   findById(id: number): Observable<Curso> {
-    return this.http.get<any>(`${environment.CURSO_API}/curso/${id}`);
+    return this.http.get<any>(`${environment.CURSO_API}/capacitacao/${id}`);
   }
 
   /* istanbul ignore next */

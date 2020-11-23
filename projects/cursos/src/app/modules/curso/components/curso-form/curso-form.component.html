@@ -1,0 +1,117 @@
+<com-form [id]="formId" [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+  <com-form-section partly formTitle="Descrição" step="1">
+    <com-input
+      formControlName="codigo"
+      label="Codigo"
+      [invalid]="
+        (cursoForm.get('codigo').invalid && cursoForm.get('codigo').touched) ||
+        cursoForm.errors?.codigo
+      "
+    ></com-input>
+    <com-input
+      formControlName="nome"
+      label="Nome"
+      [invalid]="
+        (cursoForm.get('nome').invalid && cursoForm.get('nome').touched) ||
+        cursoForm.errors?.nome
+      "
+    ></com-input>
+    <com-input
+      formControlName="codigoCnpq"
+      label="Codigo CNPQ"
+      [invalid]="
+        (cursoForm.get('codigoCnpq').invalid &&
+          cursoForm.get('codigoCnpq').touched) ||
+        cursoForm.errors?.codigoCnpq
+      "
+    ></com-input>
+    <com-input
+      formControlName="disciplina"
+      label="Disciplina"
+      [invalid]="
+        (cursoForm.get('disciplina').invalid &&
+          cursoForm.get('disciplina').touched) ||
+        cursoForm.errors?.disciplina
+      "
+    ></com-input>
+    <com-input
+      formControlName="cargaHoraria"
+      label="Carga horária"
+      type="number"
+      [invalid]="
+        (cursoForm.get('cargaHoraria').invalid &&
+          cursoForm.get('cargaHoraria').touched) ||
+        cursoForm.errors?.cargaHoraria
+      "
+    ></com-input>
+    <div class="flex-container description">
+      <com-textarea
+        formControlName="descricao"
+        label="Descrição"
+        maxlength="4000"
+        helper="Campo em texto livre"
+        [invalid]="
+          (cursoForm.get('descricao').invalid &&
+            cursoForm.get('descricao').touched) ||
+          cursoForm.errors?.descricao
+        "
+      >
+      </com-textarea>
+    </div>
+  </com-form-section>
+  <com-form-section partly formTitle="Folha de rosto" step="2">
+    <com-fieldset>
+      <div class="flex-container wrap description">
+        <com-textarea
+          formControlName="objetivo"
+          label="Objetivo"
+          maxlength="4000"
+          helper="Campo em texto livre"
+          [invalid]="
+            (cursoForm.get('objetivo').invalid &&
+              cursoForm.get('objetivo').touched) ||
+            cursoForm.errors?.objetivo
+          "
+        >
+        </com-textarea>
+        <com-textarea
+          formControlName="observacao"
+          label="Observação"
+          maxlength="4000"
+          helper="Campo em texto livre"
+          [invalid]="
+            (cursoForm.get('observacao').invalid &&
+              cursoForm.get('observacao').touched) ||
+            cursoForm.errors?.observacao
+          "
+        ></com-textarea>
+        <com-textarea
+          formControlName="preRequisito"
+          label="Pre Requisito"
+          maxlength="4000"
+          helper="Campo em texto livre"
+          [invalid]="
+            (cursoForm.get('preRequisito').invalid &&
+              cursoForm.get('preRequisito').touched) ||
+            cursoForm.errors?.preRequisito
+          "
+        ></com-textarea>
+      </div>
+    </com-fieldset>
+  </com-form-section>
+  <com-form-section block>
+    <com-fieldset>
+      <div class="flex-container row end middle">
+        <com-button
+          fill
+          confirm
+          type="submit"
+          [form]="formId"
+          [disabled]="cursoForm.invalid"
+        >
+          <ng-container slot="text">confirmar e gerar curso</ng-container>
+        </com-button>
+      </div>
+    </com-fieldset>
+  </com-form-section>
+</com-form>
