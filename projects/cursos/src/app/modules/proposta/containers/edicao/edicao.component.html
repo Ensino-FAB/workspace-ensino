@@ -26,25 +26,6 @@
             propostaForm.errors?.codigoCnpq
           "
         ></com-input>
-        <com-input
-          formControlName="disciplina"
-          label="Disciplina"
-          [invalid]="
-            (propostaForm.get('disciplina').invalid &&
-              propostaForm.get('disciplina').touched) ||
-            propostaForm.errors?.disciplina
-          "
-        ></com-input>
-        <com-input
-          formControlName="cargaHoraria"
-          label="Carga horária"
-          type="number"
-          [invalid]="
-            (propostaForm.get('cargaHoraria').invalid &&
-              propostaForm.get('cargaHoraria').touched) ||
-            propostaForm.errors?.cargaHoraria
-          "
-        ></com-input>
         <div class="flex-container description">
           <com-textarea
             formControlName="descricao"
@@ -59,6 +40,30 @@
           >
           </com-textarea>
         </div>
+        <div class="flex-container description">
+          <com-textarea
+            formControlName="disciplina"
+            label="Disciplina"
+            maxlength="4000"
+            helper="Campo em texto livre"
+            [invalid]="
+              (propostaForm.get('disciplina').invalid &&
+                propostaForm.get('disciplina').touched) ||
+              propostaForm.errors?.disciplina
+            "
+          >
+          </com-textarea>
+        </div>
+        <com-input
+          formControlName="cargaHoraria"
+          label="Carga horária"
+          type="number"
+          [invalid]="
+            (propostaForm.get('cargaHoraria').invalid &&
+              propostaForm.get('cargaHoraria').touched) ||
+            propostaForm.errors?.cargaHoraria
+          "
+        ></com-input>
       </com-form-section>
 
       <com-form-section partly formTitle="Folha de rosto" step="2">

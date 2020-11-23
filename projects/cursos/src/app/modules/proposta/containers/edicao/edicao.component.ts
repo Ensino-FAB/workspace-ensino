@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { PropostaFacade } from '../../proposta.facade';
-import { Proposta } from '../../../../models/proposta.model';
 
 @Component({
   selector: 'app-edicao',
@@ -14,7 +13,6 @@ import { Proposta } from '../../../../models/proposta.model';
 export class EdicaoComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   private id: number;
-  private isLoading = false;
   propostaForm: FormGroup;
   formId: 'proposta-form';
 
@@ -25,15 +23,13 @@ export class EdicaoComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute
   ) {}
 
-  proposta: Proposta;
-
   ngOnInit(): void {
     this.propostaForm = new FormGroup({
-      id: new FormControl(''),
-      codigoCnpq: new FormControl(''),
-      descricao: new FormControl(''),
+      id: new FormControl('', Validators.required),
+      nome: new FormControl('', Validators.required),
+      codigoCnpq: new FormControl('', Validators.required),
+      descricao: new FormControl('', Validators.required),
       disciplina: new FormControl(''),
-      nome: new FormControl(''),
       objetivo: new FormControl(''),
       observacao: new FormControl(''),
       preRequisito: new FormControl(''),
@@ -53,7 +49,7 @@ export class EdicaoComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     if (this.propostaForm.valid) {
       this.subs$.push(
-        this.facade.save(this.propostaForm.value).subscribe((resp) => {
+        this.facade.save(this.propostaForm.value).subscribe(() => {
           this.toast.show({
             message: 'a proposta foi editada com sucesso!',
             type: 'success',
