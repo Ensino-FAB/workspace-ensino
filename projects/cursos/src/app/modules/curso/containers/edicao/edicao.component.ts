@@ -4,12 +4,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
+import { ToastService } from '../../../../../../../ensino-commons/src/public-api';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-edicao',
   templateUrl: './edicao.component.html',
   styleUrls: ['./edicao.component.scss'],
+  animations: [fadeIn()],
 })
 export class EdicaoComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

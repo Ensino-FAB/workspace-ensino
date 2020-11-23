@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeIn } from 'projects/cursos/src/app/app.animation';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-gestao',

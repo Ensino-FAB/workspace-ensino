@@ -9,11 +9,13 @@ import {
 } from 'projects/cursos/src/app/models/tarefa.model';
 import { PropostaFacade } from '../../proposta.facade';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-fluxo-processo',
   templateUrl: './fluxo-processo.component.html',
   styleUrls: ['./fluxo-processo.component.scss'],
+  animations: [fadeIn()],
 })
 export class FluxoProcessoComponent implements OnInit {
   _tarefaInstanceId: string;

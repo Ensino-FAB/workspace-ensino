@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 import { PropostaFacade } from '../../proposta.facade';
 import { ProcessDiagram } from '../../types/ProcessDiagram';
 
@@ -7,6 +8,7 @@ import { ProcessDiagram } from '../../types/ProcessDiagram';
   selector: 'app-detalhe-processo',
   templateUrl: './detalhe-processo.component.html',
   styleUrls: ['./detalhe-processo.component.scss'],
+  animations: [fadeIn()],
 })
 export class DetalheProcessoComponent implements OnInit {
   _isDiagramOpen = false;

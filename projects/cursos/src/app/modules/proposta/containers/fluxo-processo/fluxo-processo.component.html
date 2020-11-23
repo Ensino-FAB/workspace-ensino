@@ -1,54 +1,56 @@
-<div class="page-title m-bottom">
-  <div>
-    {{ tarefa?.name }}
+<section @fadeIn>
+  <div class="page-title m-bottom">
+    <div>
+      {{ tarefa?.name }}
+    </div>
   </div>
-</div>
-<div class="wrapper" style="max-width: 60rem; margin: auto">
-  <com-form [formGroup]="formGroup">
-    <com-form-section
-      *ngFor="let section of sections"
-      [step]="section.step"
-      [formTitle]="section.title"
-      [description]="section.description"
-      [attr.partly]="section.isPartly"
-      [attr.block]="section.isBlock"
-    >
-      <ng-template ngFor let-child [ngForOf]="section.children">
-        <com-select
-          class="select"
-          *ngIf="child.type === 'select'"
-          [options]="child.options"
-          [formControl]="formGroup.get(child.id)"
-          [label]="child.title"
-          [invalid]="
-            formGroup.get(child.id).touched && formGroup.get(child.id).invalid
-          "
-        ></com-select>
-        <com-textarea
-          class="textarea"
-          *ngIf="child.type === 'textarea'"
-          [label]="child.title"
-          [placeholder]="child.placeholder"
-          [maxlength]="child.maxlength"
-          [formControl]="formGroup.get(child.id)"
-          [invalid]="
-            formGroup.get(child.id).touched && formGroup.get(child.id).invalid
-          "
-        ></com-textarea>
-      </ng-template>
-    </com-form-section>
+  <div class="wrapper" style="max-width: 60rem; margin: auto">
+    <com-form [formGroup]="formGroup">
+      <com-form-section
+        *ngFor="let section of sections"
+        [step]="section.step"
+        [formTitle]="section.title"
+        [description]="section.description"
+        [attr.partly]="section.isPartly"
+        [attr.block]="section.isBlock"
+      >
+        <ng-template ngFor let-child [ngForOf]="section.children">
+          <com-select
+            class="select"
+            *ngIf="child.type === 'select'"
+            [options]="child.options"
+            [formControl]="formGroup.get(child.id)"
+            [label]="child.title"
+            [invalid]="
+              formGroup.get(child.id).touched && formGroup.get(child.id).invalid
+            "
+          ></com-select>
+          <com-textarea
+            class="textarea"
+            *ngIf="child.type === 'textarea'"
+            [label]="child.title"
+            [placeholder]="child.placeholder"
+            [maxlength]="child.maxlength"
+            [formControl]="formGroup.get(child.id)"
+            [invalid]="
+              formGroup.get(child.id).touched && formGroup.get(child.id).invalid
+            "
+          ></com-textarea>
+        </ng-template>
+      </com-form-section>
 
-    <com-form-section block>
-      <div class="flex-container end">
-        <com-button
-          (click)="onConfirm()"
-          [disabled]="formGroup.invalid"
-          fill
-          confirm
-        >
-          <span slot="text">Confirmar</span>
-        </com-button>
-      </div>
-    </com-form-section>
-  </com-form>
-</div>
+      <com-form-section block>
+        <div class="flex-container end">
+          <com-button
+            (click)="onConfirm()"
+            [disabled]="formGroup.invalid"
+            fill
+            confirm
+          >
+            <span slot="text">Confirmar</span>
+          </com-button>
+        </div>
+      </com-form-section>
+    </com-form>
+  </div>
+</section>

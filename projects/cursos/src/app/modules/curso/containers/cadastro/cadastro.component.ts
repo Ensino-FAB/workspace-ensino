@@ -2,13 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CursoFacade } from './../../curso.facade';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../../../../../../ensino-commons/src/public-api';
+import { Router } from '@angular/router';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

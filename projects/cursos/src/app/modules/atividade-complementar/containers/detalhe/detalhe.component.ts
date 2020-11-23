@@ -4,11 +4,13 @@ import { of, Subscription, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AtividadeComplementarFacade } from '../../atividade-complementar.facade';
 import { mapTo, mergeAll, share, takeUntil } from 'rxjs/operators';
+import { fadeIn } from '../../../../../app/app.animation';
 
 @Component({
   selector: 'app-detalhe',
   templateUrl: './detalhe.component.html',
   styleUrls: ['./detalhe.component.scss'],
+  animations: [fadeIn()],
 })
 export class DetalheComponent implements OnInit {
   private subs$: Subscription[] = [];

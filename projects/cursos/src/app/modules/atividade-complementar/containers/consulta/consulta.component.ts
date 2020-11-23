@@ -6,11 +6,13 @@ import { mapTo, mergeAll, takeUntil, share, delay } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { AtividadeComplementarFacade } from '../../atividade-complementar.facade';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
   styleUrls: ['./consulta.component.scss'],
+  animations: [fadeIn()],
 })
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
+import { ToastService } from '../../../../../../../ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
 import { AtividadeComplementarFacade } from '../../atividade-complementar.facade';
 
@@ -9,6 +10,7 @@ import { AtividadeComplementarFacade } from '../../atividade-complementar.facade
   selector: 'app-edicao',
   templateUrl: './edicao.component.html',
   styleUrls: ['./edicao.component.scss'],
+  animations: [fadeIn()],
 })
 export class EdicaoComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

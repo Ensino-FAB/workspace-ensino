@@ -4,11 +4,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
 import { Router } from '@angular/router';
 import { AtividadeComplementarFacade } from '../../atividade-complementar.facade';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit {
   private subs$: Subscription[] = [];

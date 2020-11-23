@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 import { Subscription } from 'rxjs';
 import { PropostaFacade } from '../../proposta.facade';
 
@@ -6,6 +7,7 @@ import { PropostaFacade } from '../../proposta.facade';
   selector: 'app-gestao',
   templateUrl: './gestao.component.html',
   styleUrls: ['./gestao.component.scss'],
+  animations: [fadeIn()],
 })
 export class GestaoComponent implements OnInit {
   private subs$: Subscription[] = [];

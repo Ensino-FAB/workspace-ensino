@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Proposta } from 'projects/cursos/src/app/models/proposta.model';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
+import { Proposta } from '../../../../../../../cursos/src/app/models/proposta.model';
 import { Subscription, of, timer } from 'rxjs';
 import { share, mapTo, takeUntil, mergeAll } from 'rxjs/operators';
 import { PropostaFacade } from '../../proposta.facade';
@@ -9,6 +10,7 @@ import { PropostaFacade } from '../../proposta.facade';
   selector: 'app-detalhe',
   templateUrl: './detalhe.component.html',
   styleUrls: ['./detalhe.component.scss'],
+  animations: [fadeIn()],
 })
 export class DetalheComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

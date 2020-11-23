@@ -4,11 +4,13 @@ import { CursoFacade } from './../../curso.facade';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Subscription, timer } from 'rxjs';
+import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 
 @Component({
   selector: 'app-detalhe',
   templateUrl: './detalhe.component.html',
   styleUrls: ['./detalhe.component.scss'],
+  animations: [fadeIn()],
 })
 export class DetalheComponent implements OnInit {
   private subs$: Subscription[] = [];
