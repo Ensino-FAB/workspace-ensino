@@ -4,15 +4,17 @@
       <div class="flex-container col grow aside-content">
         <div class="grid-item">
           <div class="flex-container row middle between aside-wrapper">
-            <h2 class="fin-page-title">Consultar Atividades Complementares</h2>
-            <a [routerLink]="['/atividade-complementar', 'criar']">
-              <com-button flat transparent>
-                <com-icon slot="icon">add</com-icon>
+            <h2 class="fin-page-title">consultar atividades complementares</h2>
+            <div class="flex-container end">
+              <a [routerLink]="['/atividade-complementar', 'criar']">
+                <com-button flat transparent>
+                  <com-icon slot="icon">add</com-icon>
+                </com-button>
+              </a>
+              <com-button disabled="true" transparent flat>
+                <com-icon outlined slot="icon">save_alt</com-icon>
               </com-button>
-            </a>
-            <com-button disabled="true" transparent flat>
-              <com-icon outlined slot="icon">save_alt</com-icon>
-            </com-button>
+            </div>
           </div>
         </div>
         <div class="grid-item">
