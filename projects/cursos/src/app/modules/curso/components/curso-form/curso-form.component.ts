@@ -41,7 +41,7 @@ export class CursoFormComponent implements OnInit, OnDestroy {
       this.subs$.push(
         this.facade.save(this.cursoForm.value).subscribe((resp) => {
           this.toast.show({
-            message: 'O curso foi salvo com sucesso!',
+            message: 'A capacitação foi salva com sucesso!',
             type: 'success',
           });
           this.router.navigate(['curso', 'listar']);
