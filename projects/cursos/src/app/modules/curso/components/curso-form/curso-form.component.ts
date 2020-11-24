@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Curso } from './../../../../models/curso.model';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, timer } from 'rxjs';
 import { CursoFacade } from '../../curso.facade';
 
 @Component({
@@ -14,6 +15,7 @@ export class CursoFormComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   cursoForm: FormGroup;
   formId: 'curso-form';
+  @Input() data: Observable<Curso>;
 
   constructor(
     private facade: CursoFacade,
@@ -23,6 +25,7 @@ export class CursoFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cursoForm = new FormGroup({
+      id: new FormControl(''),
       codigo: new FormControl('', Validators.required),
       codigoCnpq: new FormControl('', Validators.required),
       descricao: new FormControl('', Validators.required),
@@ -34,6 +37,12 @@ export class CursoFormComponent implements OnInit, OnDestroy {
       cargaHoraria: new FormControl('', Validators.required),
       tipo: new FormControl('CURSO'),
     });
+
+    if (this.data) {
+      this.subs$.push(
+        this.data.subscribe((resp) => this.cursoForm.patchValue({ ...resp }))
+      );
+    }
   }
 
   onSubmit(): void {

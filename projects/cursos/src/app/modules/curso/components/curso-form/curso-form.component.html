@@ -109,7 +109,11 @@
           [form]="formId"
           [disabled]="cursoForm.invalid"
         >
-          <ng-container slot="text">confirmar e gerar curso</ng-container>
+          <ng-container slot="text">{{
+            this.data
+              ? 'confirmar e editar capacitação'
+              : 'confirmar e gerar capacitação'
+          }}</ng-container>
         </com-button>
       </div>
     </com-fieldset>

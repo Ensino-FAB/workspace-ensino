@@ -1,6 +1,4 @@
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
-import { GestaoComponent } from './containers/gestao/gestao.component';
-import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 
 import { NgModule } from '@angular/core';
@@ -18,11 +16,11 @@ export const CURSO_ROUTES: Routes = [
     component: CadastroComponent,
   },
   {
-    path: 'editar/:id',
+    path: 'editar/:id/tipo/:type',
     data: {
       breadcrumb: 'editar',
     },
-    component: EdicaoComponent,
+    component: CadastroComponent,
   },
   {
     path: 'detalhes/:id',

@@ -1,14 +1,18 @@
 <section @fadeIn>
   <header>
     <div class="flex-container between">
-      <h1>cadastro de curso</h1>
+      <h1 *ngIf="!id">cadastro de capacitação</h1>
+      <h1 *ngIf="id">
+        edição de
+        {{ formType === 'CURSO' ? 'CURSO' : 'ATIVIDADE COMPLEMENTAR' }}
+      </h1>
       <div class="flex-container middle"></div>
     </div>
   </header>
 
   <div class="container">
     <div class="wrapper">
-      <div class="grid-item">
+      <div class="grid-item" *ngIf="!id">
         <div class="sort-card">
           <div class="menu-card-sort">
             <span>Tipo</span>
@@ -23,10 +27,10 @@
         </div>
       </div>
       <ng-container *ngIf="formType == 'CURSO'">
-        <app-curso-form @fadeInOut></app-curso-form>
+        <app-curso-form [data]="data" @fadeInOut></app-curso-form>
       </ng-container>
       <ng-container *ngIf="formType == 'ATIVIDADE_COMPLEMENTAR'">
-        <app-atividade-form @fadeInOut></app-atividade-form>
+        <app-atividade-form [data]="data" @fadeInOut></app-atividade-form>
       </ng-container>
     </div>
   </div>

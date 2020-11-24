@@ -98,14 +98,13 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         this._isLoading = status;
       }),
       getCurso$.subscribe((res) => {
-        // console.log('Dados :' + JSON.stringify(res));
-
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           codigo: `${item.codigo}`,
           codigoCnpq: `${item.codigoCnpq}`,
           nome: `${item.nome}`,
-          tipo: `${item.tipo}`,
+          tipo: `${item.tipoCapacitacao.descricao}`,
+          tipoCod: `${item.tipoCapacitacao.tipo}`,
         }));
 
         this.totalPages = res.totalPages;

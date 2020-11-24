@@ -1,6 +1,9 @@
+import { Curso } from './../../../../models/curso.model';
+import { CursoFacade } from './../../curso.facade';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import {
   fadeIn,
   fadeInOut,
@@ -17,8 +20,13 @@ export class CadastroComponent implements OnInit, OnDestroy {
   capacitacaoForm: FormGroup;
   options: object[];
   formType = '';
+  id: number;
+  data: Observable<Curso>;
 
-  constructor() {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private facade: CursoFacade
+  ) {}
 
   ngOnInit(): void {
     this.capacitacaoForm = new FormGroup({
@@ -29,6 +37,11 @@ export class CadastroComponent implements OnInit, OnDestroy {
       { name: 'Curso', value: 'CURSO' },
       { name: 'Atividade Complementar', value: 'ATIVIDADE_COMPLEMENTAR' },
     ];
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.formType = this.activatedRoute.snapshot.params['type'];
+    if (this.id) {
+      this.data = this.facade.findCurso(this.id);
+    }
   }
 
   resetForm(): void {

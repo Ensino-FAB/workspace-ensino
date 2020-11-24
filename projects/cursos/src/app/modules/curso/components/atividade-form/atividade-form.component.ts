@@ -1,9 +1,10 @@
 import { CursoFacade } from './../../curso.facade';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Curso } from 'projects/cursos/src/app/models/curso.model';
 
 @Component({
   selector: 'app-atividade-form',
@@ -14,6 +15,7 @@ export class AtividadeFormComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   atividadeComplementarForm: FormGroup;
   formId: 'atividade-complementar-form';
+  @Input() data: Observable<Curso>;
 
   constructor(
     private facade: CursoFacade,
@@ -23,11 +25,20 @@ export class AtividadeFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.atividadeComplementarForm = new FormGroup({
+      id: new FormControl(''),
       descricao: new FormControl('', Validators.required),
       nome: new FormControl('', Validators.required),
       cargaHoraria: new FormControl('', Validators.required),
       tipo: new FormControl('ATIVIDADE_COMPLEMENTAR'),
     });
+
+    if (this.data) {
+      this.subs$.push(
+        this.data.subscribe((resp) =>
+          this.atividadeComplementarForm.patchValue({ ...resp })
+        )
+      );
+    }
   }
 
   onSubmit(): void {

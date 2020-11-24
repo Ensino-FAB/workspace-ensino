@@ -39,7 +39,7 @@ export class DetalheComponent implements OnInit {
           if (item) {
             this.curso = item;
             this.cursoLabel =
-              item.tipo === 'CURSO'
+              item.tipoCapacitacao.tipo === 'CURSO'
                 ? item.nome + ' - ' + item.codigo
                 : item.nome;
           }

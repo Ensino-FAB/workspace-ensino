@@ -10,10 +10,10 @@ export interface Curso extends BaseModel {
   observacao?: string;
   cargaHoraria?: number;
   disciplina?: string;
-  tipo?: TipoModel;
+  tipoCapacitacao?: TipoModel;
 }
 
 export interface TipoModel {
   descricao?: string;
-  cod?: number;
+  tipo?: string;
 }

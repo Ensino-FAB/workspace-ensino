@@ -109,7 +109,11 @@
               </a>
             </div>
             <div>
-              <a routerLink="/curso/editar/{{ content.data.id }}">
+              <a
+                routerLink="/curso/editar/{{ content.data.id }}/tipo/{{
+                  content.data.tipoCod
+                }}"
+              >
                 <com-button secondary transparent>
                   <com-icon outlined slot="icon">edit</com-icon>
                 </com-button>
