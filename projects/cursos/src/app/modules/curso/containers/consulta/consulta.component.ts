@@ -21,7 +21,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   _isLoading = false;
 
   cursoSearch = new FormGroup({
-    codigo: new FormControl(''),
+    tipo: new FormControl(''),
     nome: new FormControl(''),
   });
 
@@ -55,6 +55,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   });
 
   options: object[];
+  filterOptions: object[];
 
   asc = true;
   pageSize = 20;
@@ -76,6 +77,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Tipo', value: 'tipo' },
     ];
 
+    this.filterOptions = [
+      { name: 'Curso', value: 'CURSO' },
+      { name: 'Atividade Complementar', value: 'ATIVIDADE_COMPLEMENTAR' },
+    ];
+
     this.refresh();
   }
 
@@ -87,6 +93,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
+
+    console.log(this.cursoSearch.value);
     const getCurso$ = this.facade.getAllCurso(search).pipe(share());
     const isLoading$ = of(
       timer(150).pipe(mapTo(true), takeUntil(getCurso$)),
@@ -176,6 +184,9 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   clean() {
     this.cursoSearch.reset();
     this.refresh();
+  }
+  handleFilterChange(event): void {
+    console.log(event);
   }
 
   onDelete(id: number): void {
