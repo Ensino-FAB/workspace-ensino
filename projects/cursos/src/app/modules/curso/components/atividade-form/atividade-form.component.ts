@@ -37,7 +37,7 @@ export class AtividadeFormComponent implements OnInit, OnDestroy {
           .save(this.atividadeComplementarForm.value)
           .subscribe((resp) => {
             this.toast.show({
-              message: 'A atividade complementar foi salva com sucesso!',
+              message: 'A capacitação foi salva com sucesso!',
               type: 'success',
             });
             this.router.navigate(['curso', 'listar']);

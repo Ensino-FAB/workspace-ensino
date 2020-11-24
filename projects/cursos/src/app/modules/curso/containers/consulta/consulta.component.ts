@@ -184,7 +184,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       this.facade.delete(id).subscribe(() => {
         this.refresh();
         this.toastService.show({
-          message: 'Curso deletado com sucesso!',
+          message: 'Capacitação removida com sucesso!',
           type: 'success',
         });
       })
