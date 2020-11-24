@@ -13,7 +13,7 @@ import {
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
-  animations: [fadeIn(), fadeInOut()],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];

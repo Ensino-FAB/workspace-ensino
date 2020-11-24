@@ -26,12 +26,12 @@
           </div>
         </div>
       </div>
-      <ng-container *ngIf="formType == 'CURSO'">
-        <app-curso-form [data]="data" @fadeInOut></app-curso-form>
-      </ng-container>
-      <ng-container *ngIf="formType == 'ATIVIDADE_COMPLEMENTAR'">
-        <app-atividade-form [data]="data" @fadeInOut></app-atividade-form>
-      </ng-container>
+      <div *ngIf="formType == 'CURSO'" @fadeIn>
+        <app-curso-form [data]="data"></app-curso-form>
+      </div>
+      <div *ngIf="formType == 'ATIVIDADE_COMPLEMENTAR'" @fadeIn>
+        <app-atividade-form [data]="data"></app-atividade-form>
+      </div>
     </div>
   </div>
 </section>
