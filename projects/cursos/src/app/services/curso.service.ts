@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { CursoSearch } from '../models/curso-search.model';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { environment } from '../../../../ensino-commons/src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Curso } from '../models/curso.model';
 import { Pageable } from 'projects/ensino-commons/src/lib/models/pageable.model';
 

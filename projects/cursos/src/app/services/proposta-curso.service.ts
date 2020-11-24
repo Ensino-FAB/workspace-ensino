@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../../ensino-commons/src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Pageable } from '../../../../ensino-commons/src/lib/models/pageable.model';
 import { take } from 'rxjs/operators';
 import { Proposta } from '../models/proposta.model';
 import { PropostaSearch } from '../models/proposta-search.model';
-import { Curso } from '../models/curso.model';
-import { AtividadeComplementar } from '../models/atividade-complementar.model';
 
 @Injectable({
   providedIn: 'root',

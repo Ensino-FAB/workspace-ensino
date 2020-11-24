@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { environment } from '../../../../ensino-commons/src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Pageable } from 'projects/ensino-commons/src/lib/models/pageable.model';
 import { AtividadeComplementar } from '../models/atividade-complementar.model';
 import { AtividadeComplementarSearch } from '../models/atividade-complementar-search.model';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'projects/ensino-commons/src/environments/environment';
 import { Tarefa } from '../models/tarefa.model';
 import { Processo } from '../models/processo.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TarefaService {
