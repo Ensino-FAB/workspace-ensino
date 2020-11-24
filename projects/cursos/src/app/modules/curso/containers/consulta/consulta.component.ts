@@ -29,7 +29,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'tipo',
       title: 'Tipo',
-      width: '10%',
+      width: '15%',
     },
     {
       field: 'codigo',
