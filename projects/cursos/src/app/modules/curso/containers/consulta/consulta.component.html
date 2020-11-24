@@ -4,7 +4,7 @@
       <div class="flex-container col grow aside-content">
         <div class="grid-item">
           <div class="flex-container row middle between aside-wrapper">
-            <h2 class="fin-page-title">consultar curso</h2>
+            <h2 class="fin-page-title">consultar capacitação</h2>
             <div class="flex-container end">
               <a [routerLink]="['/curso', 'criar']">
                 <com-button flat transparent>
@@ -82,11 +82,20 @@
         (lastPage)="onLastPage()"
         *ngIf="!_isLoading"
       >
+        <ng-template let-content name="tipo">
+          <div class="table-text-control">
+            {{ content.field }}
+          </div>
+        </ng-template>
         <ng-template let-content name="codigo">
-          <div class="table-text-control">{{ content.field }}</div>
+          <div class="table-text-control">
+            {{ content.field }}
+          </div>
         </ng-template>
         <ng-template let-content name="codigoCnpq">
-          <div class="table-text-control">{{ content.field }}</div>
+          <div class="table-text-control">
+            {{ content.field }}
+          </div>
         </ng-template>
         <ng-template let-content name="nome">
           <div class="table-text-control">
@@ -98,8 +107,16 @@
             </a>
           </div>
         </ng-template>
-
-        <!-- Ações -->
+        <ng-template let-content name="disciplina">
+          <div class="table-text-control flex-container center">
+            {{ content.field }}
+          </div>
+        </ng-template>
+        <ng-template let-content name="cargaHoraria">
+          <div class="table-text-control">
+            {{ content.field }}
+          </div>
+        </ng-template>
         <ng-template let-content name="action">
           <div class="table-actions">
             <div>
@@ -135,7 +152,7 @@
         </ng-template>
       </com-table>
       <com-table
-        [data]="loadindMockData"
+        [data]="loadingMockData"
         [pageSize]="20"
         [maxPageSize]="1"
         [minPageSize]="1"
@@ -144,13 +161,22 @@
         [columns]="columns"
         *ngIf="_isLoading"
       >
-        <ng-template name="id">
+        <ng-template name="tipo">
           <div class="table-field-skeleton"></div>
         </ng-template>
-        <ng-template name="descricao">
+        <ng-template name="codigo">
           <div class="table-field-skeleton"></div>
         </ng-template>
-        <ng-template name="status">
+        <ng-template name="codigoCnpq">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="nome">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="disciplina">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="cargaHoraria">
           <div class="table-field-skeleton"></div>
         </ng-template>
         <ng-template let-content name="action"></ng-template>

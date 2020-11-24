@@ -16,15 +16,11 @@ import { fadeIn } from '../../../../../../../cursos/src/app/app.animation';
 })
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
-
-  // tslint:disable-next-line: variable-name
   _isLoading = false;
-
   cursoSearch = new FormGroup({
     tipo: new FormControl(''),
     nome: new FormControl(''),
   });
-
   columns: TableColumn[] = [
     {
       field: 'tipo',
@@ -44,19 +40,31 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'nome',
       title: 'Nome',
-      width: '50%',
+    },
+    {
+      field: 'disciplina',
+      title: 'Disciplina',
+      width: '20%',
+    },
+    {
+      field: 'cargaHoraria',
+      title: 'Carga Horária',
+      width: '10%',
     },
   ];
-
   data = [];
-  loadindMockData = new Array(10).fill({
+  loadingMockData = new Array(10).fill({
+    tipo: '',
+    codigo: '',
+    codigoCnpq: '',
+    nome: '',
     descricao: '',
-    status: '',
+    disciplina: '',
+    cargaHoraria: '',
   });
 
   options: object[];
   filterOptions: object[];
-
   asc = true;
   pageSize = 20;
   page = 1;
@@ -85,7 +93,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   refresh() {
     const search = {
       ...this.cursoSearch.value,
@@ -93,8 +100,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
-
-    console.log(this.cursoSearch.value);
     const getCurso$ = this.facade.getAllCurso(search).pipe(share());
     const isLoading$ = of(
       timer(150).pipe(mapTo(true), takeUntil(getCurso$)),
@@ -107,12 +112,14 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }),
       getCurso$.subscribe((res) => {
         this.data = res.content.map((item) => ({
-          id: `${item?.id}`,
-          codigo: `${item.codigo}`,
-          codigoCnpq: `${item.codigoCnpq}`,
-          nome: `${item.nome}`,
-          tipo: `${item.tipoCapacitacao.descricao}`,
-          tipoCod: `${item.tipoCapacitacao.tipo}`,
+          id: item?.id,
+          codigo: item.codigo,
+          codigoCnpq: item.codigoCnpq,
+          nome: item.nome,
+          disciplina: item.disciplina,
+          cargaHoraria: item.cargaHoraria,
+          tipo: item.tipoCapacitacao.descricao,
+          tipoCod: item.tipoCapacitacao.tipo,
         }));
 
         this.totalPages = res.totalPages;
@@ -120,44 +127,37 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     );
   }
 
-  // tslint:disable-next-line: typedef
   handlePageSizeChange(newSize: number) {
     this.pageSize = newSize;
     this.page = 1;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   onFirstPage() {
     this.page = 1;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   onLastPage() {
     this.page = this.totalPages;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   handlePageIndexChange(page: number) {
     this.page = page;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   handleNextPage() {
     this.page = Math.min(this.page + 1, this.totalPages);
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   handlePreviousPage() {
     this.page = Math.max(this.page - 1, 1);
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   handleSortChange(a) {
     this.page = 1;
     if (a === null) {
@@ -168,19 +168,16 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   handleInvertSort() {
     this.asc = !this.asc;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   onSubmit() {
     this.page = 1;
     this.refresh();
   }
 
-  // tslint:disable-next-line: typedef
   clean() {
     this.cursoSearch.reset();
     this.refresh();
