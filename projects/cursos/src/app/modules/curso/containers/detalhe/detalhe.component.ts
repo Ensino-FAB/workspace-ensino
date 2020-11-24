@@ -38,7 +38,10 @@ export class DetalheComponent implements OnInit {
         getCurso$.subscribe((item) => {
           if (item) {
             this.curso = item;
-            this.cursoLabel = item.nome + ' - ' + item.codigo;
+            this.cursoLabel =
+              item.tipo === 'CURSO'
+                ? item.nome + ' - ' + item.codigo
+                : item.nome;
           }
         })
       );
