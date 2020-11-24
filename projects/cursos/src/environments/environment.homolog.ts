@@ -5,5 +5,5 @@ export const environment = {
   KEYCLOAK_REALM: 'FAB',
   KEYCLOAK_CLIENT_ID: 'ensino-client',
   KEYCLOAK_REDIRECT_URI:
-    'http://sigpes.servicos.homolog.ccarj.intraer/esistens-cursos/assets/silent-check-sso.html',
+    'https://sigpes.servicos.homolog.ccarj.intraer/esistens-cursos/assets/silent-check-sso.html',
 };
