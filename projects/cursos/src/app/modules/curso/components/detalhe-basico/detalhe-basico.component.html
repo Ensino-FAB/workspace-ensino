@@ -16,13 +16,21 @@
               flex-direction: column;
             "
           >
-            <div class="flex-container col" style="margin-bottom: 3rem">
+            <div
+              class="flex-container col"
+              style="margin-bottom: 3rem"
+              *ngIf="curso?.codigoCnpq"
+            >
               <com-label>Código CNPQ</com-label>
               <span [ngClass]="{ skeleton: loading }">
                 {{ curso?.codigoCnpq }}
               </span>
             </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
+            <div
+              class="flex-container col"
+              style="margin-bottom: 3rem"
+              *ngIf="curso?.disciplina"
+            >
               <com-label>Disciplina</com-label>
               <span [ngClass]="{ skeleton: loading }">
                 {{ curso?.disciplina }}
@@ -49,19 +57,31 @@
               flex-direction: column;
             "
           >
-            <div class="flex-container col" style="margin-bottom: 3rem">
+            <div
+              class="flex-container col"
+              style="margin-bottom: 3rem"
+              *ngIf="curso?.objetivo"
+            >
               <com-label>Objetivo</com-label>
               <span [ngClass]="{ skeleton: loading }">
                 {{ curso?.objetivo }}
               </span>
             </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
+            <div
+              class="flex-container col"
+              style="margin-bottom: 3rem"
+              *ngIf="curso?.observacao"
+            >
               <com-label>Obeservação</com-label>
               <span [ngClass]="{ skeleton: loading }">
                 {{ curso?.observacao }}
               </span>
             </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
+            <div
+              class="flex-container col"
+              style="margin-bottom: 3rem"
+              *ngIf="curso?.preRequisito"
+            >
               <com-label>Pré-requisito</com-label>
               <span [ngClass]="{ skeleton: loading }">
                 {{ curso?.preRequisito }}
