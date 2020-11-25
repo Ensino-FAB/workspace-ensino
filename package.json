@@ -9,10 +9,12 @@
     "e2e": "ng e2e",
     "test:cursos": "jest --config ./projects/cursos/jest.config.js --passWithNoTests",
     "test:ensino-commons": "jest  --config ./projects/ensino-commons/jest.config.js --passWithNoTests",
+    "test:organizacional": "jest  --config ./projects/organizacional/jest.config.js --passWithNoTests",
     "test:cursos:coverage": "jest --coverage --config ./projects/cursos/jest.config.js --passWithNoTests",
     "test:ensino-commons:coverage": "jest --coverage --config ./projects/ensino-commons/jest.config.js --passWithNoTests",
-    "test": "npm run test:cursos && npm run test:ensino-commons",
-    "coverage": "npm run test:cursos:coverage && npm run test:ensino-commons:coverage"
+    "test:organizacional:coverage": "jest --coverage --config ./projects/organizacional/jest.config.js --passWithNoTests",
+    "test": "npm run test:cursos && npm run test:ensino-commons && npm run test:organizacional",
+    "coverage": "npm run test:cursos:coverage && npm run test:ensino-commons:coverage && npm run test:organizacional:coverage"
   },
   "private": true,
   "dependencies": {
