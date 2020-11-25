@@ -1,0 +1,8 @@
+.canvas {
+  height: 60vh;
+  cursor: grab;
+
+  &.isGrabbing {
+    cursor: grabbing;
+  }
+}

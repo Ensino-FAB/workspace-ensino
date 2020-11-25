@@ -1,0 +1,47 @@
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }}
+        </h2>
+      </header>
+      <section>
+        <div style="display: flex">
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              width: 50%;
+              flex-direction: column;
+            "
+          >
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Nome</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ atividadeComplementar?.nome }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Descrição</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ atividadeComplementar?.descricao }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Carga horária</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ atividadeComplementar?.cargaHoraria }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="width: 100%; display: flex; justify-content: flex-end">
+        <com-button fill routerLink="/atividade-complementar/listar">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>

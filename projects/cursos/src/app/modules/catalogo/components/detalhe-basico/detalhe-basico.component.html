@@ -1,0 +1,41 @@
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }}
+        </h2>
+      </header>
+      <section>
+        <div style="display: flex">
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              width: 50%;
+              flex-direction: column;
+            "
+          >
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Código CNPQ</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ catalogo?.nome }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Disciplina</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ catalogo?.descricao }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="width: 100%; display: flex; justify-content: flex-end">
+        <com-button fill routerLink="/catalogo/listar">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>

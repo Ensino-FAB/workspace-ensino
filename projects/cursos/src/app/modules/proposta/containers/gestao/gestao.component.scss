@@ -1,0 +1,106 @@
+.wrapper {
+  max-width: 100%;
+  margin-top: 10rem;
+  list-style-type: none;
+}
+@import 'projects/cursos/src/assets/scss/breakpoints.scss';
+@import 'projects/cursos/src/assets/scss/mixins.scss';
+
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+
+  @include respond-to(xl) {
+    max-width: 138rem;
+  }
+
+  .wrapper {
+    position: relative;
+    width: calc(100% - calc(var(--padding)));
+    margin: calc(var(--padding) / 2);
+    margin-bottom: 3rem;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+
+    .main-content,
+    .aside-content {
+      height: 100%;
+    }
+
+    .main-content {
+      flex-basis: 60%;
+    }
+
+    .aside-content {
+      flex-basis: 40%;
+    }
+
+    .grid-item {
+      padding: calc(var(--padding) / 2);
+    }
+
+    .aside-wrapper {
+      background: var(--lighter-grey);
+      border-radius: 0.5rem;
+      padding: var(--padding);
+
+      .fin-page-title {
+        font-weight: bold;
+        font-size: 2.4rem;
+        text-transform: uppercase;
+      }
+    }
+
+    .btn-wrapper {
+      margin: calc(var(--padding) / -2);
+
+      a {
+        padding: calc(var(--padding) / 2);
+      }
+    }
+  }
+}
+
+.em-breve {
+  background: var(--lighter-grey);
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 12rem;
+
+  color: var(--grey);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.process-list {
+  li:not(:first-child) {
+    border-top: 2px solid var(--light-grey);
+  }
+
+  .item-wrapper {
+    transition: background 80ms ease-in-out;
+    border-radius: 0.5rem;
+    padding: var(--padding) calc(var(--padding));
+    margin: 1rem 0;
+  }
+
+  .item-wrapper:hover {
+    background: #1659bf11;
+  }
+
+  li {
+    a {
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: var(--tertiary);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

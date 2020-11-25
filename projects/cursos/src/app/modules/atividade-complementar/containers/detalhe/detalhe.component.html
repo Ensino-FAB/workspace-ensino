@@ -1,0 +1,17 @@
+<section class="flex-container row center main-container" @fadeIn>
+  <div class="flex-container col wrap main-content">
+    <div class="grid-item">
+      <div class="sub-header flex-container between middle">
+        <h1>detalhes da atividade complementar #{{ id ? id : 'id' }}</h1>
+      </div>
+    </div>
+    <div class="grid-item">
+      <app-detalhe-basico-atividade-complementar
+        [loading]="isLoading"
+        [header]="atividadeComplementar?.nome"
+        [atividadeComplementar]="atividadeComplementar"
+      >
+      </app-detalhe-basico-atividade-complementar>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<section class="flex-container row center main-container" @fadeIn>
+  <div class="flex-container col wrap main-content">
+    <div class="grid-item">
+      <div class="sub-header flex-container between middle">
+        <h1>detalhes da proposta #{{ _id ? _id : 'id' }}</h1>
+      </div>
+    </div>
+    <div class="grid-item">
+      <app-detalhe-proposta
+        [loading]="_isLoading"
+        [header]="alteracaoOrcamentaria?.nome"
+        [proposta]="alteracaoOrcamentaria"
+      >
+      </app-detalhe-proposta>
+    </div>
+  </div>
+  <div class="flex-container row wrap aside-content">
+    <div class="grid-item grow">
+      <com-card>
+        <div class="bpmn flex-container col middle">
+          <div class="bpmn-status flex-container middle center">
+            <span>STATUS: </span>
+            <span>{{ alteracaoOrcamentaria?.status }}</span>
+          </div>
+          <div class="img"></div>
+          <a
+            *ngIf="tasks?.length > 0"
+            routerLink="/proposta/etapa/{{ tasks[0]?.id }}"
+          >
+            <com-button confirm fill>
+              <ng-container slot="text">aprovar tarefa pendente</ng-container>
+            </com-button>
+          </a>
+          <a
+            routerLink="processo/{{
+              alteracaoOrcamentaria?.instanciaProcessoId
+            }}"
+          >
+            <com-button flat transparent>
+              <ng-container slot="text">ver detalhes do processo</ng-container>
+            </com-button>
+          </a>
+        </div>
+      </com-card>
+    </div>
+  </div>
+</section>

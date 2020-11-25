@@ -2,5 +2,307 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "cursos": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/cursos",
+      "sourceRoot": "projects/cursos/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "projects/cursos/src/index.html",
+            "main": "projects/cursos/src/main.ts",
+            "polyfills": "projects/cursos/src/polyfills.ts",
+            "baseHref": "/esistens-cursos/",
+            "tsConfig": "projects/cursos/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/cursos/src/favicon.ico",
+              "projects/cursos/src/assets"
+            ],
+            "styles": ["projects/cursos/src/assets/scss/global.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cursos/src/environments/environment.ts",
+                  "with": "projects/cursos/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "homolog": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cursos/src/environments/environment.ts",
+                  "with": "projects/cursos/src/environments/environment.homolog.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cursos:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cursos:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cursos:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cursos/src/test.ts",
+            "polyfills": "projects/cursos/src/polyfills.ts",
+            "tsConfig": "projects/cursos/tsconfig.spec.json",
+            "karmaConfig": "projects/cursos/karma.conf.js",
+            "assets": [
+              "projects/cursos/src/favicon.ico",
+              "projects/cursos/src/assets"
+            ],
+            "styles": ["projects/cursos/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cursos/tsconfig.app.json",
+              "projects/cursos/tsconfig.spec.json",
+              "projects/cursos/e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/cursos/e2e/protractor.conf.js",
+            "devServerTarget": "cursos:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cursos:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ensino-commons": {
+      "projectType": "library",
+      "root": "projects/ensino-commons",
+      "sourceRoot": "projects/ensino-commons/src",
+      "prefix": "ensino",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ensino-commons/tsconfig.lib.json",
+            "project": "projects/ensino-commons/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ensino-commons/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ensino-commons/src/test.ts",
+            "tsConfig": "projects/ensino-commons/tsconfig.spec.json",
+            "karmaConfig": "projects/ensino-commons/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ensino-commons/tsconfig.lib.json",
+              "projects/ensino-commons/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "organizacional": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/organizacional",
+      "sourceRoot": "projects/organizacional/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/organizacional",
+            "index": "projects/organizacional/src/index.html",
+            "main": "projects/organizacional/src/main.ts",
+            "polyfills": "projects/organizacional/src/polyfills.ts",
+            "tsConfig": "projects/organizacional/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/organizacional/src/favicon.ico",
+              "projects/organizacional/src/assets"
+            ],
+            "styles": ["projects/organizacional/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/organizacional/src/environments/environment.ts",
+                  "with": "projects/organizacional/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "organizacional:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "organizacional:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "organizacional:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/organizacional/src/test.ts",
+            "polyfills": "projects/organizacional/src/polyfills.ts",
+            "tsConfig": "projects/organizacional/tsconfig.spec.json",
+            "karmaConfig": "projects/organizacional/karma.conf.js",
+            "assets": [
+              "projects/organizacional/src/favicon.ico",
+              "projects/organizacional/src/assets"
+            ],
+            "styles": ["projects/organizacional/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/organizacional/tsconfig.app.json",
+              "projects/organizacional/tsconfig.spec.json",
+              "projects/organizacional/e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/organizacional/e2e/protractor.conf.js",
+            "devServerTarget": "organizacional:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "organizacional:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "cursos"
 }

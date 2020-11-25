@@ -1,0 +1,42 @@
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1 *ngIf="!id">cadastro de capacitação</h1>
+      <h1 *ngIf="id">
+        edição de
+        {{ formType === 'CURSO' ? 'CURSO' : 'ATIVIDADE COMPLEMENTAR' }}
+      </h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="wrapper">
+      <div class="grid-item" *ngIf="!id">
+        <div class="sort-card">
+          <div class="menu-card-sort">
+            <span>Tipo</span>
+            <com-form [formGroup]="capacitacaoForm"></com-form>
+            <com-select
+              [options]="options"
+              [label]="'Selecione o tipo'"
+              (changed)="handleChange($event)"
+            >
+            </com-select>
+            <div style="width: 100%; display: flex; justify-content: flex-end">
+              <com-button fill routerLink="/curso/listar">
+                <ng-container slot="text">voltar</ng-container>
+              </com-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="formType == 'CURSO'" @fadeIn>
+        <app-curso-form [data]="data"></app-curso-form>
+      </div>
+      <div *ngIf="formType == 'ATIVIDADE_COMPLEMENTAR'" @fadeIn>
+        <app-atividade-form [data]="data"></app-atividade-form>
+      </div>
+    </div>
+  </div>
+</section>

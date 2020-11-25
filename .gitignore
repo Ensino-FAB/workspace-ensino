@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/projects/cursos/coverage/
+/projects/ensino-commons/coverage/

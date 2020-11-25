@@ -1,0 +1,104 @@
+@import '../../../../../assets/scss/flex.scss';
+:host {
+  display: flex;
+  justify-content: center;
+  max-width: 120rem;
+  margin: auto;
+
+  .wrapper {
+    width: calc(100% - calc(var(--padding) / 2));
+    margin: calc(var(--padding) / 2);
+
+    // Primeira Coluna
+    > *:first-child {
+      max-width: 48rem;
+      flex-basis: 35%;
+      padding: calc(var(--padding) / 2);
+
+      .history {
+        min-height: 40rem;
+        padding: calc(var(--padding) / 2);
+
+        .card {
+          width: 100%;
+          padding: 3.5rem;
+          min-height: 10rem;
+          background: var(--lighter-grey);
+          border-radius: 0.5rem;
+          color: var(--grey);
+          text-transform: uppercase;
+          font-size: 1.6rem;
+          font-weight: bold;
+        }
+
+        .link {
+          flex-grow: 1;
+          width: 2px;
+          background: var(--light-grey);
+        }
+
+        .begin {
+          width: 100%;
+          padding: 1.5rem;
+          background: var(--lighter-grey);
+          border: 2px var(--light-grey) solid;
+          border-radius: 0.5rem;
+          text-transform: uppercase;
+          color: var(--grey);
+          font-size: 1.6rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    // Segunda coluna
+    > *:last-child {
+      max-width: 90rem;
+      flex-basis: 65%;
+      padding: calc(var(--padding) / 2);
+    }
+
+    .diagram-card {
+      .description {
+        color: var(--grey);
+        font-size: 1.6rem;
+        margin-left: 5rem;
+        max-width: 25rem;
+
+        span {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+
+    .process-status {
+      color: #ccc;
+      word-wrap: break-word;
+
+      span {
+        color: var(--grey);
+      }
+    }
+
+    .page-title {
+      font-weight: bold;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      padding: var(--padding);
+      background: var(--lighter-grey);
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+.m-bottom {
+  margin-bottom: var(--padding);
+}
+
+.block {
+  display: block;
+}
+
+.status-text {
+  margin-left: 1rem;
+}

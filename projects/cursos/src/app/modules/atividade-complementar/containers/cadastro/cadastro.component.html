@@ -1,0 +1,70 @@
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1>cadastro de Atividade Complementar</h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="wrapper">
+      <com-form
+        [id]="formId"
+        [formGroup]="atividadeComplementarForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <com-form-section partly formTitle="Descrição" step="1">
+          <com-input
+            formControlName="nome"
+            label="Nome"
+            [invalid]="
+              (atividadeComplementarForm.get('nome').invalid &&
+                atividadeComplementarForm.get('nome').touched) ||
+              atividadeComplementarForm.errors?.nome
+            "
+          ></com-input>
+          <com-input
+            formControlName="cargaHoraria"
+            label="Carga horária"
+            type="number"
+            [invalid]="
+              (atividadeComplementarForm.get('cargaHoraria').invalid &&
+                atividadeComplementarForm.get('cargaHoraria').touched) ||
+              atividadeComplementarForm.errors?.cargaHoraria
+            "
+          ></com-input>
+          <div class="flex-container description">
+            <com-textarea
+              formControlName="descricao"
+              label="Descrição"
+              maxlength="4000"
+              helper="Campo em texto livre"
+              [invalid]="
+                (atividadeComplementarForm.get('descricao').invalid &&
+                  atividadeComplementarForm.get('descricao').touched) ||
+                atividadeComplementarForm.errors?.descricao
+              "
+            >
+            </com-textarea>
+          </div>
+        </com-form-section>
+        <com-form-section block>
+          <com-fieldset>
+            <div class="flex-container row end middle">
+              <com-button
+                fill
+                confirm
+                type="submit"
+                [form]="formId"
+                [disabled]="atividadeComplementarForm.invalid"
+              >
+                <ng-container slot="text"
+                  >confirmar e gerar atividade complementar</ng-container
+                >
+              </com-button>
+            </div>
+          </com-fieldset>
+        </com-form-section>
+      </com-form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+.nav-item {
+  a {
+    padding: 1rem 1.5rem;
+
+    font-size: 1.4rem;
+    color: var(--white);
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    border-radius: 0.5rem;
+    transition: background var(--transition-defs);
+
+    &:hover {
+      background: rgba(206, 206, 206, 0.2);
+    }
+  }
+}
+
+li.nav-item > a.active {
+  background: rgba(161, 161, 161, 0.2);
+}

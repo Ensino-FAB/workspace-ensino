@@ -1,0 +1,22 @@
+<div class="flex-container center middle" @fadeIn>
+  <div class="flex-container between wrapper">
+    <li style="padding: 0.5rem">
+      <com-button
+        fill
+        [routerLink]="['/atividade-complementar', 'criar']"
+        routerLinkActive="router-link-active"
+      >
+        <ng-container slot="text">criar</ng-container>
+      </com-button>
+    </li>
+    <li style="padding: 0.5rem">
+      <com-button
+        fill
+        [routerLink]="['/atividade-complementar', 'listar']"
+        routerLinkActive="router-link-active"
+      >
+        <ng-container slot="text">listar</ng-container>
+      </com-button>
+    </li>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<section @fadeIn>
+  <div class="flex-container col wrapper">
+    <div class="flex-container col grow aside-content">
+      <div class="grid-item">
+        <div class="flex-container row middle between aside-wrapper">
+          <h2 class="fin-page-title">gestão de propostas</h2>
+          <div class="flex-container end">
+            <a [routerLink]="['/proposta', 'criar']">
+              <com-button flat transparent>
+                <com-icon slot="icon">add</com-icon>
+              </com-button>
+            </a>
+            <a [routerLink]="['/proposta', 'listar']">
+              <com-button flat transparent>
+                <com-icon slot="icon">search</com-icon>
+              </com-button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item">
+        <com-card headerTitle="Tarefas pendentes de aprovação">
+          <div class="em-breve flex-container row center middle">em breve</div>
+        </com-card>
+      </div>
+    </div>
+    <div class="flex-container col main-content">
+      <div class="grid-item">
+        <com-card headerTitle="Meus processos em andamento">
+          <ul class="process-list">
+            <li *ngFor="let item of data">
+              <div class="flex-container row between item-wrapper middle">
+                <a routerLink="detalhes/{{ item.variables.entity?.id }}">
+                  {{ item.variables.entity?.nome }}
+                </a>
+                <com-tag>{{ item.variables.entity?.status }}</com-tag>
+              </div>
+            </li>
+          </ul>
+        </com-card>
+      </div>
+    </div>
+  </div>
+</section>
