@@ -203,6 +203,7 @@
             "index": "projects/organizacional/src/index.html",
             "main": "projects/organizacional/src/main.ts",
             "polyfills": "projects/organizacional/src/polyfills.ts",
+            "baseHref": "/esistens-organizacional/",
             "tsConfig": "projects/organizacional/tsconfig.app.json",
             "aot": true,
             "assets": [
