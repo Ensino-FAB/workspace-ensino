@@ -118,7 +118,7 @@
               "projects/cursos/src/favicon.ico",
               "projects/cursos/src/assets"
             ],
-            "styles": ["projects/cursos/src/styles.scss"],
+            "styles": ["projects/cursos/src/assets/scss/global.scss"],
             "scripts": []
           }
         },
@@ -209,7 +209,7 @@
               "projects/organizacional/src/favicon.ico",
               "projects/organizacional/src/assets"
             ],
-            "styles": ["projects/organizacional/src/styles.scss"],
+            "styles": ["projects/organizacional/src/assets/scss/global.scss"],
             "scripts": []
           },
           "configurations": {
@@ -271,7 +271,7 @@
               "projects/organizacional/src/favicon.ico",
               "projects/organizacional/src/assets"
             ],
-            "styles": ["projects/organizacional/src/styles.scss"],
+            "styles": ["projects/organizacional/src/assets/scss/global.scss"],
             "scripts": []
           }
         },
