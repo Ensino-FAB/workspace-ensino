@@ -8,6 +8,8 @@
   >
   <div
     [@toggleModulesPanel]
+    ensinoClickOutside
+    (clickOutside)="toggleModulesPanel()"
     class="nav-modules-container"
     *ngIf="isModulesPanelOpen"
   >
@@ -15,7 +17,11 @@
       <nav>
         <ul class="flex-container row wrap nav-modules-wrapper">
           <li>
-            <a class="flex-container col middle" routerLink="/">
+            <a
+              class="flex-container col middle"
+              routerLink="/"
+              (click)="toggleModulesPanel()"
+            >
               <img class="nav-module-icon" src="assets/images/siga-logo.png" />
               <span>cursos</span>
             </a>
@@ -23,7 +29,11 @@
         </ul>
         <ul class="flex-container row wrap nav-modules-wrapper">
           <li>
-            <a class="flex-container col middle" routerLink="/">
+            <a
+              class="flex-container col middle"
+              (click)="toggleModulesPanel()"
+              routerLink="/"
+            >
               <img class="nav-module-icon" src="assets/images/siga-logo.png" />
               <span>Organizacional</span>
             </a>
