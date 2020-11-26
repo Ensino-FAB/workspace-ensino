@@ -41,15 +41,13 @@
 </header>
 <div class="main-content">
   <ensino-nav>
-    <!-- <ensino-nav-item [routerLink]="'atividade-complementar/listar'"
-      >Atividade Complementar</ensino-nav-item
-    > -->
-    <!-- <ensino-nav-item [routerLink]="'catalogo'">Catálogo</ensino-nav-item> -->
-    <ensino-nav-item>Pessoa</ensino-nav-item>
-    <ensino-nav-item> Organização </ensino-nav-item>
+    <ensino-nav-item [routerLink]="'pessoa'">Pessoa</ensino-nav-item>
+    <ensino-nav-item [routerLink]="'organizacao'">
+      Organização
+    </ensino-nav-item>
   </ensino-nav>
-  <ensino-sub-nav root="/curso"></ensino-sub-nav>
-  <section class="main-section">teste</section>
+  <ensino-sub-nav root="/organizacional"></ensino-sub-nav>
+  <router-outlet></router-outlet>
 </div>
 <footer class="main-footer">
   <span class="main-footer-text">CCA-RJ</span>
