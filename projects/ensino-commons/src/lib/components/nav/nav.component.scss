@@ -3,7 +3,6 @@
   position: sticky;
   top: 0;
   z-index: 400;
-
   .nav {
     height: 5.5rem;
     padding: 0 var(--padding);
@@ -23,7 +22,6 @@
         background: rgba(196, 196, 196, 0.2);
       }
     }
-
     .nav-modules-container {
       position: absolute;
       top: calc(5.5rem + var(--padding) / 2);
@@ -34,13 +32,10 @@
       max-width: 30rem;
 
       .nav-modules-wrapper {
-        margin: -1.5rem;
-
         .nav-module-icon {
           height: 4.4rem;
           width: auto;
         }
-
         a {
           margin: 0.5rem;
           padding: 1.5rem;
@@ -68,16 +63,19 @@
             line-height: 1.2rem;
             text-transform: uppercase;
           }
-
           &:hover {
             background: rgba(196, 196, 196, 0.5);
           }
         }
       }
     }
-
     .nav-items-container {
       padding: 0 1rem;
+    }
+  }
+  .toggleModulesPanel {
+    ul:nth-child(n + 2) {
+      margin-top: 5rem;
     }
   }
 }
