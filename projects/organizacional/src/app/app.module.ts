@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   IconModule,
@@ -18,6 +17,7 @@ import {
   ToastService,
 } from 'projects/ensino-commons/src/public-api';
 import { environment } from '../environments/environment';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
@@ -55,6 +55,11 @@ function initializeKeycloak(keycloak: KeycloakService): any {
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService],
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
