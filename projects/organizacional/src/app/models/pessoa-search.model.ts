@@ -3,14 +3,11 @@ import { BaseSearch } from 'projects/ensino-commons/src/lib/models/base-search.d
 export interface PessoaSearch extends BaseSearch {
   nrCpf?: string;
   nome?: string;
-  nomeGuerra?: string;
   siglaPosto?: string;
   siglaQuadro?: string;
   siglaEspecialidade?: string;
   situacao?: string;
-  sexo?: string;
   email?: string;
   organizacaoMilitarId?: number;
-  dataUltimaPromocao?: string;
-  dataNascimento?: string;
+  contatoPrincipal?: string;
 }
