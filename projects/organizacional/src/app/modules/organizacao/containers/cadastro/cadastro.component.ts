@@ -1,3 +1,4 @@
+import { fadeIn } from 'projects/cursos/src/app/app.animation';
 import { OrganizacaoFacade } from './../../organizacao-facade';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,11 +10,13 @@ import { Router } from '@angular/router';
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   organizacaoForm: FormGroup;
   formId: 'organizacao-form';
+  options: object[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,6 +26,11 @@ export class CadastroComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.options = [
+      { name: 'Organização externa', value: 'ORGANIZACAO_EXTERNA' },
+      { name: 'SIGPES', value: 'ORGANIZACAO_SIGPES' },
+    ];
+
     this.organizacaoForm = this.formBuilder.group({
       nome: ['', Validators.required],
       sigla: ['', Validators.required],
@@ -35,22 +43,22 @@ export class CadastroComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    // if (this.organizacaoForm.valid) {
-    //   this.subs$.push(
-    //     this.facade.(this.organizacaoForm.value).subscribe(() => {
-    //       this.toast.show({
-    //         message: 'A proposta foi salva com sucesso!',
-    //         type: 'success',
-    //       });
-    //       this.router.navigate(['proposta', 'listar']);
-    //     })
-    //   );
-    // } else {
-    //   this.toast.show({
-    //     message: 'Erro ao tentar salvar a Proposta!',
-    //     type: 'alert',
-    //   });
-    // }
+    if (this.organizacaoForm.valid) {
+      this.subs$.push(
+        this.facade.save(this.organizacaoForm.value).subscribe(() => {
+          this.toast.show({
+            message: 'A organizacao foi salva com sucesso!',
+            type: 'success',
+          });
+          this.router.navigate(['organizacao']);
+        })
+      );
+    } else {
+      this.toast.show({
+        message: 'Erro ao tentar salvar a organizacao!',
+        type: 'alert',
+      });
+    }
   }
 
   resetForm(): void {
