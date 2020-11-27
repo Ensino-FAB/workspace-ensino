@@ -5,11 +5,13 @@ import { of, Subscription, timer } from 'rxjs';
 import { OrganizacaoFacade } from '../../organizacao-facade';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
 import { mapTo, mergeAll, share, takeUntil } from 'rxjs/operators';
+import { fadeIn } from '../../../../app.animation';
 
 @Component({
   selector: 'app-consulta',
   templateUrl: './consulta.component.html',
   styleUrls: ['./consulta.component.scss'],
+  animations: [fadeIn()],
 })
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
@@ -92,6 +94,13 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           nome: `${item.nome}`,
+          cdOrg: `${item.cdOrg}`,
+          sigla: `${item.sigla}`,
+          email: `${item.email}`,
+          pabx: `${item.pabx}`,
+          homepage: `${item.homepage}`,
+          extinta: `${item.extinta}`,
+          tipo: `${item.tipo.descricao}`,
         }));
 
         this.totalPages = res.totalPages;
@@ -155,7 +164,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       this.facade.delete(id).subscribe(() => {
         this.refresh();
         this.toastService.show({
-          message: 'Atividade Complementar deletada com sucesso!',
+          message: 'Organização deletada com sucesso!',
           type: 'success',
         });
       })
