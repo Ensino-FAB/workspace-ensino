@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  CURSO_API: 'http://localhost:8080/esistens-organizacional-api',
+  ORGANIZACIONAL_API: 'http://localhost:8080/esistens-organizacional-api',
   KEYCLOAK_URL: 'http://localhost:8084/auth',
   KEYCLOAK_REALM: 'FAB',
   KEYCLOAK_CLIENT_ID: 'ensino-client',
