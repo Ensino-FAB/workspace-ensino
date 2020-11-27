@@ -18,28 +18,23 @@ export class PessoaFacade {
     return this._PessoaService;
   }
 
-  public getAllCurso(search: PessoaSearch): Observable<Pageable<Pessoa>> {
-    return of();
-    // return this.pessoaService.findAll(search);
+  public getAllPessoa(search: PessoaSearch): Observable<Pageable<Pessoa>> {
+    return this.pessoaService.findAll(search);
   }
 
-  public getCurso(id: number): Observable<Pessoa> {
-    return of();
-    // return this.pessoaService.findById(id);
+  public getPessoa(id: number): Observable<Pessoa> {
+    return this.pessoaService.findById(id);
   }
 
   public save(record: Pessoa): any {
-    return of();
-    // return this.pessoaService.save(record);
+    return this.pessoaService.save(record);
   }
 
   public delete(id: number): Observable<any> {
-    return of();
-    // return this.pessoaService.remove(id);
+    return this.pessoaService.remove(id);
   }
 
-  public findCurso(id: number): Observable<Pessoa> {
-    return of();
-    // return this.pessoaService.findById(id);
+  public findPessoa(id: number): Observable<Pessoa> {
+    return this.pessoaService.findById(id);
   }
 }
