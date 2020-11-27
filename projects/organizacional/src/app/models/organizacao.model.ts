@@ -4,7 +4,7 @@ import { TipoOrganizacaoModel } from '../models/tipo-organizacao.model';
 export interface Organizacao extends BaseModel {
   nome: string;
   sigla: string;
-  cdOrg: string;
+  cdOrg?: string;
   email: string;
   pabx: string;
   homepage: string;

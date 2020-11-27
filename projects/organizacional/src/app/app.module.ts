@@ -5,11 +5,11 @@ import { AppComponent } from './app.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'projects/ensino-commons/src/lib/components/toast/toast.module';
 import {
   IconModule,
   ButtonModule,
   DropmenuModule,
-  ToastModule,
 } from '@cca-fab/cca-fab-components-common';
 import {
   SubNavModule,
