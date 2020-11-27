@@ -27,7 +27,9 @@ export class OrganizacaoService {
   }
 
   findById(id: number): Observable<Organizacao> {
-    return this.http.get<any>(`${environment.CURSO_API}/organizacao/${id}`);
+    return this.http.get<any>(
+      `${environment.ORGANIZACIONAL_API}/organizacao/${id}`
+    );
   }
 
   findAll(search: OrganizacaoSearch): Observable<Pageable<Organizacao>> {
