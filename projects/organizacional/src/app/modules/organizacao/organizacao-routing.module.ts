@@ -17,13 +17,13 @@ export const ORGANIZACAO_ROUTES: Routes = [
   {
     path: 'detalhar',
     component: DetalheComponent,
-    data: { breadcrumb: 'Cadastrar' },
+    data: { breadcrumb: 'Detalhar' },
   },
 
   {
     path: 'editar',
     component: EdicaoComponent,
-    data: { breadcrumb: 'Cadastrar' },
+    data: { breadcrumb: 'Editar' },
   },
 ];
 
