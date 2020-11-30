@@ -16,7 +16,6 @@ export class CadastroComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   organizacaoForm: FormGroup;
   formId: 'organizacao-form';
-  options: object[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,11 +25,6 @@ export class CadastroComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.options = [
-      { name: 'Organização externa', value: 'ORGANIZACAO_EXTERNA' },
-      { name: 'SIGPES', value: 'ORGANIZACAO_SIGPES' },
-    ];
-
     this.organizacaoForm = this.formBuilder.group({
       nome: ['', Validators.required],
       sigla: ['', Validators.required],
@@ -38,7 +32,8 @@ export class CadastroComponent implements OnInit, OnDestroy {
       pabx: [''],
       homepage: [''],
       extinta: ['N'],
-      tipo: ['', Validators.required],
+      tipo: ['ORGANIZACAO_EXTERNA'],
+      editavel: ['EDITAVEL'],
     });
   }
 

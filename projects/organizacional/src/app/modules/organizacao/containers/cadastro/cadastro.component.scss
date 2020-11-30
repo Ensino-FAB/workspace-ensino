@@ -57,21 +57,6 @@ header {
     max-width: calc(100%);
   }
 }
-// .description {
-//     & > * {
-//       flex-grow: 1;
-//       height: 100%;
-//     }
-
-//     & > *:first-child {
-//       max-width: calc(50% - 1rem);
-//       margin-right: 2rem;
-//     }
-
-//     & > *:last-child {
-//       max-width: calc(50% - 1rem);
-//     }
-//  }
 
 footer {
   & > *:first-child {
