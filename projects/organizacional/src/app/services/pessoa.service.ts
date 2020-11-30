@@ -27,7 +27,7 @@ export class PessoaService {
   }
 
   findById(id: number): Observable<Pessoa> {
-    return this.http.get<any>(`${environment.ORGANIZACIONAL_API}/pessoa/${id}`);
+    return this.http.get<any>(`${this.endpoint}/${id}`);
   }
 
   findAll(search: PessoaSearch): Observable<Pageable<Pessoa>> {
@@ -42,21 +42,21 @@ export class PessoaService {
     return this.http.get<Pessoa>(`${this.endpoint}/${id}`).pipe(take(1));
   }
 
-  create(record: Pessoa): Observable<Pessoa> {
-    return this.http.post(this.endpoint, record).pipe(take(1)) as Observable<
-      Pessoa
-    >;
+  create(data: Pessoa): Observable<Pessoa> {
+    return this.http.post<Pessoa>(this.endpoint, data).pipe(take(1));
   }
 
-  update(id: number, record: Pessoa) {
-    return this.http.put(`${this.endpoint}/${id}`, record).pipe(take(1));
+  update(data: Pessoa) {
+    return this.http
+      .put<Pessoa>(`${this.endpoint}/${data.id}`, data)
+      .pipe(take(1));
   }
 
-  save(record: Pessoa): any {
-    if (record.id) {
-      return this.update(record.id, record);
+  save(data: Pessoa): any {
+    if (data.id) {
+      return this.update(data);
     }
-    return this.create(record);
+    return this.create(data);
   }
 
   remove(id: number): Observable<any> {
