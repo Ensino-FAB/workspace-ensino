@@ -15,11 +15,12 @@ export const ORGANIZACAO_ROUTES: Routes = [
   },
 
   {
-    path: 'detalhar',
+    path: 'detalhar/:id',
+    data: {
+      breadcrumb: 'detalhar',
+    },
     component: DetalheComponent,
-    data: { breadcrumb: 'Detalhar' },
   },
-
   {
     path: 'editar',
     component: EdicaoComponent,

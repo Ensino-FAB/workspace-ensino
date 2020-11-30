@@ -21,7 +21,7 @@ import {
   SelectModule,
   InputModule,
 } from '@cca-fab/cca-fab-components-common';
-import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basico.component';
+import { DetalheBasicoOrganizacaoComponent } from './components/detalhe-basico-organizacao/detalhe-basico-organizacao.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { DetalheBasicoComponent } from './components/detalhe-basico/detalhe-basi
     DetalheComponent,
     EdicaoComponent,
     GestaoComponent,
-    DetalheBasicoComponent,
+    DetalheBasicoOrganizacaoComponent,
   ],
   imports: [
     CommonModule,

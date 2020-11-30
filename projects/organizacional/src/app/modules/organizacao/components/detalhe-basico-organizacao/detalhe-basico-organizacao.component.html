@@ -1,0 +1,60 @@
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }} - {{ headerr }}
+        </h2>
+      </header>
+      <section>
+        <div style="display: flex">
+          <div
+            style="
+              display: flex;
+              align-items: flex-start;
+              width: 50%;
+              flex-direction: column;
+            "
+          >
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>E-mail</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ organizacao?.email }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Homepage</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ organizacao?.homepage }}
+              </span>
+            </div>
+
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Extinta</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ organizacao?.extinta }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Pabx</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ organizacao?.pabx }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Tipo de Organização</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ organizacao?.tipo.descricao }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div style="width: 100%; display: flex; justify-content: flex-end">
+        <com-button fill routerLink="/organizacao/">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>

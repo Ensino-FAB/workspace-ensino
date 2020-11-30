@@ -32,7 +32,7 @@ export class OrganizacaoFacade {
     return this.service.save(record);
   }
 
-  public findCatalogo(id: number): Observable<Organizacao> {
+  public findOrganizacao(id: number): Observable<Organizacao> {
     return this.service.findById(id);
   }
 }
