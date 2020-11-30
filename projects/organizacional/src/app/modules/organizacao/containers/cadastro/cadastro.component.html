@@ -62,18 +62,6 @@
               organizacaoForm.errors?.homepage
             "
           ></com-input>
-
-          <com-select
-            formControlName="tipo"
-            [options]="options"
-            [label]="'Tipo da organização'"
-            [invalid]="
-              (organizacaoForm.get('tipo').invalid &&
-                organizacaoForm.get('tipo').touched) ||
-              organizacaoForm.errors?.tipo
-            "
-          >
-          </com-select>
         </com-form-section>
 
         <com-form-section block>
