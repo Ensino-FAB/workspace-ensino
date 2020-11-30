@@ -6,6 +6,20 @@ import { RouterModule } from '@angular/router';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
+import { PessoaFacade } from './pessoa.facade';
+import {
+  ButtonModule,
+  CardModule,
+  FormModule,
+  IconModule,
+  InputModule,
+  LabelModule,
+  ModalModule,
+  SelectModule,
+  TableModule,
+  TagModule,
+  TooltipModule,
+} from '@cca-fab/cca-fab-components-common';
 
 @NgModule({
   declarations: [
@@ -14,6 +28,21 @@ import { EdicaoComponent } from './containers/edicao/edicao.component';
     DetalheComponent,
     EdicaoComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(PESSOA_ROUTES)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(PESSOA_ROUTES),
+    ButtonModule,
+    IconModule,
+    TooltipModule,
+    CardModule,
+    TableModule,
+    ModalModule,
+    TagModule,
+    LabelModule,
+    FormModule,
+    SelectModule,
+    InputModule,
+  ],
+  providers: [PessoaFacade],
 })
 export class PessoaModule {}
