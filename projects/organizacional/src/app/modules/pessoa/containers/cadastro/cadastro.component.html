@@ -1,1 +1,182 @@
-<p>cadastro works!</p>
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1>cadastro de pessoa</h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="wrapper">
+      <com-form [id]="formId" [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
+        <com-form-section
+          formTitle="Form 1"
+          step="1"
+          *ngIf="stepNumber == 1"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-first">
+            <com-input
+              formControlName="nome1"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome1').invalid &&
+                  pessoaForm.get('nome1').touched) ||
+                pessoaForm.errors?.nome1
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome2"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome2').invalid &&
+                  pessoaForm.get('nome2').touched) ||
+                pessoaForm.errors?.nome2
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome3"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome3').invalid &&
+                  pessoaForm.get('nome3').touched) ||
+                pessoaForm.errors?.nome3
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome4"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome4').invalid &&
+                  pessoaForm.get('nome4').touched) ||
+                pessoaForm.errors?.nome4
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container end">
+            <com-button fill (click)="stepHandler(+1, true)">
+              <com-icon slot="icon">arrow_right_alt</com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <com-form-section
+          formTitle="Form 2"
+          step="2"
+          *ngIf="stepNumber == 2"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-first">
+            <com-input
+              formControlName="nome5"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome5').invalid &&
+                  pessoaForm.get('nome5').touched) ||
+                pessoaForm.errors?.nome5
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome6"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome6').invalid &&
+                  pessoaForm.get('nome6').touched) ||
+                pessoaForm.errors?.nome6
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome7"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome7').invalid &&
+                  pessoaForm.get('nome7').touched) ||
+                pessoaForm.errors?.nome7
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome8"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome8').invalid &&
+                  pessoaForm.get('nome8').touched) ||
+                pessoaForm.errors?.nome8
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container between">
+            <com-button fill (click)="stepHandler(-1, false)">
+              <com-icon slot="icon">keyboard_backspace </com-icon>
+            </com-button>
+            <com-button fill (click)="stepHandler(+1, 'true')">
+              <com-icon slot="icon">arrow_right_alt</com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <com-form-section
+          formTitle="Form 3"
+          step="3"
+          *ngIf="stepNumber == 3"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-first">
+            <com-input
+              formControlName="nome9"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome9').invalid &&
+                  pessoaForm.get('nome9').touched) ||
+                pessoaForm.errors?.nome9
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome10"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome10').invalid &&
+                  pessoaForm.get('nome10').touched) ||
+                pessoaForm.errors?.nome10
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome11"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome11').invalid &&
+                  pessoaForm.get('nome11').touched) ||
+                pessoaForm.errors?.nome11
+              "
+            ></com-input>
+            <com-input
+              formControlName="nome12"
+              label="Nome"
+              [invalid]="
+                (pessoaForm.get('nome12').invalid &&
+                  pessoaForm.get('nome12').touched) ||
+                pessoaForm.errors?.nome12
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container start">
+            <com-button fill (click)="stepHandler(-1, false)">
+              <com-icon slot="icon">keyboard_backspace </com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <com-form-section block>
+          <com-fieldset>
+            <div class="flex-container center middle">
+              <com-button
+                fill
+                confirm
+                type="submit"
+                [form]="formId"
+                [disabled]="pessoaForm.invalid"
+              >
+                <ng-container slot="text">confirmar e salvar</ng-container>
+              </com-button>
+            </div>
+          </com-fieldset>
+        </com-form-section>
+      </com-form>
+    </div>
+  </div>
+</section>
