@@ -98,7 +98,13 @@
             </div>
             <div>
               <a routerLink="/organizacao/editar/{{ content.data.id }}">
-                <com-button secondary transparent>
+                <com-button
+                  secondary
+                  transparent
+                  [disabled]="
+                    content.data.editavel == 'NAO_EDITAVEL' ? true : false
+                  "
+                >
                   <com-icon outlined slot="icon">edit</com-icon>
                 </com-button>
               </a>
@@ -109,6 +115,9 @@
                   warning
                   transparent
                   (click)="onDelete(content.data.id)"
+                  [disabled]="
+                    content.data.editavel == 'NAO_EDITAVEL' ? true : false
+                  "
                 >
                   <com-icon outlined slot="icon">delete</com-icon>
                 </com-button>

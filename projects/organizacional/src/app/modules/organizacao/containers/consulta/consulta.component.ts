@@ -97,7 +97,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }),
       getOrganizacao$.subscribe((res) => {
         this.count = res.totalElements;
-
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           nome: `${item.nome}`,
@@ -108,6 +107,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
           homepage: `${item.homepage}`,
           extinta: `${item.extinta}`,
           tipo: `${item.tipo.descricao}`,
+          editavel: `${item.editavel}`,
         }));
 
         this.totalPages = res.totalPages;
