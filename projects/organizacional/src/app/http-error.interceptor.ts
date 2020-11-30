@@ -4,10 +4,15 @@ import {
   HttpHandler,
   HttpRequest,
 } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
+import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+@Injectable()
 export class HttpErrorInterceptor implements HttpErrorInterceptor {
+  constructor(private injector: Injector) {}
+
   intercept(
     resquest: HttpRequest<any>,
     next: HttpHandler
@@ -15,16 +20,22 @@ export class HttpErrorInterceptor implements HttpErrorInterceptor {
     return next.handle(resquest).pipe(
       retry(1),
       catchError((error: HttpErrorResponse) => {
-        console.log(error);
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
           // client-side error
-          errorMessage = `Error: ${error.error.message}`;
+          errorMessage = `Mensagem: ${error.error.message}`;
+          this.injector.get(ToastService).show({
+            message: errorMessage,
+            type: 'error',
+          });
         } else {
           // server-side error
-          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          errorMessage = `Código: ${error.status} Mensagem: ${error.error.error}`;
+          this.injector.get(ToastService).show({
+            message: errorMessage,
+            type: 'error',
+          });
         }
-        alert(errorMessage);
         return throwError(errorMessage);
       })
     );
