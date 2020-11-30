@@ -21,6 +21,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   organizacaoSearch = new FormGroup({
     q: new FormControl(''),
     nome: new FormControl(''),
+    sigla: new FormControl(''),
+    tipo: new FormControl(''),
   });
 
   columns: TableColumn[] = [
@@ -55,7 +57,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   });
 
   options: object[];
-
+  filterOptions: object[];
   asc = true;
   pageSize = 20;
   page = 1;
@@ -73,6 +75,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Nome', value: 'nome' },
       { name: 'Sigla', value: 'sigla' },
       { name: 'E-mail', value: 'email' },
+    ];
+
+    this.filterOptions = [
+      { name: 'Externa', value: 'ORGANIZACAO_EXTERNA' },
+      { name: 'Sigpes', value: 'ORGANIZACAO_SIGPES' },
     ];
 
     this.refresh();
