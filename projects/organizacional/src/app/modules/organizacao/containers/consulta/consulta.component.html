@@ -44,6 +44,17 @@
               placeholder="Digite o Nome da Organização"
               label="Nome da Organização"
             ></com-input>
+            <com-input
+              formControlName="sigla"
+              placeholder="Digite a sigla"
+              label="Nome da Sigla"
+            ></com-input>
+            <com-select
+              class="no-margin-bottom"
+              [options]="filterOptions"
+              [label]="'Selecione o tipo'"
+              formControlName="tipo"
+            ></com-select>
           </com-form-section>
           <com-form-section block>
             <div class="flex-container row button-set">
