@@ -27,17 +27,24 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'nome',
       title: 'Nome',
-      width: '10%',
+      width: '30%',
     },
     {
       field: 'sigla',
       title: 'Sigla',
       width: '10%',
     },
+
+    {
+      field: 'email',
+      title: 'E-mail',
+      width: '20%',
+    },
+
     {
       field: 'tipo',
       title: 'Tipo',
-      width: '60%',
+      width: '20%',
     },
   ];
 
@@ -65,7 +72,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.options = [
       { name: 'Nome', value: 'nome' },
       { name: 'Sigla', value: 'sigla' },
-      { name: 'Email', value: 'email' },
+      { name: 'E-mail', value: 'email' },
     ];
 
     this.refresh();
