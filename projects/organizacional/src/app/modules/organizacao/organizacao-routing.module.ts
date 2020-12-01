@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
+import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
@@ -21,11 +22,11 @@ export const ORGANIZACAO_ROUTES: Routes = [
     component: DetalheComponent,
   },
   {
-    path: 'editar/:id/tipo/:type',
+    path: 'editar/:id',
     data: {
       breadcrumb: 'editar',
     },
-    component: CadastroComponent,
+    component: EdicaoComponent,
   },
 ];
 

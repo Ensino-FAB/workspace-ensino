@@ -40,13 +40,13 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'email',
       title: 'E-mail',
-      width: '20%',
+      width: '15%',
     },
 
     {
       field: 'tipo',
       title: 'Tipo',
-      width: '20%',
+      width: '25%',
     },
   ];
 
