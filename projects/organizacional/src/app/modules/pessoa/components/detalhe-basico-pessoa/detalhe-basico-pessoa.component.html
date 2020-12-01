@@ -1,1 +1,256 @@
-<p>detalhe-basico-pessoa works!</p>
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }}
+        </h2>
+      </header>
+      <com-accordion>
+        <com-accordion-item headerTitle="Dados Pessoais">
+          <div style="display: flex">
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                width: 50%;
+                flex-direction: column;
+              "
+            >
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>CPF</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nrCpf }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Identidade</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.identidadeCivil }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Passaporte</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.passaporte }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Estado Civil</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.estadoCivil }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Data de Nascimento</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.dataNascimento | date: 'dd/MM/yyyy' }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Raça</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.raca }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Sexo</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.sexo }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Peso</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.peso + 'kg' }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Altura</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.altura + 'cm' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </com-accordion-item>
+
+        <com-accordion-item headerTitle="Dados Militar">
+          <div style="display: flex">
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                width: 50%;
+                flex-direction: column;
+              "
+            >
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Nr Ordem</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nrOrdem }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Nome de Guerra</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nomeGuerra }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Posto</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nomePosto }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Identidade Militar</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.identidadeMilitar }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Data de praça</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.dataPraca | date: 'dd/MM/yyyy' }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Data de Promoção</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.dataPromocaoAtual | date: 'dd/MM/yyyy' }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Especialidade</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nomeEspecialidade }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Quadro</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.nomeQuadro }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Sigla Especialidade</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.siglaEspecialidade }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Sigla Posto</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.siglaPosto }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Sigla Quadro</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.siglaQuadro }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Situação</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.situacao }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </com-accordion-item>
+        <com-accordion-item headerTitle="Contato">
+          <div style="display: flex">
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                width: 50%;
+                flex-direction: column;
+              "
+            >
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Contato Principal</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.contatoPrincipal }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Contato Principal</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.contatoSecundario }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Contato Principal</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.email }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </com-accordion-item>
+
+        <com-accordion-item headerTitle="Endereço">
+          <div style="display: flex">
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                width: 50%;
+                flex-direction: column;
+              "
+            >
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Contato Principal</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.contatoPrincipal }}
+                </span>
+              </div>
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Contato Secundário</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.contatoSecundario }}
+                </span>
+              </div>
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>E-mail</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.email }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </com-accordion-item>
+      </com-accordion>
+
+      <div style="width: 100%; display: flex; justify-content: flex-end">
+        <com-button fill routerLink="/pessoa/">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>

@@ -8,6 +8,7 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { PessoaFacade } from './pessoa.facade';
 import {
+  AccordionModule,
   ButtonModule,
   CardModule,
   FormModule,
@@ -44,6 +45,7 @@ import { DetalheBasicoPessoaComponent } from './components/detalhe-basico-pessoa
     FormModule,
     SelectModule,
     InputModule,
+    AccordionModule,
   ],
   providers: [PessoaFacade],
 })

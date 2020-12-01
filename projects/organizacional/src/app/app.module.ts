@@ -10,6 +10,7 @@ import {
   IconModule,
   ButtonModule,
   DropmenuModule,
+  AccordionModule,
 } from '@cca-fab/cca-fab-components-common';
 import {
   SubNavModule,
@@ -47,6 +48,7 @@ function initializeKeycloak(keycloak: KeycloakService): any {
     HttpClientModule,
     KeycloakAngularModule,
     ToastModule,
+    AccordionModule,
   ],
   providers: [
     ToastService,
