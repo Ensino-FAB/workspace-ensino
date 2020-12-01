@@ -20,6 +20,7 @@ import {
   TagModule,
   TooltipModule,
 } from '@cca-fab/cca-fab-components-common';
+import { DetalheBasicoPessoaComponent } from './components/detalhe-basico-pessoa/detalhe-basico-pessoa.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {
     CadastroComponent,
     DetalheComponent,
     EdicaoComponent,
+    DetalheBasicoPessoaComponent,
   ],
   imports: [
     CommonModule,
