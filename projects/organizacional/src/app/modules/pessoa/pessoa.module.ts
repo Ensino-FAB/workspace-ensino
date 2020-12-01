@@ -20,6 +20,8 @@ import {
   TagModule,
   TooltipModule,
 } from '@cca-fab/cca-fab-components-common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrganizacaoFacade } from '../organizacao/organizacao-facade';
 
 @NgModule({
   declarations: [
@@ -40,9 +42,10 @@ import {
     TagModule,
     LabelModule,
     FormModule,
+    ReactiveFormsModule,
     SelectModule,
     InputModule,
   ],
-  providers: [PessoaFacade],
+  providers: [PessoaFacade, OrganizacaoFacade],
 })
 export class PessoaModule {}
