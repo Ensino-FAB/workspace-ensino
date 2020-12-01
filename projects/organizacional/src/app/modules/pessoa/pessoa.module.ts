@@ -8,6 +8,7 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { PessoaFacade } from './pessoa.facade';
 import {
+  AccordionModule,
   ButtonModule,
   CardModule,
   FormModule,
@@ -22,6 +23,7 @@ import {
 } from '@cca-fab/cca-fab-components-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrganizacaoFacade } from '../organizacao/organizacao-facade';
+import { DetalheBasicoPessoaComponent } from './components/detalhe-basico-pessoa/detalhe-basico-pessoa.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { OrganizacaoFacade } from '../organizacao/organizacao-facade';
     CadastroComponent,
     DetalheComponent,
     EdicaoComponent,
+    DetalheBasicoPessoaComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ import { OrganizacaoFacade } from '../organizacao/organizacao-facade';
     ReactiveFormsModule,
     SelectModule,
     InputModule,
+    AccordionModule,
   ],
   providers: [PessoaFacade, OrganizacaoFacade],
 })

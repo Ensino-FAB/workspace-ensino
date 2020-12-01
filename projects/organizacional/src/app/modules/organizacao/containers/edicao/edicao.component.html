@@ -1,1 +1,94 @@
-<p>edicao works!</p>
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1>cadastro de organizacao</h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="wrapper">
+      <com-form
+        [id]="formId"
+        [formGroup]="organizacaoForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <com-form-section partly formTitle="Cadastro" step="1">
+          <com-input
+            formControlName="nome"
+            label="Nome"
+            [invalid]="
+              (organizacaoForm.get('nome').invalid &&
+                organizacaoForm.get('nome').touched) ||
+              organizacaoForm.errors?.nome
+            "
+          ></com-input>
+          <com-input
+            formControlName="sigla"
+            label="Sigla"
+            [invalid]="
+              (organizacaoForm.get('sigla').invalid &&
+                organizacaoForm.get('sigla').touched) ||
+              organizacaoForm.errors?.sigla
+            "
+          ></com-input>
+
+          <com-input
+            formControlName="email"
+            label="Email"
+            [invalid]="
+              (organizacaoForm.get('email').invalid &&
+                organizacaoForm.get('email').touched) ||
+              organizacaoForm.errors?.email
+            "
+          ></com-input>
+
+          <com-input
+            formControlName="pabx"
+            type="number"
+            label="PABX"
+            [invalid]="
+              (organizacaoForm.get('pabx').invalid &&
+                organizacaoForm.get('pabx').touched) ||
+              organizacaoForm.errors?.pabx
+            "
+          ></com-input>
+
+          <com-input
+            formControlName="homepage"
+            label="Homepage"
+            [invalid]="
+              (organizacaoForm.get('homepage').invalid &&
+                organizacaoForm.get('homepage').touched) ||
+              organizacaoForm.errors?.homepage
+            "
+          ></com-input>
+        </com-form-section>
+
+        <com-form-section block>
+          <com-fieldset>
+            <div class="flex-container row end middle">
+              <com-button
+                fill
+                routerLink="/organizacao/"
+                style="margin-right: 1em"
+              >
+                <ng-container slot="text">voltar</ng-container>
+              </com-button>
+              <com-button
+                fill
+                confirm
+                type="submit"
+                [form]="formId"
+                [disabled]="organizacaoForm.invalid"
+              >
+                <ng-container slot="text"
+                  >confirmar e criar organizacao</ng-container
+                >
+              </com-button>
+            </div>
+          </com-fieldset>
+        </com-form-section>
+      </com-form>
+    </div>
+  </div>
+</section>
