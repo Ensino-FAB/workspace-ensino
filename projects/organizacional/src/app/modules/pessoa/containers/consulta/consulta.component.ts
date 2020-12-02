@@ -53,12 +53,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'nome',
       title: 'Nome Completo',
-      width: '20%',
+      width: '15%',
     },
     {
-      field: 'situacao',
-      title: 'Situação',
-      width: '10%',
+      field: 'email',
+      title: 'Email',
+      width: '15%',
     },
   ];
   loadindMockData = new Array(10).fill({
@@ -108,6 +108,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
+
     const getPessoa$ = this.facade.getAllPessoa(search).pipe(share());
     const isLoading$ = of(
       timer(150).pipe(mapTo(true), takeUntil(getPessoa$)),
