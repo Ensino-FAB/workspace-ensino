@@ -21,7 +21,6 @@ import {
 import { fadeIn } from 'projects/cursos/src/app/app.animation';
 import { SelectOption } from '@cca-fab/cca-fab-components-common/types/select';
 import { map } from 'rxjs/operators';
-import { Pessoa } from 'projects/organizacional/src/app/models/pessoa.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -123,6 +122,22 @@ export class CadastroComponent implements OnInit, OnDestroy, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
+    const search = {};
+    const getOrganizacao$ = this.organizacaoFacade.getAllOrganizacao(search);
+    this.subs$.push(
+      getOrganizacao$
+        .pipe(
+          map((response) =>
+            response.content.map((organizacao) => ({
+              value: String(organizacao.id),
+              name: organizacao.sigla,
+            }))
+          )
+        )
+        .subscribe((response) => {
+          this.organizacaoOption = response;
+        })
+    );
     this.pessoaForm = this.fb.group({
       id: [''],
       nome: ['', [Validators.required]],
@@ -167,27 +182,13 @@ export class CadastroComponent implements OnInit, OnDestroy, AfterViewChecked {
         getPessoa$.subscribe((response) => {
           this.pessoaForm.patchValue({
             ...response,
-            organizacaoId: String(response.organizacao.id),
+            organizacaoId: response.organizacao
+              ? String(response.organizacao.id)
+              : '',
           });
         })
       );
     }
-    const search = {};
-    const getOrganizacao$ = this.organizacaoFacade.getAllOrganizacao(search);
-    this.subs$.push(
-      getOrganizacao$
-        .pipe(
-          map((response) =>
-            response.content.map((organizacao) => ({
-              value: String(organizacao.id),
-              name: organizacao.sigla,
-            }))
-          )
-        )
-        .subscribe((response) => {
-          this.organizacaoOption = response;
-        })
-    );
   }
 
   ngAfterViewChecked(): void {
