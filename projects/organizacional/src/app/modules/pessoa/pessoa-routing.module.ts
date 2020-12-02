@@ -16,7 +16,7 @@ export const PESSOA_ROUTES: Routes = [
   },
   {
     path: 'editar/:id',
-    component: EdicaoComponent,
+    component: CadastroComponent,
     data: { breadcrumb: null },
   },
 ];

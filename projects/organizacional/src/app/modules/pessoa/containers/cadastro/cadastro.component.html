@@ -1,7 +1,9 @@
 <section @fadeIn>
   <header>
     <div class="flex-container between">
-      <h1>cadastro de pessoa</h1>
+      <h1 *ngIf="!id">cadastro de pessoa</h1>
+      <h1 *ngIf="id">edição de pessoa - #{{ id }}</h1>
+      <h1>{{ omForm }}</h1>
       <div class="flex-container middle"></div>
     </div>
   </header>
@@ -62,6 +64,7 @@
                 pessoaForm.errors?.nome
               "
             ></com-input>
+
             <com-select
               formControlName="sexo"
               class="no-margin-bottom"

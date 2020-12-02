@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PessoaFacade } from '../../pessoa.facade';
 import { OrganizacaoFacade } from '../../../organizacao/organizacao-facade';
 import {
@@ -15,6 +21,7 @@ import {
 import { fadeIn } from 'projects/cursos/src/app/app.animation';
 import { SelectOption } from '@cca-fab/cca-fab-components-common/types/select';
 import { map } from 'rxjs/operators';
+import { Pessoa } from 'projects/organizacional/src/app/models/pessoa.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -48,7 +55,8 @@ import { map } from 'rxjs/operators';
     ]),
   ],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent implements OnInit, OnDestroy, AfterViewChecked {
+  id: number;
   private subs$: Subscription[] = [];
   pessoaForm: FormGroup;
   formId: 'pessoa-form';
@@ -108,12 +116,15 @@ export class CadastroComponent implements OnInit {
     private pessoaFacade: PessoaFacade,
     private organizacaoFacade: OrganizacaoFacade,
     private toast: ToastService,
+    private fb: FormBuilder,
+    private activitedRoute: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.pessoaForm = this.fb.group({
+      id: [''],
       nome: ['', [Validators.required]],
       nomeGuerra: [''],
       nomeQuadro: [''],
@@ -140,6 +151,7 @@ export class CadastroComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       editavel: ['EDITAVEL'],
       organizacaoId: [''],
+      organizacao: [''],
       endereco: this.fb.group({
         bairro: [''],
         cep: [''],
@@ -148,6 +160,18 @@ export class CadastroComponent implements OnInit {
         pais: [''],
       }),
     });
+    this.id = this.activitedRoute.snapshot.params['id'];
+    if (this.id) {
+      const getPessoa$ = this.pessoaFacade.findPessoa(this.id);
+      this.subs$.push(
+        getPessoa$.subscribe((response) => {
+          this.pessoaForm.patchValue({
+            ...response,
+            organizacaoId: String(response.organizacao.id),
+          });
+        })
+      );
+    }
     const search = {};
     const getOrganizacao$ = this.organizacaoFacade.getAllOrganizacao(search);
     this.subs$.push(
@@ -155,7 +179,7 @@ export class CadastroComponent implements OnInit {
         .pipe(
           map((response) =>
             response.content.map((organizacao) => ({
-              value: organizacao.id,
+              value: String(organizacao.id),
               name: organizacao.sigla,
             }))
           )
@@ -166,8 +190,19 @@ export class CadastroComponent implements OnInit {
     );
   }
 
+  ngAfterViewChecked(): void {
+    const organizacaoId = this.pessoaForm.get('organizacaoId').value;
+    this.pessoaForm.get('organizacaoId').setValue(organizacaoId);
+    const sexo = this.pessoaForm.get('sexo').value;
+    this.pessoaForm.get('sexo').setValue(sexo);
+    const raca = this.pessoaForm.get('raca').value;
+    this.pessoaForm.get('raca').setValue(raca);
+    const estadoCivil = this.pessoaForm.get('estadoCivil').value;
+    this.pessoaForm.get('estadoCivil').setValue(estadoCivil);
+    this.cdr.detectChanges();
+  }
+
   onSubmit(): void {
-    console.log(this.pessoaForm.value);
     if (this.pessoaForm.valid) {
       const saveCurso$ = this.pessoaFacade.save(this.pessoaForm.value);
       this.subs$.push(saveCurso$);
@@ -192,5 +227,9 @@ export class CadastroComponent implements OnInit {
   stepHandler(step, stepTransition) {
     this.stepNumber = this.stepNumber + step;
     this.stepTransition = stepTransition;
+  }
+
+  ngOnDestroy(): void {
+    this.subs$.forEach((sub$) => sub$.unsubscribe);
   }
 }
