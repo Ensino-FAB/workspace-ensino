@@ -56,6 +56,53 @@ export class CadastroComponent implements OnInit {
   stepTransition = false;
   organizacaoOption: SelectOption[];
   pattern = '[0-9]+';
+  sexoOption: SelectOption[] = [
+    {
+      value: 'feminino',
+      name: 'FEMININO',
+    },
+    {
+      value: 'masculino',
+      name: 'MASCULINO',
+    },
+  ];
+  estadoCivilOption: SelectOption[] = [
+    {
+      value: 'solteiro',
+      name: 'SOLTEIRO(A)',
+    },
+    {
+      value: 'casado',
+      name: 'CASADO(A)',
+    },
+    {
+      value: 'divorcido',
+      name: 'DIVORCIADO(A)',
+    },
+    {
+      value: 'separado_judicialmente',
+      name: 'SEPARADO(A) JUDICIALMENTE',
+    },
+    {
+      value: 'desquitado',
+      name: 'DESQUITADO(A)',
+    },
+    {
+      value: 'uniao_estavel',
+      name: 'UNIÃO ESTÁVEL',
+    },
+    {
+      value: 'viuvo',
+      name: 'VIUVO(A)',
+    },
+  ];
+  racaOption: SelectOption[] = [
+    { value: 'branca', name: 'BRANCA' },
+    { value: 'preta', name: 'PRETA' },
+    { value: 'parda', name: 'PARDA' },
+    { value: 'indigena', name: 'INDÍGENA' },
+    { value: 'amarela', name: 'AMARELA' },
+  ];
 
   constructor(
     private pessoaFacade: PessoaFacade,
@@ -88,7 +135,7 @@ export class CadastroComponent implements OnInit {
       estadoCivil: [''],
       altura: [''],
       dataNascimento: ['', [Validators.required]],
-      contatoPrincipal: ['', [Validators.required, Validators.email]],
+      contatoPrincipal: ['', [Validators.required]],
       contatoSecundario: [''],
       email: ['', [Validators.required, Validators.email]],
       editavel: ['EDITAVEL'],

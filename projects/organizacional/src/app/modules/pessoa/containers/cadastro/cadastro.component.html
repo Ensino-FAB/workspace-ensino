@@ -62,16 +62,13 @@
                 pessoaForm.errors?.nome
               "
             ></com-input>
-            <com-input
+            <com-select
               formControlName="sexo"
-              helper="Campo Obrigatório"
-              label="Sexo"
-              [invalid]="
-                (pessoaForm.get('sexo').invalid &&
-                  pessoaForm.get('sexo').touched) ||
-                pessoaForm.errors?.sexo
-              "
-            ></com-input>
+              class="no-margin-bottom"
+              [options]="sexoOption"
+              [label]="'Sexo'"
+            >
+            </com-select>
             <com-input
               type="date"
               formControlName="dataNascimento"
@@ -105,24 +102,20 @@
                 pessoaForm.errors?.altura
               "
             ></com-input>
-            <com-input
+            <com-select
               formControlName="raca"
-              label="Raça"
-              [invalid]="
-                (pessoaForm.get('raca').invalid &&
-                  pessoaForm.get('raca').touched) ||
-                pessoaForm.errors?.raca
-              "
-            ></com-input>
-            <com-input
+              class="no-margin-bottom"
+              [options]="racaOption"
+              [label]="'Raça'"
+            >
+            </com-select>
+            <com-select
               formControlName="estadoCivil"
-              label="Estado Civil"
-              [invalid]="
-                (pessoaForm.get('estadoCivil').invalid &&
-                  pessoaForm.get('estadoCivil').touched) ||
-                pessoaForm.errors?.estadoCivil
-              "
-            ></com-input>
+              class="no-margin-bottom"
+              [options]="estadoCivilOption"
+              [label]="'Estado Civil'"
+            >
+            </com-select>
           </div>
           <div class="flex-container row-step-1-third">
             <com-input
@@ -367,6 +360,8 @@
             <com-input
               formControlName="cep"
               label="CEP"
+              helper="Somente Número ou Letras"
+              [maxlength]="10"
               [invalid]="
                 (pessoaForm.get('endereco.cep').invalid &&
                   pessoaForm.get('endereco.cep').touched) ||
