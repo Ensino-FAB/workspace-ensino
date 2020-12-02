@@ -56,7 +56,7 @@
                 label="CPF"
               ></com-input>
             </div>
-            <div class="flex-container input-fieldset row-filter-second">
+            <div class="flex-container input-fieldset row-filter-third">
               <com-input
                 formControlName="siglaQuadro"
                 placeholder="Digite o quadro"
@@ -71,11 +71,6 @@
                 formControlName="siglaEspecialidade"
                 placeholder="Digite a especialidade"
                 label="Especialidade"
-              ></com-input>
-              <com-input
-                formControlName="situacao"
-                placeholder="Digite a situação"
-                label="Situação"
               ></com-input>
             </div>
             <div class="flex-container input-fieldset row-filter-third">
@@ -172,15 +167,31 @@
         [columns]="columns"
         *ngIf="_isLoading"
       >
-        <ng-template name="nome">
-          <div class="table-field-skeleton"></div>
-        </ng-template>
-        <ng-template name="nomeGuerra">
+        <ng-template name="organizacao">
           <div class="table-field-skeleton"></div>
         </ng-template>
         <ng-template name="nrCpf">
           <div class="table-field-skeleton"></div>
         </ng-template>
+        <ng-template name="nrOrdem">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="siglaQuadro">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="siglaPosto">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="siglaEspecialidade">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="nome">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+        <ng-template name="email">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+
         <ng-template let-content name="action"></ng-template>
       </com-table>
     </div>
