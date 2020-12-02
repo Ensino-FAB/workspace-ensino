@@ -1,7 +1,8 @@
 export interface EnderecoModel {
-  nomeBairro: string;
-  cep: number;
-  estado: string;
-  cidade: string;
-  pais: string;
+  bairro?: string;
+  cep?: number;
+  estado?: string;
+  cidade?: string;
+  pais?: string;
+  rua?: string;
 }

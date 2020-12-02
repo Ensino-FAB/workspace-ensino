@@ -30,7 +30,7 @@ export class HttpErrorInterceptor implements HttpErrorInterceptor {
           });
         } else {
           // server-side error
-          errorMessage = `Código: ${error.status} Mensagem: ${error.error.error}`;
+          errorMessage = `${error.error.message}`;
           this.injector.get(ToastService).show({
             message: errorMessage,
             type: 'error',

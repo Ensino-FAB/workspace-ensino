@@ -224,21 +224,42 @@
               "
             >
               <div class="flex-container col" style="margin-bottom: 2rem">
-                <com-label>Contato Principal</com-label>
+                <com-label>CEP</com-label>
                 <span [ngClass]="{ skeleton: loading }">
-                  {{ pessoa?.contatoPrincipal }}
+                  {{ pessoa?.endereco.cep }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Rua</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.endereco.rua }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>Cidade</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.endereco.cidade }}
                 </span>
               </div>
               <div class="flex-container col" style="margin-bottom: 2rem">
-                <com-label>Contato Secundário</com-label>
+                <com-label>Estado</com-label>
                 <span [ngClass]="{ skeleton: loading }">
-                  {{ pessoa?.contatoSecundario }}
+                  {{ pessoa?.endereco.estado }}
                 </span>
               </div>
               <div class="flex-container col" style="margin-bottom: 2rem">
-                <com-label>E-mail</com-label>
+                <com-label>Bairro</com-label>
                 <span [ngClass]="{ skeleton: loading }">
-                  {{ pessoa?.email }}
+                  {{ pessoa?.endereco.bairro }}
+                </span>
+              </div>
+
+              <div class="flex-container col" style="margin-bottom: 2rem">
+                <com-label>País</com-label>
+                <span [ngClass]="{ skeleton: loading }">
+                  {{ pessoa?.endereco.pais }}
                 </span>
               </div>
             </div>
