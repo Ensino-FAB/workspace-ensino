@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  CURSOS_HREF: 'http://localhost:4200/esistens-cursos/',
+  ORGANIZACIONAL_HREF: 'http://localhost:4200/esistens-organizacional/',
   CURSO_API: 'http://localhost:8080/esistens-cursos-api',
   KEYCLOAK_URL: 'http://localhost:8084/auth',
   KEYCLOAK_REALM: 'FAB',
