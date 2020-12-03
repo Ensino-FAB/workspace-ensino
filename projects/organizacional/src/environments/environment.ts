@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
+  CURSOS_HREF: 'http://localhost:4200/esistens-cursos/',
+  ORGANIZACAO_HREF: 'http://localhost:4200/esistens-organizacional/',
   ORGANIZACIONAL_API: 'http://localhost:8080/esistens-organizacional-api',
   KEYCLOAK_URL: 'http://localhost:8084/auth',
   KEYCLOAK_REALM: 'FAB',
