@@ -219,7 +219,7 @@ export class CadastroComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   resetForm(): void {
     this.toast.show({
-      message: 'Todos os campos foram limpados.',
+      message: 'Todos os campos foram limpos.',
       type: 'success',
     });
     this.pessoaForm.reset();
