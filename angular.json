@@ -199,7 +199,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/organizacional",
+            "outputPath": "dist",
             "index": "projects/organizacional/src/index.html",
             "main": "projects/organizacional/src/main.ts",
             "polyfills": "projects/organizacional/src/polyfills.ts",
@@ -219,6 +219,34 @@
                 {
                   "replace": "projects/organizacional/src/environments/environment.ts",
                   "with": "projects/organizacional/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "homolog": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/organizacional/src/environments/environment.ts",
+                  "with": "projects/organizacional/src/environments/environment.homolog.ts"
                 }
               ],
               "optimization": true,
