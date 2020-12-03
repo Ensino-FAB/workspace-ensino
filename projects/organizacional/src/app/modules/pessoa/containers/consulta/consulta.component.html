@@ -138,7 +138,13 @@
             </div>
             <div>
               <a routerLink="/pessoa/editar/{{ content.data.id }}">
-                <com-button secondary transparent>
+                <com-button
+                  secondary
+                  transparent
+                  [disabled]="
+                    content.data.editavel == 'NAO_EDITAVEL' ? true : false
+                  "
+                >
                   <com-icon outlined slot="icon">edit</com-icon>
                 </com-button>
               </a>
@@ -148,6 +154,9 @@
                 <com-button
                   warning
                   transparent
+                  [disabled]="
+                    content.data.editavel == 'NAO_EDITAVEL' ? true : false
+                  "
                   (click)="onDelete(content.data.id)"
                 >
                   <com-icon outlined slot="icon">delete</com-icon>
