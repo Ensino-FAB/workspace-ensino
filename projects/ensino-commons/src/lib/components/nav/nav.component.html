@@ -15,30 +15,24 @@
   >
     <com-card>
       <nav>
-        <ul class="flex-container row wrap nav-modules-wrapper">
-          <li>
-            <a
-              class="flex-container col middle"
-              routerLink="/"
-              (click)="toggleModulesPanel()"
-            >
-              <img class="nav-module-icon" src="assets/images/siga-logo.png" />
-              <span>cursos</span>
-            </a>
-          </li>
-        </ul>
-        <ul class="flex-container row wrap nav-modules-wrapper">
-          <li>
-            <a
-              class="flex-container col middle"
-              (click)="toggleModulesPanel()"
-              routerLink="/"
-            >
-              <img class="nav-module-icon" src="assets/images/siga-logo.png" />
-              <span>Organizacional</span>
-            </a>
-          </li>
-        </ul>
+        <ng-container *ngFor="let item of configNav; index as i">
+          <ul class="flex-container row wrap nav-modules-wrapper">
+            <li>
+              <a
+                target="_blank"
+                class="flex-container col middle"
+                [href]="item.href"
+                (click)="toggleModulesPanel()"
+              >
+                <img
+                  class="nav-module-icon"
+                  src="assets/images/siga-logo.png"
+                />
+                <span>{{ item.title }}</span>
+              </a>
+            </li>
+          </ul>
+        </ng-container>
       </nav>
     </com-card>
   </div>

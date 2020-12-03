@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   trigger,
   keyframes,
@@ -6,6 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { NavToggleMenu } from '../../models/nav-toggle-menu.model';
 
 @Component({
   selector: 'ensino-nav',
@@ -30,6 +31,7 @@ import {
 })
 export class NavComponent implements OnInit {
   isModulesPanelOpen = false;
+  @Input() configNav: NavToggleMenu[];
 
   constructor() {}
 
