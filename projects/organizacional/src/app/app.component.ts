@@ -69,7 +69,7 @@ export class AppComponent implements OnDestroy {
       title: 'Cursos',
     },
     {
-      href: '',
+      href: '#',
       title: 'Organizacional',
     },
   ];
