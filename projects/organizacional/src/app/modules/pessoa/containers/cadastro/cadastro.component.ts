@@ -100,7 +100,7 @@ export class CadastroComponent implements OnInit, OnDestroy, AfterViewChecked {
     },
     {
       value: 'viuvo',
-      name: 'VIUVO(A)',
+      name: 'VIÚVO(A)',
     },
   ];
   racaOption: SelectOption[] = [
