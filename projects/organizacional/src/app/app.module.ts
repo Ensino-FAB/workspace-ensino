@@ -19,6 +19,7 @@ import {
 } from 'projects/ensino-commons/src/public-api';
 import { environment } from '../environments/environment';
 import { HttpErrorInterceptor } from './http-error.interceptor';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
@@ -51,6 +52,10 @@ function initializeKeycloak(keycloak: KeycloakService): any {
     AccordionModule,
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
     ToastService,
     {
       provide: APP_INITIALIZER,

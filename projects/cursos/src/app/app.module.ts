@@ -15,6 +15,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { ToastModule } from 'projects/ensino-commons/src/lib/components/toast/toast.module';
 import { ToastService } from 'projects/ensino-commons/src/lib/services/toast.service';
 import { environment } from '../environments/environment';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
@@ -46,6 +47,10 @@ function initializeKeycloak(keycloak: KeycloakService): any {
     ToastModule,
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
     ToastService,
     {
       provide: APP_INITIALIZER,
