@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   CURSOS_HREF: 'https://api.servicos.homolog.ccarj.intraer/esistens-cursos/',
-  CURSOS_ORGANIZACIONAL_HREF:
+  CURSOS_CONCLUSAO_HREF:
     'https://api.servicos.homolog.ccarj.intraer/esistens-cursos-conclusao/',
   ORGANIZACIONAL_API:
     'https://api.servicos.homolog.ccarj.intraer/esistens-organizacional-api',
