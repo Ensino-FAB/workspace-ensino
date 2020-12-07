@@ -65,14 +65,17 @@ export class AppComponent implements OnDestroy {
   configNav: NavToggleMenu[] = [
     {
       href: `${environment.CURSOS_HREF}`,
+      srcImage: 'assets/images/siga-logo.png',
       title: 'Cursos',
     },
     {
       href: `${environment.ORGANIZACAO_HREF}`,
+      srcImage: 'assets/images/organizacional-logo.png',
       title: 'Organizacional',
     },
     {
       href: '#',
+      srcImage: 'assets/images/siga-logo.png',
       title: 'Cursos Conclusão',
     },
   ];
