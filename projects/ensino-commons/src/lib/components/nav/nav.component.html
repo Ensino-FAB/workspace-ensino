@@ -24,10 +24,10 @@
                 [href]="item.href"
                 (click)="toggleModulesPanel()"
               >
-                <img
-                  class="nav-module-icon"
-                  src="assets/images/siga-logo.png"
-                />
+                <ng-container *ngIf="item.srcImage !== ''">
+                  <img class="nav-module-icon" [src]="item.srcImage" />
+                </ng-container>
+
                 <span>{{ item.title }}</span>
               </a>
             </li>
