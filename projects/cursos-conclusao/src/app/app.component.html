@@ -1,0 +1,61 @@
+<header class="main-header">
+  <div class="flex-container row middle">
+    <a routerLink="/" class="flex-container row middle">
+      <img
+        class="main-header-logo"
+        src="assets/images/gladio-alado-3d.jpg"
+        alt="gladio alado"
+      />
+      <span class="main-header-title">e-SISTENS</span>
+    </a>
+    <div class="flex-container row middle">
+      <a class="main-header-subtitle"> Cursos Conclusão </a>
+      <img class="main-header-jet" src="assets/images/icon-jet.png" />
+    </div>
+  </div>
+  <div class="flex-container row middle">
+    <div class="flex-container row middle session-timer">
+      <com-icon>schedule</com-icon>
+      <p>
+        <span class="session-label">Sessão expira em</span>
+        {{ tokenDuration?.humanize() }}
+      </p>
+    </div>
+    <com-button disabled="true" class="notification-btn">
+      <com-icon outlined slot="icon">notification_important</com-icon>
+      <ng-container slot="text">notificações</ng-container>
+    </com-button>
+    <span class="user-identity">{{ handleUserName() }}</span>
+    <com-button secondary disabled="true" class="user-profile-btn">
+      <com-icon outlined slot="icon">person</com-icon>
+    </com-button>
+    <com-button
+      transparent
+      secondary
+      class="logout-btn"
+      (click)="handleLogout()"
+    >
+      <com-icon outlined slot="icon">exit_to_app</com-icon>
+    </com-button>
+  </div>
+</header>
+<div class="main-content">
+  <ensino-nav [configNav]="configNav">
+    <ensino-nav-item [routerLink]="'organizacao'"> Conclusão </ensino-nav-item>
+  </ensino-nav>
+  <ensino-sub-nav root="/organizacional"></ensino-sub-nav>
+  <router-outlet></router-outlet>
+</div>
+<footer class="main-footer">
+  <span class="main-footer-text">CCA-RJ</span>
+  <a
+    href="http://10.52.199.11/w/index.php/P%C3%A1gina_principal"
+    target="_blank"
+    rel="noopener"
+  >
+    <com-button negative class="user-profile">
+      <com-icon outlined slot="icon">help_outline</com-icon>
+      <ng-container slot="text">ajuda</ng-container>
+    </com-button>
+  </a>
+</footer>
