@@ -10,6 +10,13 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+  {
+    path: 'conclusao',
+    loadChildren: () =>
+      import('./modules/conclusao/conclusao.module').then(
+        (m) => m.ConclusaoModule
+      ),
+  },
 ];
 
 @NgModule({
