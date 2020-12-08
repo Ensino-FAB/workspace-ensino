@@ -17,9 +17,11 @@ import {
   TagModule,
   TooltipModule,
 } from '@cca-fab/cca-fab-components-common';
+import { CadastroComponent } from './containers/cadastro/cadastro.component';
+import { DetalheComponent } from './containers/detalhe/detalhe.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CadastroComponent, DetalheComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(CONCLUSAO_ROUTES),
