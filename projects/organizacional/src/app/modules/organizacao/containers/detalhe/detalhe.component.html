@@ -1,0 +1,18 @@
+<section class="flex-container row center main-container" @fadeIn>
+  <div class="flex-container col wrap main-content">
+    <div class="grid-item">
+      <div class="sub-header flex-container between middle">
+        <h1>detalhes da Organização #{{ id ? id : 'id' }}</h1>
+      </div>
+    </div>
+    <div class="grid-item">
+      <app-detalhe-basico-organizacao
+        [loading]="isLoading"
+        [header]="organizacao?.nome"
+        [headerr]="organizacao?.sigla"
+        [organizacao]="organizacao"
+      >
+      </app-detalhe-basico-organizacao>
+    </div>
+  </div>
+</section>

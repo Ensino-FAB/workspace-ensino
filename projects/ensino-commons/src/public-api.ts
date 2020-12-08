@@ -32,3 +32,6 @@ export * from './lib/services/toast.service';
 export * from './lib/models/pageable.model';
 export * from './lib/models/toast-data.model';
 export * from './lib/models/toast-ref.model';
+
+// Animations
+export * from './lib/utils/animation';

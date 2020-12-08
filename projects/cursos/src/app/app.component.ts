@@ -14,6 +14,8 @@ import {
 import { UserService } from '../../../ensino-commons/src/lib/services/user.service';
 import { Subscription } from 'rxjs';
 import moment from 'moment';
+import { environment } from 'projects/cursos/src/environments/environment';
+import { NavToggleMenu } from 'projects/ensino-commons/src/lib/models/nav-toggle-menu.model';
 
 @Component({
   selector: 'app-root',
@@ -61,6 +63,23 @@ export class AppComponent implements OnDestroy {
   subs$: Subscription[] = [];
   module: string;
   animate = false;
+  configNav: NavToggleMenu[] = [
+    {
+      href: ``,
+      srcImage: 'assets/images/siga-logo.png',
+      title: 'Cursos',
+    },
+    {
+      href: `${environment.ORGANIZACIONAL_HREF}`,
+      srcImage: 'assets/images/organizacional-logo.png',
+      title: 'Organizacional',
+    },
+    {
+      href: `${environment.CURSOS_CONCLUSAO_HREF}`,
+      srcImage: 'assets/images/siga-logo.png',
+      title: 'Conclusão',
+    },
+  ];
 
   constructor(
     private router: Router,

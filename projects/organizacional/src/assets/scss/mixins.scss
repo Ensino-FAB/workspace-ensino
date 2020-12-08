@@ -1,0 +1,39 @@
+@mixin skeleton {
+  @keyframes skeleton {
+    0% {
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+      opacity: 0.2;
+    }
+    20% {
+      transform-origin: 0% 50%;
+      transform: scaleX(1);
+      opacity: 0.6;
+    }
+    28% {
+      transform-origin: 100% 50%;
+      transform: scaleX(1);
+    }
+    52% {
+      transform-origin: 100% 50%;
+      transform: scaleX(0);
+    }
+    72% {
+      transform-origin: 100% 50%;
+      transform: scaleX(1);
+    }
+    80% {
+      transform-origin: 0% 50%;
+      transform: scaleX(1);
+    }
+    92% {
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+    }
+    100% {
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+      opacity: 0.2;
+    }
+  }
+}

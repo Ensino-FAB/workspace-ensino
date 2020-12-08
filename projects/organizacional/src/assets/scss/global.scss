@@ -1,0 +1,35 @@
+@import '~@cca-fab/cca-fab-components-common/styles.min.css';
+@import './flex.scss';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import '~@angular/cdk/overlay';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+@include cdk-overlay();
+
+/* You can add global styles to this file, and also import other style files */
+/* Escope only */
+
+.BPMN_CANVAS {
+  & * {
+    user-select: none;
+  }
+}
+
+.BPMN_SELECTED_TASK {
+  &.clickable {
+    cursor: pointer;
+  }
+
+  & > .djs-visual {
+    & rect:first-child {
+      stroke: var(--tertiary) !important;
+    }
+  }
+}

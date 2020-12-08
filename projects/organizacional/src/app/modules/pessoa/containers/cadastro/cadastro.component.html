@@ -1,0 +1,423 @@
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1 *ngIf="!id">cadastro de pessoa</h1>
+      <h1 *ngIf="id">edição de pessoa #{{ id }}</h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="wrapper">
+      <com-form [id]="formId" [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
+        <!-- Step Location -->
+        <com-form-section>
+          <div class="flex-container middle">
+            <span
+              class="fs-step"
+              (click)="stepNumber = 1"
+              [class.stepActive]="stepNumber == 1"
+            >
+              1
+            </span>
+            <div class="mat-stepper-horizontal-line"></div>
+            <span
+              class="fs-step"
+              (click)="stepNumber = 2"
+              [class.stepActive]="stepNumber == 2"
+            >
+              2
+            </span>
+            <div class="mat-stepper-horizontal-line"></div>
+            <span
+              class="fs-step"
+              (click)="stepNumber = 3"
+              [class.stepActive]="stepNumber == 3"
+            >
+              3
+            </span>
+            <div class="mat-stepper-horizontal-line"></div>
+            <span
+              class="fs-step"
+              (click)="stepNumber = 4"
+              [class.stepActive]="stepNumber == 4"
+            >
+              4
+            </span>
+          </div>
+        </com-form-section>
+        <!-- Step 1 form -->
+        <com-form-section
+          formTitle="Dados Pessoais"
+          step="1"
+          *ngIf="stepNumber == 1"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-1-first">
+            <com-input
+              formControlName="nome"
+              label="Nome Completo"
+              helper="Campo Obrigatório"
+              [invalid]="
+                (pessoaForm.get('nome').invalid &&
+                  pessoaForm.get('nome').touched) ||
+                pessoaForm.errors?.nome
+              "
+            ></com-input>
+
+            <com-select
+              formControlName="sexo"
+              class="no-margin-bottom"
+              [options]="sexoOption"
+              [label]="'Sexo'"
+            >
+            </com-select>
+            <com-input
+              type="date"
+              formControlName="dataNascimento"
+              helper="Campo Obrigatório"
+              label="Data de Nascimento"
+              [invalid]="
+                (pessoaForm.get('dataNascimento').invalid &&
+                  pessoaForm.get('dataNascimento').touched) ||
+                pessoaForm.errors?.dataNascimento
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container row-step-second">
+            <com-input
+              formControlName="peso"
+              helper="kg"
+              label="Peso"
+              [invalid]="
+                (pessoaForm.get('peso').invalid &&
+                  pessoaForm.get('peso').touched) ||
+                pessoaForm.errors?.peso
+              "
+            ></com-input>
+            <com-input
+              helper="cm"
+              formControlName="altura"
+              label="Altura"
+              [invalid]="
+                (pessoaForm.get('altura').invalid &&
+                  pessoaForm.get('altura').touched) ||
+                pessoaForm.errors?.altura
+              "
+            ></com-input>
+            <com-select
+              formControlName="raca"
+              class="no-margin-bottom"
+              [options]="racaOption"
+              [label]="'Raça'"
+            >
+            </com-select>
+            <com-select
+              formControlName="estadoCivil"
+              class="no-margin-bottom"
+              [options]="estadoCivilOption"
+              [label]="'Estado Civil'"
+            >
+            </com-select>
+          </div>
+          <div class="flex-container row-step-1-third">
+            <com-input
+              helper="Somente Números"
+              formControlName="nrCpf"
+              maxlength="11"
+              label="CPF"
+              [invalid]="
+                (pessoaForm.get('nrCpf').invalid &&
+                  pessoaForm.get('nrCpf').touched) ||
+                pessoaForm.errors?.nrCpf
+              "
+            ></com-input>
+            <com-input
+              formControlName="identidadeCivil"
+              label="Identidade Civil"
+              [invalid]="
+                (pessoaForm.get('identidadeCivil').invalid &&
+                  pessoaForm.get('identidadeCivil').touched) ||
+                pessoaForm.errors?.identidadeCivil
+              "
+            ></com-input>
+            <com-input
+              formControlName="passaporte"
+              label="Passaporte"
+              [invalid]="
+                (pessoaForm.get('passaporte').invalid &&
+                  pessoaForm.get('passaporte').touched) ||
+                pessoaForm.errors?.passaporte
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container end">
+            <com-button fill (click)="stepHandler(+1, true)">
+              <com-icon slot="icon">arrow_right_alt</com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <!-- Step 2 form -->
+        <com-form-section
+          formTitle="Dados Militares"
+          step="2"
+          *ngIf="stepNumber == 2"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-first">
+            <com-input
+              formControlName="nomeQuadro"
+              label="Nome do Quadro"
+              [invalid]="
+                (pessoaForm.get('nomeQuadro').invalid &&
+                  pessoaForm.get('nomeQuadro').touched) ||
+                pessoaForm.errors?.nomeQuadro
+              "
+            ></com-input>
+            <com-input
+              formControlName="siglaQuadro"
+              label="Sigla do Quadro"
+              [invalid]="
+                (pessoaForm.get('siglaQuadro').invalid &&
+                  pessoaForm.get('siglaQuadro').touched) ||
+                pessoaForm.errors?.siglaQuadro
+              "
+            ></com-input>
+            <com-input
+              formControlName="nomePosto"
+              label="Nome do Posto"
+              [invalid]="
+                (pessoaForm.get('nomePosto').invalid &&
+                  pessoaForm.get('nomePosto').touched) ||
+                pessoaForm.errors?.nomePosto
+              "
+            ></com-input>
+            <com-input
+              formControlName="siglaPosto"
+              label="Sigla do Posto"
+              [invalid]="
+                (pessoaForm.get('siglaPosto').invalid &&
+                  pessoaForm.get('siglaPosto').touched) ||
+                pessoaForm.errors?.siglaPosto
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container row-step-second">
+            <com-input
+              formControlName="nomeEspecialidade"
+              label="Nome da Especialidade"
+              [invalid]="
+                (pessoaForm.get('nomeEspecialidade').invalid &&
+                  pessoaForm.get('nomeEspecialidade').touched) ||
+                pessoaForm.errors?.nomeEspecialidade
+              "
+            ></com-input>
+            <com-input
+              formControlName="siglaEspecialidade"
+              label="Sigla da Especialidade"
+              [invalid]="
+                (pessoaForm.get('siglaEspecialidade').invalid &&
+                  pessoaForm.get('siglaEspecialidade').touched) ||
+                pessoaForm.errors?.siglaEspecialidade
+              "
+            ></com-input>
+            <com-input
+              formControlName="nomeGuerra"
+              label="Nome de Guerra"
+              [invalid]="
+                (pessoaForm.get('nomeGuerra').invalid &&
+                  pessoaForm.get('nomeGuerra').touched) ||
+                pessoaForm.errors?.nomeGuerra
+              "
+            ></com-input>
+            <com-input
+              formControlName="nrOrdem"
+              label="Número de Ordem"
+              [invalid]="
+                (pessoaForm.get('nrOrdem').invalid &&
+                  pessoaForm.get('nrOrdem').touched) ||
+                pessoaForm.errors?.nrOrdem
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container row-step-2-third">
+            <com-input
+              type="date"
+              formControlName="dataPraca"
+              label="Data de Praça"
+              [invalid]="
+                (pessoaForm.get('dataPraca').invalid &&
+                  pessoaForm.get('dataPraca').touched) ||
+                pessoaForm.errors?.dataPraca
+              "
+            ></com-input>
+            <com-input
+              type="date"
+              formControlName="dataPromocaoAtual"
+              label="Data da Última Promoção"
+              [invalid]="
+                (pessoaForm.get('dataPromocaoAtual').invalid &&
+                  pessoaForm.get('dataPromocaoAtual').touched) ||
+                pessoaForm.errors?.dataPromocaoAtual
+              "
+            ></com-input>
+            <com-input
+              formControlName="identidadeMilitar"
+              label="Identidade Militar"
+              [invalid]="
+                (pessoaForm.get('identidadeMilitar').invalid &&
+                  pessoaForm.get('identidadeMilitar').touched) ||
+                pessoaForm.errors?.identidadeMilitar
+              "
+            ></com-input>
+            <com-select
+              formControlName="organizacaoId"
+              class="no-margin-bottom"
+              [options]="organizacaoOption"
+              [label]="'Organização'"
+            >
+            </com-select>
+          </div>
+          <div class="flex-container between">
+            <com-button fill (click)="stepHandler(-1, false)">
+              <com-icon slot="icon">keyboard_backspace </com-icon>
+            </com-button>
+            <com-button fill (click)="stepHandler(+1, 'true')">
+              <com-icon slot="icon">arrow_right_alt</com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <!-- Step 3 form -->
+        <com-form-section
+          formTitle="Contato"
+          step="3"
+          *ngIf="stepNumber == 3"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div class="flex-container row-step-3-first">
+            <com-input
+              formControlName="contatoPrincipal"
+              helper="Campo Obrigatório"
+              label="Contato Principal"
+              [invalid]="
+                (pessoaForm.get('contatoPrincipal').invalid &&
+                  pessoaForm.get('contatoPrincipal').touched) ||
+                pessoaForm.errors?.contatoPrincipal
+              "
+            ></com-input>
+            <com-input
+              formControlName="contatoSecundario"
+              label="Contato Secundário"
+              [invalid]="
+                (pessoaForm.get('contatoSecundario').invalid &&
+                  pessoaForm.get('contatoSecundario').touched) ||
+                pessoaForm.errors?.contatoSecundario
+              "
+            ></com-input>
+            <com-input
+              formControlName="email"
+              helper="Campo Obrigatório - exemplo@exemplo.com"
+              label="Email"
+              [invalid]="
+                (pessoaForm.get('email').invalid &&
+                  pessoaForm.get('email').touched) ||
+                pessoaForm.errors?.email
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container between">
+            <com-button fill (click)="stepHandler(-1, false)">
+              <com-icon slot="icon">keyboard_backspace </com-icon>
+            </com-button>
+            <com-button fill (click)="stepHandler(+1, 'true')">
+              <com-icon slot="icon">arrow_right_alt</com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <!-- Step 4 form -->
+        <com-form-section
+          formTitle="Endereço"
+          step="4"
+          *ngIf="stepNumber == 4"
+          [@stepAnimation]="stepTransition ? 'right' : 'left'"
+        >
+          <div formGroupName="endereco" class="flex-container row-step-4-first">
+            <com-input
+              formControlName="bairro"
+              label="Bairro"
+              [invalid]="
+                (pessoaForm.get('endereco.bairro').invalid &&
+                  pessoaForm.get('endereco.bairro').touched) ||
+                pessoaForm.errors?.endereco.bairro
+              "
+            ></com-input>
+            <com-input
+              formControlName="cidade"
+              label="Cidade"
+              [invalid]="
+                (pessoaForm.get('endereco.cidade').invalid &&
+                  pessoaForm.get('endereco.cidade').touched) ||
+                pessoaForm.errors?.endereco.cidade
+              "
+            ></com-input>
+            <com-input
+              formControlName="cep"
+              label="CEP"
+              helper="Somente Número ou Letras"
+              [maxlength]="10"
+              [invalid]="
+                (pessoaForm.get('endereco.cep').invalid &&
+                  pessoaForm.get('endereco.cep').touched) ||
+                pessoaForm.errors?.endereco.cep
+              "
+            ></com-input>
+            <com-input
+              formControlName="estado"
+              label="Estado"
+              [invalid]="
+                (pessoaForm.get('endereco.estado').invalid &&
+                  pessoaForm.get('endereco.estado').touched) ||
+                pessoaForm.errors?.endereco.estado
+              "
+            ></com-input>
+            <com-input
+              formControlName="pais"
+              label="Pais"
+              [invalid]="
+                (pessoaForm.get('endereco.pais').invalid &&
+                  pessoaForm.get('..endereco.pais').touched) ||
+                pessoaForm.errors?.endereco.pais
+              "
+            ></com-input>
+          </div>
+          <div class="flex-container start">
+            <com-button fill (click)="stepHandler(-1, false)">
+              <com-icon slot="icon">keyboard_backspace </com-icon>
+            </com-button>
+          </div>
+        </com-form-section>
+        <!-- Buttons -->
+        <com-form-section block>
+          <com-fieldset>
+            <div class="flex-container center middle rowButton">
+              <com-button routerLink="/pessoa/" fill type="button">
+                <ng-container slot="text">voltar</ng-container>
+              </com-button>
+              <com-button (click)="resetForm()" fill flat type="button">
+                <ng-container slot="text">limpar todos os campos</ng-container>
+              </com-button>
+              <com-button
+                fill
+                confirm
+                type="submit"
+                [form]="formId"
+                [disabled]="pessoaForm.invalid"
+              >
+                <ng-container slot="text">confirmar e salvar</ng-container>
+              </com-button>
+            </div>
+          </com-fieldset>
+        </com-form-section>
+      </com-form>
+    </div>
+  </div>
+</section>

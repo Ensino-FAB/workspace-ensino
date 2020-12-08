@@ -8,19 +8,31 @@
   >
   <div
     [@toggleModulesPanel]
+    ensinoClickOutside
+    (clickOutside)="toggleModulesPanel()"
     class="nav-modules-container"
     *ngIf="isModulesPanelOpen"
   >
     <com-card>
       <nav>
-        <ul class="flex-container row wrap nav-modules-wrapper">
-          <li>
-            <a class="flex-container col middle" routerLink="">
-              <img class="nav-module-icon" src="assets/images/siga-logo.png" />
-              <span>cursos</span>
-            </a>
-          </li>
-        </ul>
+        <ng-container *ngFor="let item of configNav; index as i">
+          <ul class="flex-container row wrap nav-modules-wrapper">
+            <li>
+              <a
+                target="_blank"
+                class="flex-container col middle"
+                [href]="item.href"
+                (click)="toggleModulesPanel()"
+              >
+                <ng-container *ngIf="item.srcImage !== ''">
+                  <img class="nav-module-icon" [src]="item.srcImage" />
+                </ng-container>
+
+                <span>{{ item.title }}</span>
+              </a>
+            </li>
+          </ul>
+        </ng-container>
       </nav>
     </com-card>
   </div>
