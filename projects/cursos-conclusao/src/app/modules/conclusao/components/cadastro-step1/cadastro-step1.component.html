@@ -1,0 +1,26 @@
+<com-form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <com-form-section partly formTitle="Cadastro" step="1">
+    <com-input
+      formControlName="nome"
+      label="Nome"
+      [invalid]="
+        (form.get('nome').invalid && form.get('nome').touched) ||
+        form.errors?.nome
+      "
+    ></com-input>
+  </com-form-section>
+  <com-form-section block>
+    <com-fieldset>
+      <div class="flex-container row end middle">
+        <com-button fill routerLink="/organizacao/" style="margin-right: 1em">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+        <com-button fill confirm type="submit" [disabled]="form.invalid">
+          <ng-container slot="text"
+            >confirmar e criar organizacao
+          </ng-container>
+        </com-button>
+      </div>
+    </com-fieldset>
+  </com-form-section>
+</com-form>

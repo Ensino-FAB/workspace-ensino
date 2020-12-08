@@ -1,1 +1,29 @@
-<p>cadastro works!</p>
+<header>
+  <div class="flex-container between">
+    <h1>cadastro de fin</h1>
+    <div class="flex-container middle">
+      <com-button *ngIf="currentStep < 4" (click)="cleanForm()" primary outline>
+        <span slot="text">limpar formulário</span>
+      </com-button>
+
+      <com-button *ngIf="currentStep === 4" (click)="newFin()" primary outline>
+        <com-icon slot="icon">add</com-icon>
+        <span slot="text">cadastrar nova</span>
+      </com-button>
+    </div>
+  </div>
+</header>
+<section class="container">
+  <app-stepper
+    [step]="currentStep"
+    [map]="statusMap"
+    (changed)="onStepperClick($event)"
+  ></app-stepper>
+
+  <div class="wrapper">
+    <app-cadastro-step1
+      *ngIf="currentStep === 1"
+      (next)="nextStep()"
+    ></app-cadastro-step1>
+  </div>
+</section>

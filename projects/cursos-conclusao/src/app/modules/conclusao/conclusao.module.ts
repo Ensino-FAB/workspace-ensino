@@ -19,9 +19,18 @@ import {
 } from '@cca-fab/cca-fab-components-common';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { CadastroStep1Component } from './components/cadastro-step1/cadastro-step1.component';
+import { CadastroStep2Component } from './components/cadastro-step2/cadastro-step2.component';
 
 @NgModule({
-  declarations: [CadastroComponent, DetalheComponent],
+  declarations: [
+    CadastroComponent,
+    DetalheComponent,
+    StepperComponent,
+    CadastroStep1Component,
+    CadastroStep2Component,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(CONCLUSAO_ROUTES),
