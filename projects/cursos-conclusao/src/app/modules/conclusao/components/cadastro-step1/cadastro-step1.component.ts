@@ -12,6 +12,8 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class CadastroStep1Component implements OnInit {
   form: FormGroup;
 
+  capacitacaoOptions = [{ label: 'teste', value: '3' }];
+
   constructor(
     private formBuilder: FormBuilder,
     private toast: ToastService,
@@ -22,6 +24,10 @@ export class CadastroStep1Component implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nome: ['', Validators.required],
+      dataInicio: ['', Validators.required],
+      dataTermino: ['', Validators.required],
+      local: ['', Validators.required],
+      capacitacaoId: ['', Validators.required],
     });
   }
 

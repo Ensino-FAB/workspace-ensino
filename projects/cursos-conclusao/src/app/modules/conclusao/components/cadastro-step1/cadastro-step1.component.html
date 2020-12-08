@@ -1,11 +1,41 @@
 <com-form [formGroup]="form" (ngSubmit)="onSubmit()">
   <com-form-section partly formTitle="Cadastro" step="1">
+    <com-select
+      [options]="capacitacaoOptions"
+      [invalid]="
+        form.get('capacitacaoId').invalid && form.get('capacitacaoId').touched
+      "
+      formControlName="capacitacaoId"
+      label="Capacitação*"
+    >
+    </com-select>
+    <com-input
+      class="input"
+      type="date"
+      [invalid]="
+        (form.get('dataInicio').invalid && form.get('dataInicio').touched) ||
+        form.errors?.dataInicio
+      "
+      label="Início*"
+      formControlName="dataInicio"
+    ></com-input>
+    <com-input
+      class="input"
+      type="date"
+      [min]="dateStart"
+      [invalid]="
+        (form.get('dataTermino').invalid && form.get('dataTermino').touched) ||
+        form.errors?.dataTermino
+      "
+      label="Início*"
+      formControlName="dataTermino"
+    ></com-input>
     <com-input
       formControlName="nome"
-      label="Nome"
+      label="Local"
       [invalid]="
-        (form.get('nome').invalid && form.get('nome').touched) ||
-        form.errors?.nome
+        (form.get('local').invalid && form.get('local').touched) ||
+        form.errors?.local
       "
     ></com-input>
   </com-form-section>
