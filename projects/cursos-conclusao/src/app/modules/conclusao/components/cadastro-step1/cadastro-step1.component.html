@@ -22,7 +22,6 @@
     <com-input
       class="input"
       type="date"
-      [min]="dateStart"
       [invalid]="
         (form.get('dataTermino').invalid && form.get('dataTermino').touched) ||
         form.errors?.dataTermino
@@ -40,17 +39,10 @@
     ></com-input>
   </com-form-section>
   <com-form-section block>
-    <com-fieldset>
-      <div class="flex-container row end middle">
-        <com-button fill routerLink="/organizacao/" style="margin-right: 1em">
-          <ng-container slot="text">voltar</ng-container>
-        </com-button>
-        <com-button fill confirm type="submit" [disabled]="form.invalid">
-          <ng-container slot="text"
-            >confirmar e criar organizacao
-          </ng-container>
-        </com-button>
-      </div>
-    </com-fieldset>
+    <footer class="flex-container end">
+      <com-button primary fill (click)="onNext()" [disabled]="form.invalid">
+        <span slot="text">próximo</span>
+      </com-button>
+    </footer>
   </com-form-section>
 </com-form>

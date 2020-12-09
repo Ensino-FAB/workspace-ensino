@@ -5,7 +5,6 @@ type StepperStatus = 'active' | 'disabled' | 'checked' | 'invalid';
 interface StepperStyleMap {
   first: StepperStatus;
   second: StepperStatus;
-  third: StepperStatus;
 }
 
 @Component({
@@ -17,7 +16,6 @@ export class StepperComponent implements OnInit {
   @Input() map: StepperStyleMap = {
     first: 'active',
     second: 'disabled',
-    third: 'disabled',
   };
 
   @Input() step = 1;
@@ -29,10 +27,6 @@ export class StepperComponent implements OnInit {
   ngOnInit(): void {}
 
   onChange(value: number) {
-    // if (this.map[value] === 'disabled') {
-    //   return;
-    // }
-
     this.changed.emit(value);
   }
 }

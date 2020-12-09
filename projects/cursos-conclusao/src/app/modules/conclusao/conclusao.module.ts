@@ -22,6 +22,7 @@ import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { CadastroStep1Component } from './components/cadastro-step1/cadastro-step1.component';
 import { CadastroStep2Component } from './components/cadastro-step2/cadastro-step2.component';
+import { CadastroStep3Component } from './components/cadastro-step3/cadastro-step3.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CadastroStep2Component } from './components/cadastro-step2/cadastro-ste
     StepperComponent,
     CadastroStep1Component,
     CadastroStep2Component,
+    CadastroStep3Component,
   ],
   imports: [
     CommonModule,
