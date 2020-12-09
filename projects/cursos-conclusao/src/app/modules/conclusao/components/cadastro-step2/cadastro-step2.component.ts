@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
@@ -10,7 +17,7 @@ import { ConclusaoFacade } from '../../conclusao.facade';
   templateUrl: './cadastro-step2.component.html',
   styleUrls: ['./cadastro-step2.component.scss'],
 })
-export class CadastroStep2Component implements OnInit {
+export class CadastroStep2Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
   capacitacaoOptions = [{ option: 'teste', value: '3' }];
