@@ -1,5 +1,17 @@
 <com-form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <com-form-section partly formTitle="Cadastro" step="2"> </com-form-section>
+  <com-form-section partly formTitle="Cadastro" step="2">
+    <com-label
+      comTooltip="Aloca a FIN no planejamento estratégico selecionado, ou seja, alinha a necessidade as missões e visões da força"
+      comTooltipSize="1.4"
+      >Árvore Estratégica*</com-label
+    >
+    <app-autocomplete-pessoas
+      label="Filtrar por código"
+    ></app-autocomplete-pessoas>
+    <button class="add-plan flex-container middle center">
+      <com-icon>add</com-icon> Adicionar
+    </button>
+  </com-form-section>
   <com-form-section block>
     <footer class="flex-container end">
       <com-button (click)="back.emit()">

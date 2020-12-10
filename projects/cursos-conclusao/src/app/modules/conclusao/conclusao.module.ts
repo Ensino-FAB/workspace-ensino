@@ -23,15 +23,19 @@ import { StepperComponent } from './components/stepper/stepper.component';
 import { CadastroStep1Component } from './components/cadastro-step1/cadastro-step1.component';
 import { CadastroStep2Component } from './components/cadastro-step2/cadastro-step2.component';
 import { CadastroStep3Component } from './components/cadastro-step3/cadastro-step3.component';
+import { AutocompletePessoasComponent } from './components/autocomplete-pessoas/autocomplete-pessoas.component';
+import { ConsultaComponent } from './containers/consulta/consulta.component';
 
 @NgModule({
   declarations: [
     CadastroComponent,
     DetalheComponent,
+    ConsultaComponent,
     StepperComponent,
     CadastroStep1Component,
     CadastroStep2Component,
     CadastroStep3Component,
+    AutocompletePessoasComponent,
   ],
   imports: [
     CommonModule,

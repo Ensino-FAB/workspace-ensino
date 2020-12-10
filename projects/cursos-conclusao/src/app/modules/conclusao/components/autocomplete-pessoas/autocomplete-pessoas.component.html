@@ -1,0 +1,65 @@
+<com-input
+  class="no-margin"
+  [invalid]="invalid"
+  [value]="inputValue"
+  [label]="label"
+  (focused)="open()"
+  (blurred)="close()"
+  (ref)="this.inputElement = $event"
+  (immediate)="onChange($event)"
+  immediate
+></com-input>
+
+<div
+  (focusout)="close()"
+  [@inOutAnimation]
+  *ngIf="isOpen && options.length"
+  class="card"
+>
+  <ul>
+    <li
+      [ngClass]="{ focus: index === selectedIndex }"
+      *ngFor="let option of options; let index = index"
+      (mousedown)="$event.preventDefault()"
+      (click)="selectedItem(index)"
+    >
+      <div>
+        <com-icon outlined slot="icon">person</com-icon>
+      </div>
+
+      <div>
+        <div class="flex-container row wrap">
+          <p *ngFor="let str of option.path" class="parents">
+            <span>{{ str }}</span>
+            <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+          </p>
+        </div>
+        <h4>{{ option.title }}</h4>
+        <com-tag primary>{{ option.code }}</com-tag>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="item-tree-wrapper">
+  <div class="flex-container selected-item-tree" *ngIf="selectedItemArvore">
+    <div>
+      <com-icon outlined slot="icon">person</com-icon>
+    </div>
+    <div class="flex-container middle center">
+      <div class="flex-container row wrap">
+        <p *ngFor="let str of selectedItemArvore.path" class="parents">
+          <span>{{ str }}</span>
+          <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+        </p>
+      </div>
+      <h4>{{ selectedItemArvore.title }}</h4>
+      <com-tag primary>{{ selectedItemArvore.code }}</com-tag>
+    </div>
+  </div>
+
+  <div class="item-tree flex-container" *ngIf="!selectedItemArvore">
+    <div></div>
+    <div class="flex-container middle center">Nenhum item selecionado</div>
+  </div>
+</div>

@@ -79,3 +79,14 @@ footer {
     }
   }
 }
+.add-plan {
+  border: 2px dashed var(--light-grey);
+  width: 100%;
+  max-width: 1000px;
+  height: 15rem;
+  margin: auto;
+
+  color: var(--grey);
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
