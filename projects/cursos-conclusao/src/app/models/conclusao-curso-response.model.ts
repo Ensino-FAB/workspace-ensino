@@ -1,6 +1,6 @@
 import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
 
-export interface ConclusaoCursoRequest extends BaseModel {
+export interface ConclusaoCursoResponse extends BaseModel {
   dtfim?: any;
   dtInicio?: any;
   local?: string;
