@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
@@ -24,23 +24,31 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
 
   @Output() next = new EventEmitter();
   @Output() back = new EventEmitter();
-  @Input() form: FormGroup;
+  @Input() form: FormArray;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private toast: ToastService,
     private router: Router,
     private facade: ConclusaoFacade
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      nome: [''],
-      dataInicio: [''],
-      dataTermino: [''],
-      local: [''],
-      capacitacaoId: [''],
+    this.form = this.fb.array([]);
+    this.addFormItem();
+  }
+
+  addFormItem(): void {
+    console.log('test');
+    const formGroup = this.fb.group({
+      pessoaId: ['', Validators.required],
     });
+    this.form.push(formGroup);
+  }
+  removeFormItem(index: number) {
+    if (index > 0) {
+      this.form.removeAt(index);
+    }
   }
 
   onSubmit(): void {}

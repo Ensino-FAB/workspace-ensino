@@ -46,7 +46,7 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
     {
       id: 3,
       type: 'string', // tipo
-      path: [], // vazio
+      path: ['042.745.547-24'], // vazio
       title: 'FERNANDO DE OLIVEIRA TOMASIO',
       code: 'BANT',
     },
