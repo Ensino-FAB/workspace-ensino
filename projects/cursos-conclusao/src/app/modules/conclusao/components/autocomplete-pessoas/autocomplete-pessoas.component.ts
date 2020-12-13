@@ -4,11 +4,12 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  forwardRef,
   HostListener,
   Input,
-  OnInit,
   Output,
 } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface SelectOption {
   id: number;
@@ -40,8 +41,16 @@ export interface SelectOption {
       ]),
     ]),
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AutocompletePessoasComponent),
+      multi: true,
+    },
+  ],
 })
-export class AutocompletePessoasComponent implements AfterViewChecked {
+export class AutocompletePessoasComponent
+  implements AfterViewChecked, ControlValueAccessor {
   @Input() options: Array<SelectOption> = [
     {
       id: 3,
@@ -49,6 +58,48 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
       path: ['042.745.547-24'], // vazio
       title: 'FERNANDO DE OLIVEIRA TOMASIO',
       code: 'BANT',
+    },
+    {
+      id: 1,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'RICARDO GAMA',
+      code: 'PAME-RJ',
+    },
+    {
+      id: 2,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'EDUARDA SOARES',
+      code: 'CCAR-JR',
+    },
+    {
+      id: 2,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'EDUARDA SOARES',
+      code: 'CCAR-JR',
+    },
+    {
+      id: 2,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'EDUARDA SOARES',
+      code: 'CCAR-JR',
+    },
+    {
+      id: 2,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'EDUARDA SOARES',
+      code: 'CCAR-JR',
+    },
+    {
+      id: 2,
+      type: 'string', // tipo
+      path: ['042.745.547-24'], // vazio
+      title: 'EDUARDA SOARES',
+      code: 'CCAR-JR',
     },
   ];
   @Input() invalid: boolean;
@@ -63,7 +114,7 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
 
   @Input() selectedItemArvore: SelectOption;
 
-  inputValue = '';
+  value = '';
 
   inputElement: HTMLInputElement;
   optionsParentElement: HTMLUListElement;
@@ -77,6 +128,30 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
     } else {
       this.optionsParentElement = null;
     }
+  }
+
+  onTouched: () => void;
+  disabled: boolean;
+
+  onChange(value: string): void {
+    this.value = value;
+    this.changed.emit(value);
+  }
+
+  writeValue(value: string): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   open() {
@@ -169,19 +244,15 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
     }
   }
 
-  onChange(value: string) {
-    this.inputValue = value;
-    this.changed.emit(value);
-  }
-
   selectedItem(index: number) {
     this.selectedIndex = index;
     this.confirmed.emit(this.options[this.selectedIndex]);
     this.inputElement.blur();
 
     this.selectedItemArvore = this.options[index];
+    this.onChange(`${this.selectedItemArvore.id}`);
 
-    this.inputValue = '';
+    this.value = '';
     this.inputElement.value = '';
   }
 }

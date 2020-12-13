@@ -15,10 +15,10 @@
         ><com-icon slot="icon" outlined>delete</com-icon></com-button
       >
       <app-autocomplete-pessoas
+        [formControl]="control.get('pessoaId')"
         label="Filtrar por nome, CPF ou SARAM"
       ></app-autocomplete-pessoas>
     </div>
-
     <button
       (click)="addFormItem()"
       class="add-plan flex-container middle center"

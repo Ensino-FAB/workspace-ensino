@@ -39,7 +39,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   }
 
   addFormItem(): void {
-    console.log('test');
+    console.log(this.form.value);
     const formGroup = this.fb.group({
       pessoaId: ['', Validators.required],
     });
