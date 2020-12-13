@@ -21,7 +21,7 @@
       [ngClass]="{ focus: index === selectedIndex }"
       *ngFor="let option of options; let index = index"
       (mousedown)="$event.preventDefault()"
-      (click)="selectedItem(index)"
+      (click)="onSelectItem(index)"
     >
       <div>
         <com-icon outlined slot="icon">person</com-icon>
@@ -42,23 +42,23 @@
 </div>
 
 <div class="item-tree-wrapper">
-  <div class="flex-container selected-item-tree" *ngIf="selectedItemArvore">
+  <div class="flex-container selected-item-tree" *ngIf="selectedItem">
     <div>
       <com-icon outlined slot="icon">person</com-icon>
     </div>
     <div class="flex-container middle center">
       <div class="flex-container row wrap">
-        <p *ngFor="let str of selectedItemArvore.path" class="parents">
+        <p *ngFor="let str of selectedItem.path" class="parents">
           <span>{{ str }}</span>
           <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
         </p>
       </div>
-      <h4>{{ selectedItemArvore.title }}</h4>
-      <com-tag primary>{{ selectedItemArvore.code }}</com-tag>
+      <h4>{{ selectedItem.title }}</h4>
+      <com-tag primary>{{ selectedItem.code }}</com-tag>
     </div>
   </div>
 
-  <div class="item-tree flex-container" *ngIf="!selectedItemArvore">
+  <div class="item-tree flex-container" *ngIf="!selectedItem">
     <div></div>
     <div class="flex-container middle center">Nenhum item selecionado</div>
   </div>

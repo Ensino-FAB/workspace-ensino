@@ -112,12 +112,14 @@ export class AutocompletePessoasComponent
   isOpen = false;
   selectedIndex: number = null;
 
-  @Input() selectedItemArvore: SelectOption;
+  @Input() selectedItem: SelectOption;
 
   value = '';
 
   inputElement: HTMLInputElement;
   optionsParentElement: HTMLUListElement;
+  disabled: boolean;
+  onTouched: () => void;
 
   constructor(public el: ElementRef) {}
 
@@ -130,14 +132,10 @@ export class AutocompletePessoasComponent
     }
   }
 
-  onTouched: () => void;
-  disabled: boolean;
-
   onChange(value: string): void {
     this.value = value;
     this.changed.emit(value);
   }
-
   writeValue(value: string): void {
     this.value = value;
   }
@@ -244,13 +242,13 @@ export class AutocompletePessoasComponent
     }
   }
 
-  selectedItem(index: number) {
+  onSelectItem(index: number) {
     this.selectedIndex = index;
     this.confirmed.emit(this.options[this.selectedIndex]);
     this.inputElement.blur();
 
-    this.selectedItemArvore = this.options[index];
-    this.onChange(`${this.selectedItemArvore.id}`);
+    this.selectedItem = this.options[index];
+    this.onChange(`${this.selectedItem.id}`);
 
     this.value = '';
     this.inputElement.value = '';
