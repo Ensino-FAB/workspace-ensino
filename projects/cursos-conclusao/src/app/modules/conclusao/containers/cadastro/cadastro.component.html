@@ -22,12 +22,14 @@
 
   <div class="wrapper">
     <app-cadastro-step1
+      [form]="form"
       *ngIf="currentStep === 1"
       (next)="nextStep()"
     ></app-cadastro-step1>
   </div>
   <div class="wrapper">
     <app-cadastro-step2
+      [form]="form.get('pessoas')"
       *ngIf="currentStep === 2"
       (back)="previousStep()"
       (next)="nextStep()"

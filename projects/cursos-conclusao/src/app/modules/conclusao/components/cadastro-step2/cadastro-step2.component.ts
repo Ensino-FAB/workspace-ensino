@@ -34,12 +34,10 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.array([]);
     this.addFormItem();
   }
 
   addFormItem(): void {
-    console.log(this.form.value);
     const formGroup = this.fb.group({
       pessoaId: ['', Validators.required],
     });

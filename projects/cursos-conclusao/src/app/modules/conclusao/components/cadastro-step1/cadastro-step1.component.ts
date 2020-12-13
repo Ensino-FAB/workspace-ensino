@@ -26,21 +26,12 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
   @Input() form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
     private toast: ToastService,
     private router: Router,
     private facade: ConclusaoFacade
   ) {}
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      nome: [''],
-      dataInicio: [''],
-      dataTermino: [''],
-      local: [''],
-      capacitacaoId: [''],
-    });
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {}
 

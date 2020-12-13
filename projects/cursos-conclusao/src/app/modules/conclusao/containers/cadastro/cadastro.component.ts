@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Conclusao } from '../../../../models/conclusao.model';
 @Component({
   selector: 'app-cadastro',
@@ -6,14 +7,23 @@ import { Conclusao } from '../../../../models/conclusao.model';
   styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent implements OnInit {
-  formData: Conclusao;
+  form: FormGroup;
 
   currentStep = 1;
   statusMap = { first: 'active', second: 'disabled' };
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      nome: [''],
+      dataInicio: [''],
+      dataTermino: [''],
+      local: [''],
+      capacitacaoId: [''],
+      pessoas: this.fb.array([]),
+    });
+  }
 
   newFin() {
     window.location.reload();
@@ -43,6 +53,7 @@ export class CadastroComponent implements OnInit {
       setTimeout(() => {
         this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
         ++this.currentStep;
+        console.log(this.form.value);
       }, 1000);
       //   this.facade
       //     .createFin(FinRequestObject)
