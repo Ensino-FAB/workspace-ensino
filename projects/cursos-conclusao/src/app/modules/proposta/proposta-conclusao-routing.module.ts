@@ -7,6 +7,7 @@ import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { DetalheProcessoComponent } from './containers/detalhe-processo/detalhe-processo.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
+import { FluxoProcessoConclusaoComponent } from './containers/fluxo-processo-conclusao/fluxo-processo-conclusao.component';
 
 export const PROPOSTA_CONCLUSAO_ROUTES: Routes = [
   {
@@ -41,6 +42,14 @@ export const PROPOSTA_CONCLUSAO_ROUTES: Routes = [
           breadcrumb: null,
         },
       },
+      {
+        path: 'etapa/:taskId',
+        component: FluxoProcessoConclusaoComponent,
+        data: {
+          breadcrumb: 'aprovação de etapa',
+        },
+      },
+
       {
         path: 'processo/:rev',
         component: DetalheProcessoComponent,

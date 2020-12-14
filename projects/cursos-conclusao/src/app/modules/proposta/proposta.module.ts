@@ -26,6 +26,7 @@ import { DetalheProcessoComponent } from './containers/detalhe-processo/detalhe-
 import { BpmnViewerModule } from 'projects/ensino-commons/src/public-api';
 import { PROPOSTA_CONCLUSAO_ROUTES } from './proposta-conclusao-routing.module';
 import { DetalheBasicoConclusaoComponent } from './components/detalhe-basico-conclusao/detalhe-basico-conclusao.component';
+import { FluxoProcessoConclusaoComponent } from './containers/fluxo-processo-conclusao/fluxo-processo-conclusao.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DetalheBasicoConclusaoComponent } from './components/detalhe-basico-con
     GestaoComponent,
     DetalheBasicoConclusaoComponent,
     DetalheProcessoComponent,
+    FluxoProcessoConclusaoComponent,
   ],
   imports: [
     CommonModule,
