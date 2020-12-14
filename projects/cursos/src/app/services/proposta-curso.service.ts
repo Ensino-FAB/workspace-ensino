@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { Pageable } from '../../../../ensino-commons/src/lib/models/pageable.model';
 import { take } from 'rxjs/operators';
 import { Proposta } from '../models/proposta.model';
-import { PropostaSearch } from '../models/proposta-search.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +31,7 @@ export class PropostaCursoService {
   }
 
   /* istanbul ignore next */
-  findAll(search: PropostaSearch): Observable<Pageable<Proposta>> {
+  findAll(search: Propostas): Observable<Pageable<Proposta>> {
     this.removeEmptyFields(search);
     const params = new HttpParams({ fromObject: search });
     return this.http.get<any>(this.endpoint, {
