@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { CadastroComponent } from './containers/cadastro/cadastro.component';
-import { FluxoProcessoComponent } from './containers/fluxo-processo/fluxo-processo.component';
 import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { DetalheComponent } from './containers/detalhe/detalhe.component';
 import { DetalheProcessoComponent } from './containers/detalhe-processo/detalhe-processo.component';
@@ -21,13 +20,6 @@ export const PROPOSTA_CONCLUSAO_ROUTES: Routes = [
       breadcrumb: 'criar',
     },
     component: CadastroComponent,
-  },
-  {
-    path: 'etapa/:taskId',
-    component: FluxoProcessoComponent,
-    data: {
-      breadcrumb: 'aprovação de etapa',
-    },
   },
   {
     path: 'editar/:id',

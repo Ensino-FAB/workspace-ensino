@@ -6,7 +6,6 @@ import { take } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Proposta } from '../models/proposta.model';
 import { PropostaConclusaoSearch } from '../models/proposta-conclusao-search.model';
-
 @Injectable({
   providedIn: 'root',
 })

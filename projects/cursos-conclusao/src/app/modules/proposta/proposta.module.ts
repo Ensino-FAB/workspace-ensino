@@ -24,9 +24,7 @@ import { EdicaoComponent } from './containers/edicao/edicao.component';
 import { GestaoComponent } from './containers/gestao/gestao.component';
 import { DetalheProcessoComponent } from './containers/detalhe-processo/detalhe-processo.component';
 import { BpmnViewerModule } from 'projects/ensino-commons/src/public-api';
-import { FluxoProcessoComponent } from './containers/fluxo-processo/fluxo-processo.component';
 import { PROPOSTA_CONCLUSAO_ROUTES } from './proposta-conclusao-routing.module';
-import { PROPOSTA_ROUTES } from '../../../../../cursos/src/app/modules/proposta/proposta-routing.module';
 import { DetalheBasicoConclusaoComponent } from './components/detalhe-basico-conclusao/detalhe-basico-conclusao.component';
 
 @NgModule({
@@ -38,7 +36,6 @@ import { DetalheBasicoConclusaoComponent } from './components/detalhe-basico-con
     GestaoComponent,
     DetalheBasicoConclusaoComponent,
     DetalheProcessoComponent,
-    FluxoProcessoComponent,
   ],
   imports: [
     CommonModule,
