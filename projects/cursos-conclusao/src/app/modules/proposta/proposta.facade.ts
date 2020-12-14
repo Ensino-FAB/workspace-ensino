@@ -9,6 +9,7 @@ import { PropostaConclusaoSearch } from '../../models/proposta-conclusao-search.
 import { Proposta } from '../../models/proposta.model';
 import { Processo } from '../../models/processo.model';
 import { Tarefa } from '../../models/tarefa.model';
+import { ProcessDiagram } from 'projects/ensino-commons/src/lib/types/ProcessDiagram';
 
 @Injectable({
   providedIn: 'root',
@@ -79,26 +80,26 @@ export class PropostaFacade {
     });
   }
 
-  // public getBPMN(processInstance: string): Observable<ProcessDiagram[]> {
-  //   return new Observable((observable) => {
-  //     this.processoService
-  //       .findDiagram(processInstance)
-  //       .subscribe((diagrams) => {
-  //         const processDiagrams = [...diagrams];
-  //
-  //         processDiagrams.forEach(
-  //           (diagram, index) =>
-  //             (diagram.hasSubProcess =
-  //               diagrams.length > 1 && index < diagrams.length - 1
-  //                 ? true
-  //                 : false)
-  //         );
-  //
-  //         observable.next(processDiagrams as ProcessDiagram[]);
-  //         observable.complete();
-  //       });
-  //   });
-  // }
+  public getBPMN(processInstance: string): Observable<ProcessDiagram[]> {
+    return new Observable((observable) => {
+      this.processoService
+        .findDiagram(processInstance)
+        .subscribe((diagrams) => {
+          const processDiagrams = [...diagrams];
+
+          processDiagrams.forEach(
+            (diagram, index) =>
+              (diagram.hasSubProcess =
+                diagrams.length > 1 && index < diagrams.length - 1
+                  ? true
+                  : false)
+          );
+
+          observable.next(processDiagrams as ProcessDiagram[]);
+          observable.complete();
+        });
+    });
+  }
   public getTarefa(taskInstance: string): Observable<Tarefa> {
     return this.tarefaService.findTask(taskInstance);
   }

@@ -1,0 +1,83 @@
+@import 'projects/cursos/src/assets/scss/breakpoints.scss';
+:host {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+
+  @include respond-to(xl) {
+    max-width: 138rem;
+  }
+
+  .main-container {
+    position: relative;
+    width: calc(100% - calc(var(--padding)));
+    margin: calc(var(--padding) / 2);
+
+    .main-content,
+    .aside-content {
+      height: 100%;
+    }
+
+    .main-content {
+      flex-basis: 60%;
+    }
+
+    .aside-content {
+      flex-basis: 28%;
+    }
+
+    .grid-item {
+      padding: calc(var(--padding) / 2);
+    }
+
+    .sub-header {
+      width: 100%;
+      background: var(--lighter-grey);
+
+      padding: 1.5rem var(--padding);
+
+      h1 {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 2.4rem;
+        color: var(--grey);
+      }
+
+      .actions > * {
+        margin: 0 1rem;
+      }
+    }
+  }
+}
+
+.bpmn {
+  .bpmn-status {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 2px solid var(--light-grey);
+    padding: 1.5rem var(--padding);
+
+    span {
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    span:first-child {
+      color: var(--grey);
+      margin-right: 0.5rem;
+    }
+
+    span:last-child {
+      color: var(--primary);
+    }
+  }
+
+  .img {
+    min-height: 10rem;
+  }
+
+  a {
+    margin: 0.5rem var(--padding);
+  }
+}

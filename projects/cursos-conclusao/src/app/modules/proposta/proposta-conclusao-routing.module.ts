@@ -43,14 +43,6 @@ export const PROPOSTA_CONCLUSAO_ROUTES: Routes = [
         },
       },
       {
-        path: 'etapa/:taskId',
-        component: FluxoProcessoConclusaoComponent,
-        data: {
-          breadcrumb: 'aprovação de etapa',
-        },
-      },
-
-      {
         path: 'processo/:rev',
         component: DetalheProcessoComponent,
         data: {
@@ -58,6 +50,13 @@ export const PROPOSTA_CONCLUSAO_ROUTES: Routes = [
         },
       },
     ],
+  },
+  {
+    path: 'etapa/:taskId',
+    component: FluxoProcessoConclusaoComponent,
+    data: {
+      breadcrumb: 'aprovação de etapa',
+    },
   },
   {
     path: 'listar',
