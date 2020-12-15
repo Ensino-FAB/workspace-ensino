@@ -1,20 +1,9 @@
 <com-form (ngSubmit)="onSubmit()">
-  <com-form-section partly formTitle="Cadastro" step="2">
-    <com-label
-      comTooltip="Aloca a FIN no planejamento estratégico selecionado, ou seja, alinha a necessidade as missões e visões da força"
-      comTooltipSize="1.4"
-      >Árvore Estratégica*</com-label
-    >
+  <com-form-section partly formTitle="Seleção de Pessoas" step="2">
+    <com-label comTooltipSize="1.4">Pessoas*</com-label>
     <div *ngFor="let control of form.controls; let i = index">
-      <com-button
-        *ngIf="i > 0"
-        (click)="removeFormItem(i)"
-        class="close"
-        transparent
-        warning
-        ><com-icon slot="icon" outlined>delete</com-icon></com-button
-      >
       <app-autocomplete-pessoas
+        (removePerson)="removeFormItem(i)"
         [formControl]="control.get('pessoaId')"
         label="Filtrar por nome, CPF ou SARAM"
       ></app-autocomplete-pessoas>
