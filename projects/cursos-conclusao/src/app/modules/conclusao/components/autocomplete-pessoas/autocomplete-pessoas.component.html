@@ -5,6 +5,7 @@
   [label]="label"
   (focused)="open()"
   (blurred)="close()"
+  (keyup)="searchOptions()"
   (ref)="this.inputElement = $event"
   (immediate)="onChange($event)"
   immediate

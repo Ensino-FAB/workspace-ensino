@@ -1,4 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import {
   AfterViewChecked,
   Component,
@@ -10,6 +11,7 @@ import {
   Output,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ConclusaoFacade } from '../../conclusao.facade';
 
 export interface SelectOption {
   id: number;
@@ -51,57 +53,7 @@ export interface SelectOption {
 })
 export class AutocompletePessoasComponent
   implements AfterViewChecked, ControlValueAccessor {
-  @Input() options: Array<SelectOption> = [
-    {
-      id: 3,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'FERNANDO DE OLIVEIRA TOMASIO',
-      code: 'BANT',
-    },
-    {
-      id: 1,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'RICARDO GAMA',
-      code: 'PAME-RJ',
-    },
-    {
-      id: 2,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'EDUARDA SOARES',
-      code: 'CCAR-JR',
-    },
-    {
-      id: 2,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'EDUARDA SOARES',
-      code: 'CCAR-JR',
-    },
-    {
-      id: 2,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'EDUARDA SOARES',
-      code: 'CCAR-JR',
-    },
-    {
-      id: 2,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'EDUARDA SOARES',
-      code: 'CCAR-JR',
-    },
-    {
-      id: 2,
-      type: 'string', // tipo
-      path: ['042.745.547-24'], // vazio
-      title: 'EDUARDA SOARES',
-      code: 'CCAR-JR',
-    },
-  ];
+  @Input() options: Array<SelectOption> = [];
   @Input() invalid: boolean;
   @Input() label = '';
 
@@ -122,7 +74,7 @@ export class AutocompletePessoasComponent
   disabled: boolean;
   onTouched: () => void;
 
-  constructor(public el: ElementRef) {}
+  constructor(public el: ElementRef, private facade: ConclusaoFacade) {}
 
   /* istanbul ignore next */
   ngAfterViewChecked(): void {
@@ -256,5 +208,20 @@ export class AutocompletePessoasComponent
   removeFormItem() {
     console.log('remove button:');
     this.removePerson.emit();
+  }
+
+  searchOptions() {
+    this.facade.pessoaService
+      .findAll({ nome: this.inputElement.value })
+      .subscribe(
+        (response) =>
+          (this.options = response.content.map((item) => ({
+            id: 2,
+            type: 'string', // tipo
+            path: [item.nrCpf], // vazio
+            title: item.nome,
+            code: item.organizacao?.sigla,
+          })))
+      );
   }
 }
