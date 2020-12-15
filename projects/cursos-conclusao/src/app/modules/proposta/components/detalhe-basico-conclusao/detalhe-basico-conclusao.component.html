@@ -10,21 +10,15 @@
         <div class="flex-container between">
           <div class="flex-container col" style="width: 48%">
             <div class="flex-container col" style="margin-bottom: 3rem">
-              <com-label>Capacitação</com-label>
-              <span [ngClass]="{ skeleton: loading }">
-                {{ proposta?.capacitacao.nome }}
-              </span>
-            </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data de início</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ proposta?.dtInicio }}
+                {{ proposta?.dtInicio | date: 'dd/MM/yyyy' }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data de fim</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ proposta?.dtFim }}
+                {{ proposta?.dtFim | date: 'dd/MM/yyyy' }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
