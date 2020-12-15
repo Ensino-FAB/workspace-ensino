@@ -1,0 +1,39 @@
+<com-form (ngSubmit)="onSubmit()">
+  <com-form-section partly formTitle="Cadastro" step="2">
+    <com-label
+      comTooltip="Aloca a FIN no planejamento estratégico selecionado, ou seja, alinha a necessidade as missões e visões da força"
+      comTooltipSize="1.4"
+      >Árvore Estratégica*</com-label
+    >
+    <div *ngFor="let control of form.controls; let i = index">
+      <com-button
+        *ngIf="i > 0"
+        (click)="removeFormItem(i)"
+        class="close"
+        transparent
+        warning
+        ><com-icon slot="icon" outlined>delete</com-icon></com-button
+      >
+      <app-autocomplete-pessoas
+        [formControl]="control.get('pessoaId')"
+        label="Filtrar por nome, CPF ou SARAM"
+      ></app-autocomplete-pessoas>
+    </div>
+    <button
+      (click)="addFormItem()"
+      class="add-plan flex-container middle center"
+    >
+      <com-icon>add</com-icon> Adicionar outra pessoa
+    </button>
+  </com-form-section>
+  <com-form-section block>
+    <footer class="flex-container end">
+      <com-button (click)="back.emit()">
+        <ng-container slot="text">voltar</ng-container>
+      </com-button>
+      <com-button (click)="next.emit()" [disabled]="form.invalid" fill confirm>
+        <ng-container slot="text">confirmar e gravar conclusão</ng-container>
+      </com-button>
+    </footer>
+  </com-form-section>
+</com-form>

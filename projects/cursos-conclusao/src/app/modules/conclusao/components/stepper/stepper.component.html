@@ -1,0 +1,23 @@
+<header class="flex-container">
+  <div class="indicator flex-container middle center">
+    <span *ngIf="step >= 1 && step <= 2; else check">{{ step }}</span>
+    <ng-template #check>
+      <com-icon size="5.6" color="#fff">check</com-icon>
+    </ng-template>
+  </div>
+
+  <div class="steps-list flex-container middle center">
+    <div (click)="onChange(1)" [ngClass]="map.first">
+      <div class="status flex-container middle center">
+        <com-icon *ngIf="map.first === 'checked'" color="#fff">check</com-icon>
+      </div>
+      infos curso
+    </div>
+    <div (click)="onChange(2)" [ngClass]="map.second">
+      <div class="status flex-container middle center">
+        <com-icon *ngIf="map.second === 'checked'" color="#fff">check</com-icon>
+      </div>
+      selec. pessoas
+    </div>
+  </div>
+</header>

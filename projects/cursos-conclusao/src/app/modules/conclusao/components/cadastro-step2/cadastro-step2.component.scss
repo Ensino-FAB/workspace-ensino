@@ -1,0 +1,98 @@
+@import '../../../../../assets/scss/flex.scss';
+
+header {
+  width: 100%;
+  background: var(--lighter-grey);
+
+  text-transform: uppercase;
+  font-size: 3.6rem;
+  color: var(--grey);
+
+  padding: 1.5rem 0;
+  margin-bottom: 3rem;
+
+  & > div {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+}
+
+.container {
+  padding: 0 var(--padding);
+
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    margin-bottom: 7.2rem;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.group {
+  padding: 1rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 0.5rem;
+}
+
+.description {
+  & > * {
+    flex-grow: 1;
+    height: 100%;
+    max-width: calc(100%);
+  }
+
+  & > *:first-child {
+    max-width: calc(100%);
+  }
+}
+
+footer {
+  & > *:first-child {
+    margin-right: 2rem;
+  }
+}
+
+.flex-container {
+  .grow {
+    width: auto;
+    &:not(:last-child) {
+      margin-right: var(--padding);
+    }
+  }
+
+  &.wrap {
+    & > * {
+      width: calc(50% - 0.5rem);
+      margin-right: calc(var(--padding) / 2);
+    }
+  }
+}
+.add-plan {
+  border: 2px dashed var(--light-grey);
+  width: 100%;
+  max-width: 1000px;
+  height: 15rem;
+  margin: auto;
+
+  color: var(--grey);
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+
+.close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
