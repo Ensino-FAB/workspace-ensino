@@ -27,9 +27,32 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   columns: TableColumn[] = [
     {
+      field: 'capacitacao',
+      title: 'Capacitação',
+      width: '20%',
+    },
+
+    {
+      field: 'local',
+      title: 'Local',
+      width: '20%',
+    },
+
+    {
+      field: 'dtInicio',
+      title: 'Data de Início',
+      width: '12%',
+    },
+    {
+      field: 'dtFim',
+      title: 'Data de fim',
+      width: '12%',
+    },
+
+    {
       field: 'status',
       title: 'Status',
-      width: '10%',
+      width: '20%',
     },
   ];
 
@@ -91,6 +114,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
+          capacitacao: `${item?.capacitacao.nome}`,
+          local: `${item?.local}`,
+          dtInicio: `${item?.dtInicio}`,
+          dtFim: `${item?.dtFim}`,
           status: `${item?.status}`,
         }));
 

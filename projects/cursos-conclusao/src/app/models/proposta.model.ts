@@ -1,11 +1,19 @@
 import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
 
 export interface Proposta extends BaseModel {
-  dtfim?: Date;
+  dtFim?: Date;
   dtInicio?: Date;
   local?: string;
   pessoaList?: [];
   status?: string;
-  capacitacaoId?: number;
+  capacitacao?: CapacitacaoResponse;
   instanciaProcessoId: string;
+}
+
+export interface CapacitacaoResponse {
+  id?: number;
+  codigo?: string;
+  nome?: string;
+  descricao?: string;
+  cargaHorario?: number;
 }
