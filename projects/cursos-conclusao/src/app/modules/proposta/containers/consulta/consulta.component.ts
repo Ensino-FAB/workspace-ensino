@@ -58,7 +58,10 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   data = [];
   loadindMockData = new Array(10).fill({
-    descricao: '',
+    capacitacao: '',
+    local: '',
+    dtFim: '',
+    dtInicio: '',
     status: '',
   });
 
