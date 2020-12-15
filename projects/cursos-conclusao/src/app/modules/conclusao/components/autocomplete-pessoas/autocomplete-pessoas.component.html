@@ -46,15 +46,22 @@
     <div>
       <com-icon outlined slot="icon">person</com-icon>
     </div>
-    <div class="flex-container middle center">
-      <div class="flex-container row wrap">
-        <p *ngFor="let str of selectedItem.path" class="parents">
-          <span>{{ str }}</span>
-          <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
-        </p>
+    <div class="selected-person">
+      <div>
+        <div>
+          <p *ngFor="let str of selectedItem.path" class="parents">
+            <span>{{ str }}</span>
+            <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+          </p>
+        </div>
+        <h4>{{ selectedItem.title }}</h4>
+        <com-tag primary>{{ selectedItem.code }}</com-tag>
       </div>
-      <h4>{{ selectedItem.title }}</h4>
-      <com-tag primary>{{ selectedItem.code }}</com-tag>
+      <div>
+        <com-button (click)="removeFormItem()" transparent warning
+          ><com-icon slot="icon" outlined>delete</com-icon></com-button
+        >
+      </div>
     </div>
   </div>
 

@@ -108,6 +108,7 @@ export class AutocompletePessoasComponent
   @Output() changed = new EventEmitter();
   @Output() confirmed = new EventEmitter();
   @Output() textBlurred = new EventEmitter();
+  @Output() removePerson = new EventEmitter();
 
   isOpen = false;
   selectedIndex: number = null;
@@ -246,11 +247,14 @@ export class AutocompletePessoasComponent
     this.selectedIndex = index;
     this.confirmed.emit(this.options[this.selectedIndex]);
     this.inputElement.blur();
-
     this.selectedItem = this.options[index];
     this.onChange(`${this.selectedItem.id}`);
-
     this.value = '';
     this.inputElement.value = '';
+  }
+
+  removeFormItem() {
+    console.log('remove button:');
+    this.removePerson.emit();
   }
 }
