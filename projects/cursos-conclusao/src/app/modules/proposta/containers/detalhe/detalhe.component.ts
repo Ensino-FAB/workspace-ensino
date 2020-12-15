@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropostaFacade } from '../../proposta.facade';
 import { Subscription, of, timer } from 'rxjs';
-import { Proposta } from 'projects/cursos-conclusao/src/app/models/proposta.model';
+import { PropostaResponse } from 'projects/cursos-conclusao/src/app/models/proposta-response.model';
 import { fadeIn } from 'projects/ensino-commons/src/public-api';
 
 @Component({
@@ -19,7 +19,7 @@ export class DetalheComponent implements OnInit, OnDestroy {
 
   public id: number;
   public loading = false;
-  public proposta: Proposta;
+  public proposta: PropostaResponse;
   public tasks: any[] = [];
 
   ngOnInit(): void {
