@@ -12,13 +12,13 @@
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data de início</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ proposta?.dtInicio | date: 'dd/MM/yyyy' }}
+                {{ proposta?.dtInicio }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data de fim</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ proposta?.dtFim | date: 'dd/MM/yyyy' }}
+                {{ proposta?.dtFim }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
@@ -26,26 +26,7 @@
               <span [ngClass]="{ skeleton: loading }"> lista de pessoas </span>
             </div>
           </div>
-          <div class="flex-container col" style="width: 48%">
-            <!-- <div class="flex-container col" style="margin-bottom: 3rem">
-                <com-label>Objetivo</com-label>
-                <span [ngClass]="{ skeleton: loading }">
-                  {{ proposta?.objetivo }}
-                </span>
-              </div>
-              <div class="flex-container col" style="margin-bottom: 3rem">
-                <com-label>Observação</com-label>
-                <span [ngClass]="{ skeleton: loading }">
-                  {{ proposta?.observacao }}
-                </span>
-              </div>
-              <div class="flex-container col" style="margin-bottom: 3rem">
-                <com-label>Pré-requisito</com-label>
-                <span [ngClass]="{ skeleton: loading }">
-                  {{ proposta?.preRequisito }}
-                </span>
-              </div> -->
-          </div>
+          <div class="flex-container col" style="width: 48%"></div>
         </div>
       </section>
       <div class="flex-container end">
