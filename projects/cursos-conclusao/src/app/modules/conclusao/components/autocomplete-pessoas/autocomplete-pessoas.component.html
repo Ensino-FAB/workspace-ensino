@@ -66,7 +66,7 @@
   </div>
 
   <div class="item-tree flex-container" *ngIf="!selectedItem">
-    <div class="flex-container row middle center">
+    <div class="flex-container col middle center">
       <div>Nenhum item selecionado</div>
       <div *ngIf="index > 0">
         <com-button (click)="removePerson.emit()" transparent warning
