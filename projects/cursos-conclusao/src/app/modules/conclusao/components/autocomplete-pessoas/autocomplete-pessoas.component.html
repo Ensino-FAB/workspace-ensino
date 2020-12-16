@@ -35,7 +35,13 @@
           </p>
         </div>
         <h4>{{ option.nome }}</h4>
-        <com-tag primary>{{ option.organizacao }}</com-tag>
+        <div *ngIf="option.organizacao; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <com-tag primary>{{ option.organizacao }}</com-tag>
+        </ng-template>
+        <ng-template #elseBlock
+          ><span class="parents">Organização não cadastrada</span></ng-template
+        >
       </div>
     </li>
   </ul>
@@ -55,7 +61,15 @@
           </p>
         </div>
         <h4>{{ selectedItem.nome }}</h4>
-        <com-tag primary>{{ selectedItem.organizacao }}</com-tag>
+        <div
+          *ngIf="selectedItem.organizacao; then thenBlock; else elseBlock"
+        ></div>
+        <ng-template #thenBlock>
+          <com-tag primary>{{ selectedItem.organizacao }}</com-tag>
+        </ng-template>
+        <ng-template #elseBlock
+          ><span class="parents">Organização não cadastrada</span></ng-template
+        >
       </div>
       <div>
         <com-button (click)="removePerson.emit()" transparent warning
