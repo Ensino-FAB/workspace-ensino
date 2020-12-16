@@ -58,7 +58,7 @@
         <com-tag primary>{{ selectedItem.organizacao }}</com-tag>
       </div>
       <div>
-        <com-button (click)="removeFormItem()" transparent warning
+        <com-button (click)="removePerson.emit()" transparent warning
           ><com-icon slot="icon" outlined>delete</com-icon></com-button
         >
       </div>
@@ -68,8 +68,8 @@
   <div class="item-tree flex-container" *ngIf="!selectedItem">
     <div class="flex-container row middle center">
       <div>Nenhum item selecionado</div>
-      <div>
-        <com-button (click)="removeFormItem()" transparent warning
+      <div *ngIf="index > 0">
+        <com-button (click)="removePerson.emit()" transparent warning
           ><com-icon slot="icon" outlined>delete</com-icon></com-button
         >
       </div>

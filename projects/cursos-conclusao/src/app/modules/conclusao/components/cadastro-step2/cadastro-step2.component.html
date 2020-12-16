@@ -13,6 +13,7 @@
         (changed)="onChange($event)"
         (confirmed)="onConfirmTree($event, i)"
         (textBlurred)="blurTree(i)"
+        (removePerson)="removeFormItem(i)"
         [index]="i"
         @fadeInOut
       ></app-autocomplete-pessoas>
