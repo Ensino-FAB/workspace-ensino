@@ -1,17 +1,13 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import {
   AfterViewChecked,
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   HostListener,
   Input,
   Output,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ConclusaoFacade } from '../../conclusao.facade';
 import { SelectOption } from '../../types/select-option';
 
 @Component({

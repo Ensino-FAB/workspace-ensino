@@ -21,4 +21,10 @@ export interface PessoaResponse {
   nome?: string;
   nrCpf?: string;
   nrOrdem?: string;
+  organizacao?: OrganizacaoResponse;
+}
+
+export interface OrganizacaoResponse {
+  nome?: string;
+  sigla?: string;
 }
