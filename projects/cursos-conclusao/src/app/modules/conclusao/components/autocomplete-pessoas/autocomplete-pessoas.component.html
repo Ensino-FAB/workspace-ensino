@@ -29,8 +29,8 @@
 
       <div>
         <div class="flex-container row wrap">
-          <p *ngFor="let str of option.path" class="parents">
-            <span>{{ str }}</span>
+          <p *ngFor="let cpf of option.cpf" class="parents">
+            <span>{{ cpf }}</span>
             <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
           </p>
         </div>
@@ -49,8 +49,8 @@
     <div class="selected-person">
       <div>
         <div>
-          <p *ngFor="let str of selectedItem.path" class="parents">
-            <span>{{ str }}</span>
+          <p *ngFor="let cpf of selectedItem.cpf" class="parents">
+            <span>{{ cpf }}</span>
             <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
           </p>
         </div>
