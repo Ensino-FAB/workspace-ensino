@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Conclusao } from '../../../../models/conclusao.model';
+import { ConclusaoFacade } from '../../conclusao.facade';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
