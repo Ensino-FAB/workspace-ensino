@@ -6,13 +6,24 @@
         (removePerson)="removeFormItem(i)"
         [formControl]="control.get('pessoaId')"
         label="Filtrar por nome, CPF ou SARAM"
+        @fadeInOut
       ></app-autocomplete-pessoas>
     </div>
     <button
       (click)="addFormItem()"
       class="add-plan flex-container middle center"
     >
-      <com-icon>add</com-icon> Adicionar outra pessoa
+      <div
+        *ngIf="form.controls.length === 0; then thenBlock; else elseBlock"
+        class="add-plan flex-container middle center"
+      ></div>
+      <ng-template #thenBlock
+        ><com-icon>add</com-icon> Adicionar pessoa</ng-template
+      >
+      <ng-template #elseBlock
+        ><com-icon>add</com-icon> Adicionar outra pessoa</ng-template
+      >
+      <div></div>
     </button>
   </com-form-section>
   <com-form-section block>
