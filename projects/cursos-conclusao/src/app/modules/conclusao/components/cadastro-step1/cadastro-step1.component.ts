@@ -1,3 +1,4 @@
+import { SelectOption } from '@cca-fab/cca-fab-components-common/types/select';
 import {
   Component,
   EventEmitter,
@@ -6,7 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
@@ -20,18 +21,45 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class CadastroStep1Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
-  capacitacaoOptions = [{ option: 'teste', value: '3' }];
+  capacitacaoOptions: SelectOption[] = [];
 
   @Output() next = new EventEmitter();
   @Input() form: FormGroup;
 
-  constructor(
-    private toast: ToastService,
-    private router: Router,
-    private facade: ConclusaoFacade
-  ) {}
+  constructor(private facade: ConclusaoFacade) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // const search = {
+    //   ...this.conclusaoSearch.value,
+    //   page: this.page ? this.page - 1 : 0,
+    //   size: this.pageSize,
+    //   sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
+    // };
+
+    this.reload();
+  }
+
+  reload(search = {}): void {
+    this.capacitacaoOptions = [];
+    this.subs$.push(
+      this.facade.capacitacaoService.findAll(search).subscribe((response) =>
+        response.content.map((capacitacao) => {
+          this.capacitacaoOptions.push({
+            name: capacitacao.codigo + ' - ' + capacitacao.nome,
+            value: capacitacao.id,
+          });
+        })
+      )
+    );
+  }
+
+  confirmed(event): void {
+    console.log(typeof event);
+  }
+
+  filter(event): void {
+    this.reload({ nome: event });
+  }
 
   onSubmit(): void {}
 

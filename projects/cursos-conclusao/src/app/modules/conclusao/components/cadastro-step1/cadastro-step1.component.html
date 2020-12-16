@@ -1,14 +1,19 @@
 <com-form [formGroup]="form" (ngSubmit)="onSubmit()">
   <com-form-section partly formTitle="Dados da Capacitação" step="1">
-    <com-select
+    <com-autocomplete
+      enableConfirmOnInexistentValue
+      autoActiveFirstOption
+      (changed)="filter($event)"
+      (confirmed)="confirmed($event)"
+      label="Capacitação*"
       [options]="capacitacaoOptions"
       [invalid]="
         form.get('capacitacaoId').invalid && form.get('capacitacaoId').touched
       "
       formControlName="capacitacaoId"
-      label="Capacitação*"
     >
-    </com-select>
+    </com-autocomplete>
+
     <com-input
       class="input"
       type="date"

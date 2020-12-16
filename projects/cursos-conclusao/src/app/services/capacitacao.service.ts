@@ -27,7 +27,6 @@ export class CapacitacaoService {
   }
 
   findAll(search: CapacitacaoSearch): Observable<Pageable<Capacitacao>> {
-    console.log(search);
     this.removeEmptyFields(search);
     const params = new HttpParams({ fromObject: search });
     return this.http.get<any>(this.endpoint, {

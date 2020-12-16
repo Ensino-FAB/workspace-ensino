@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ConclusaoFacade } from './conclusao.facade';
 import {
   AccordionModule,
+  AutocompleteModule,
   ButtonModule,
   CardModule,
   FormModule,
@@ -52,6 +53,7 @@ import { ConsultaComponent } from './containers/consulta/consulta.component';
     SelectModule,
     InputModule,
     AccordionModule,
+    AutocompleteModule,
   ],
   providers: [ConclusaoFacade],
 })

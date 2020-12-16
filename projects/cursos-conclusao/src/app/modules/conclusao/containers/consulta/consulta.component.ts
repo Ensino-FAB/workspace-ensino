@@ -95,7 +95,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
-    console.log(search);
     const getConclusao$ = this.facade.conclusaoService
       .findAll(search)
       .pipe(share());
