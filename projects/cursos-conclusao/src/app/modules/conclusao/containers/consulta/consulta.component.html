@@ -1,3 +1,145 @@
-<div class="flex-container center middle" style="height: 50rem" @fadeIn>
-  <a routerLink="cadastro">novo cadastro</a>
-</div>
+<section @fadeIn>
+  <div class="flex-container col wrapper">
+    <div class="flex-container col grow main-control">
+      <div class="flex-container col grow aside-content">
+        <div class="grid-item">
+          <div class="flex-container row middle between aside-wrapper">
+            <h2 class="fin-page-title">consultar conclusões</h2>
+            <div class="flex-container end">
+              <a [routerLink]="['/conclusao', 'cadastro']">
+                <com-button flat transparent>
+                  <com-icon slot="icon">add</com-icon>
+                </com-button>
+              </a>
+              <com-button disabled="true" transparent flat>
+                <com-icon outlined slot="icon">save_alt</com-icon>
+              </com-button>
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="sort-card">
+            <div class="menu-card-sort">
+              <span>Ordernar por</span>
+              <com-select
+                class="no-margin-bottom"
+                [options]="options"
+                [label]="'Selecione'"
+                (changed)="handleSortChange($event)"
+              ></com-select>
+              <div class="order-btn" [ngClass]="{ isAsc: asc }">
+                <com-button flat transparent (click)="handleInvertSort()">
+                  <com-icon outlined slot="icon">sort</com-icon>
+                </com-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-content grid-item">
+        <com-form [formGroup]="conclusaoSearch">
+          <com-form-section block>
+            <com-input
+              formControlName="nome"
+              placeholder="Digite o Nome da Capacitação"
+              label="Nome da Capacitação"
+            ></com-input>
+            <com-input
+              formControlName="sigla"
+              placeholder="Digite nome da Pessoa"
+              label="Nome da pessoa"
+            ></com-input>
+            <div class="flex-container row button-set">
+              <com-button fill (click)="onSubmit()">
+                <ng-container slot="text">Filtrar</ng-container>
+              </com-button>
+              <com-button transparent flat (click)="clean()">
+                <ng-container slot="text">Limpar</ng-container>
+              </com-button>
+            </div>
+          </com-form-section>
+        </com-form>
+      </div>
+    </div>
+    <div class="grid-item">
+      <com-table
+        [data]="data"
+        [pageSize]="pageSize"
+        [maxPageSize]="100"
+        [minPageSize]="5"
+        [pageIndex]="page"
+        [totalPages]="totalPages"
+        [columns]="columns"
+        (refresh)="refresh()"
+        (pageSizeChanged)="handlePageSizeChange($event)"
+        (pageIndexChanged)="handlePageIndexChange($event)"
+        (nextPage)="handleNextPage()"
+        (previousPage)="handlePreviousPage()"
+        (firstPage)="onFirstPage()"
+        (lastPage)="onLastPage()"
+        *ngIf="!isLoading"
+      >
+        <ng-template let-content name="status">
+          <div class="table-text-control">{{ content.field }}</div>
+        </ng-template>
+
+        <!-- Ações -->
+        <ng-template let-content name="action">
+          <div class="table-actions">
+            <div>
+              <a routerLink="/conclusao/detalhes/{{ content.data.id }}">
+                <com-button transparent>
+                  <com-icon outlined slot="icon">launch</com-icon>
+                </com-button>
+              </a>
+            </div>
+            <div>
+              <a routerLink="/conclusao/editar/{{ content.data.id }}">
+                <com-button secondary transparent>
+                  <com-icon outlined slot="icon">edit</com-icon>
+                </com-button>
+              </a>
+            </div>
+            <div>
+              <a>
+                <com-button
+                  warning
+                  transparent
+                  (click)="onDelete(content.data.id)"
+                >
+                  <com-icon outlined slot="icon">delete</com-icon>
+                </com-button>
+              </a>
+            </div>
+          </div>
+        </ng-template>
+      </com-table>
+      <com-table
+        [data]="loadindMockData"
+        [pageSize]="20"
+        [maxPageSize]="1"
+        [minPageSize]="1"
+        [pageIndex]="1"
+        [totalPages]="1"
+        [columns]="columns"
+        *ngIf="isLoading"
+      >
+        <ng-template name="capacitacao">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+
+        <ng-template name="local">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+
+        <ng-template name="dtInicio">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+
+        <ng-template name="dtFim">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+      </com-table>
+    </div>
+  </div>
+</section>

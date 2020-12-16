@@ -6,7 +6,11 @@ import { CadastroComponent } from './containers/cadastro/cadastro.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 
 export const CONCLUSAO_ROUTES: Routes = [
-  { path: '', component: ConsultaComponent, data: { breadcrumb: null } },
+  {
+    path: '',
+    component: ConsultaComponent,
+    data: { breadcrumb: null },
+  },
   {
     path: 'cadastro',
     data: {
