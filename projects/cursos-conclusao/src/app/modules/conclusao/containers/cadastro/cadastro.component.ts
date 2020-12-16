@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { fadeIn } from 'projects/ensino-commons/src/public-api';
 import { ConclusaoFacade } from '../../conclusao.facade';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit {
   form: FormGroup;
