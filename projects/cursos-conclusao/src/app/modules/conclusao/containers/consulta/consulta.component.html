@@ -40,12 +40,12 @@
         <com-form [formGroup]="conclusaoSearch">
           <com-form-section block>
             <com-input
-              formControlName="nome"
+              formControlName="capacitacao"
               placeholder="Digite o Nome da Capacitação"
               label="Nome da Capacitação"
             ></com-input>
             <com-input
-              formControlName="sigla"
+              formControlName="pessoa"
               placeholder="Digite nome da Pessoa"
               label="Nome da pessoa"
             ></com-input>
@@ -137,6 +137,10 @@
         </ng-template>
 
         <ng-template name="dtFim">
+          <div class="table-field-skeleton"></div>
+        </ng-template>
+
+        <ng-template name="pessoa">
           <div class="table-field-skeleton"></div>
         </ng-template>
       </com-table>
