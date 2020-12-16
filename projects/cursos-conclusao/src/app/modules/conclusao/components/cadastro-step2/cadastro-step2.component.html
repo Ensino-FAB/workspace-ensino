@@ -6,29 +6,32 @@
       >Árvore Estratégica*</com-label
     >
     <div *ngFor="let control of form.controls; let i = index">
-      <com-button
-        *ngIf="i > 0"
-        (click)="removeFormItem(i)"
-        class="close"
-        transparent
-        warning
-        ><com-icon slot="icon" outlined>delete</com-icon></com-button
-      >
-
       <app-autocomplete-pessoas
         [selectedItem]="control.get('pessoa').value"
         [options]="itensOptions"
         label="Filtrar por nome, CPF ou SARAM"
         (changed)="onChange($event)"
-        (confirmed)="onConfirmTree($event)"
+        (confirmed)="onConfirmTree($event, i)"
         (textBlurred)="blurTree()"
+        [index]="i"
+        @fadeInOut
       ></app-autocomplete-pessoas>
     </div>
     <button
       (click)="addFormItem()"
       class="add-plan flex-container middle center"
     >
-      <com-icon>add</com-icon> Adicionar outra pessoa
+      <div
+        *ngIf="form.length === 0; then thenBlock; else elseBlock"
+        class="add-plan flex-container middle center"
+      ></div>
+      <ng-template #thenBlock
+        ><com-icon>add</com-icon> Adicionar pessoa</ng-template
+      >
+      <ng-template #elseBlock
+        ><com-icon>add</com-icon> Adicionar outra pessoa</ng-template
+      >
+      <div></div>
     </button>
   </com-form-section>
   <com-form-section block>

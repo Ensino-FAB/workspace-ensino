@@ -41,10 +41,12 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
   @Input() options: Array<SelectOption> = [];
   @Input() invalid: boolean;
   @Input() label = '';
+  @Input() index: number;
 
   @Output() changed = new EventEmitter();
   @Output() confirmed = new EventEmitter();
   @Output() textBlurred = new EventEmitter();
+  @Output() removePerson = new EventEmitter();
 
   isOpen = false;
   selectedIndex: number = null;
@@ -165,10 +167,8 @@ export class AutocompletePessoasComponent implements AfterViewChecked {
     this.selectedIndex = index;
     this.confirmed.emit(this.options[this.selectedIndex]);
     this.inputElement.blur();
-
     this.selectedItem = this.options[index];
     this.onChange(`${this.selectedItem.id}`);
-
     this.inputValue = '';
     this.inputElement.value = '';
   }
