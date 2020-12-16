@@ -34,7 +34,9 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.addFormItem();
+    if (this.form.controls.length === 0) {
+      this.addFormItem();
+    }
   }
 
   addFormItem(): void {
@@ -43,6 +45,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
     });
     this.form.push(formGroup);
   }
+
   removeFormItem(index: number) {
     this.form.removeAt(index);
   }
