@@ -8,7 +8,10 @@ import {
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
+import {
+  fadeInOut,
+  ToastService,
+} from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
 import { ConclusaoFacade } from '../../conclusao.facade';
 
@@ -16,6 +19,7 @@ import { ConclusaoFacade } from '../../conclusao.facade';
   selector: 'app-cadastro-step2',
   templateUrl: './cadastro-step2.component.html',
   styleUrls: ['./cadastro-step2.component.scss'],
+  animations: [fadeInOut()],
 })
 export class CadastroStep2Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
@@ -47,7 +51,9 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   }
 
   removeFormItem(index: number) {
-    this.form.removeAt(index);
+    if (this.form.controls.length > 1) {
+      this.form.removeAt(index);
+    }
   }
 
   onSubmit(): void {}

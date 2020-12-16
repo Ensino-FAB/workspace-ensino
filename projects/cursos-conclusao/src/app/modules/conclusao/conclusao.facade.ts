@@ -2,6 +2,10 @@ import { CapacitacaoService } from './../../services/capacitacao.service';
 import { Injectable, Injector } from '@angular/core';
 import { ConclusaoService } from '../../services/conclusao.service';
 import { PessoaService } from '../../services/pessoa.service';
+import { PropostaConclusaoSearch } from '../../models/proposta-conclusao-search.model';
+import { Observable } from 'rxjs';
+import { Pageable } from '../../../../../ensino-commons/src/lib/models/pageable.model';
+import { ConclusaoCursoResponse } from '../../models/conclusao-curso-response.model';
 
 @Injectable()
 export class ConclusaoFacade {
