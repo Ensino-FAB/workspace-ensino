@@ -12,7 +12,7 @@
         label="Filtrar por nome, CPF ou SARAM"
         (changed)="onChange($event)"
         (confirmed)="onConfirmTree($event, i)"
-        (textBlurred)="blurTree()"
+        (textBlurred)="blurTree(i)"
         [index]="i"
         @fadeInOut
       ></app-autocomplete-pessoas>

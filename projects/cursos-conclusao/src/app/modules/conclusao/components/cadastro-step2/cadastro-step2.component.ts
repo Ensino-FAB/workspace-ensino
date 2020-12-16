@@ -28,7 +28,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   @Output() next = new EventEmitter();
   @Output() back = new EventEmitter();
 
-  itensOptions: SelectOption[];
+  itensOptions: SelectOption[] = [];
 
   @Input() form: FormArray;
 
@@ -53,6 +53,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   }
 
   removeFormItem(index: number) {
+    console.log('remove');
     this.form.removeAt(index);
     if (this.form.controls.length > 1) {
       this.form.removeAt(index);
@@ -72,12 +73,12 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   }
 
   onConfirmTree(value: SelectOption, i) {
-    this.form[i].setValue(value);
+    this.form.controls[i].get('pessoa').setValue(value);
   }
 
   blurTree(i) {
-    if (!this.form[i].touched) {
-      this.form[i].markAsTouched();
+    if (!this.form.controls[i].get('pessoa').touched) {
+      this.form.controls[i].get('pessoa').markAsTouched();
     }
   }
 
