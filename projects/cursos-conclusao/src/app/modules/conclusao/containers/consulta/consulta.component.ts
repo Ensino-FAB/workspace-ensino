@@ -27,6 +27,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'capacitacao',
       title: 'Capacitação',
+      width: '30%',
+    },
+
+    {
+      field: 'pessoa',
+      title: 'Pessoa',
       width: '20%',
     },
 
@@ -39,18 +45,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'dtInicio',
       title: 'Data de Início',
-      width: '12%',
+      width: '8%',
     },
     {
       field: 'dtFim',
       title: 'Data de fim',
-      width: '12%',
-    },
-
-    {
-      field: 'pessoa',
-      title: 'Pessoa',
-      width: '20%',
+      width: '8%',
     },
   ];
 
@@ -60,7 +60,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     local: '',
     dtFim: '',
     dtInicio: '',
-    status: '',
+    pessoa: '',
   });
 
   options: object[];
@@ -79,8 +79,11 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.options = [{ name: 'Capacitação', value: 'capacitacao' }];
-    this.options = [{ name: 'Pessoa', value: 'pessoa' }];
+    this.options = [
+      { name: 'Capacitação', value: 'capacitacao' },
+      { name: 'Pessoa', value: 'pessoa' },
+      { name: 'Local', value: 'local' },
+    ];
     this.refresh();
   }
 
@@ -92,7 +95,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
-
+    console.log(search);
     const getConclusao$ = this.facade.conclusaoService
       .findAll(search)
       .pipe(share());
@@ -107,13 +110,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }),
       getConclusao$.subscribe((res) => {
         this.count = res.totalElements;
-
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           capacitacao: `${item?.capacitacaoResponse.nome}`,
           local: `${item?.local}`,
           dtInicio: `${item?.dtInicio}`,
-          dtFim: `${item?.dtfim}`,
+          dtFim: `${item?.dtFim}`,
           pessoa: `${item?.pessoaResponse.nome}`,
         }));
 
