@@ -1,1 +1,17 @@
-<p>detalhe works!</p>
+<section class="flex-container row center main-container" @fadeIn>
+  <div class="flex-container col wrap main-content">
+    <div class="grid-item">
+      <div class="sub-header flex-container between middle">
+        <h1>detalhes da Conclusão #{{ id ? id : 'id' }}</h1>
+      </div>
+    </div>
+    <div class="grid-item">
+      <app-detalhe-conclusao-container
+        [loading]="isLoading"
+        [header]="conclusao?.capacitacaoResponse.nome"
+        [conclusao]="conclusao"
+      >
+      </app-detalhe-conclusao-container>
+    </div>
+  </div>
+</section>

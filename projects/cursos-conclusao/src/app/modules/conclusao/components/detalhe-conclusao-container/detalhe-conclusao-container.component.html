@@ -1,0 +1,70 @@
+<com-card>
+  <div class="container">
+    <div class="wrapper">
+      <header>
+        <h2 [ngClass]="{ skeleton: loading }" *ngIf="header">
+          {{ header }}
+        </h2>
+      </header>
+      <section>
+        <div class="flex-container">
+          <div class="flex-container col start" style="width: 50%">
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Pessoa</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.pessoaResponse?.nome }}
+              </span>
+            </div>
+
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>CPF</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.pessoaResponse?.nrCpf }}
+              </span>
+            </div>
+
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Sigla Organização</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.pessoaResponse?.organizacao?.sigla }}
+              </span>
+            </div>
+
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Organização da Pessoa</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.pessoaResponse?.organizacao?.nome }}
+              </span>
+            </div>
+          </div>
+
+          <div class="flex-container col start" style="width: 50%">
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Local do Curso</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.local }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Data de início</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.dtInicio }}
+              </span>
+            </div>
+            <div class="flex-container col" style="margin-bottom: 3rem">
+              <com-label>Data de fim</com-label>
+              <span [ngClass]="{ skeleton: loading }">
+                {{ conclusao?.dtFim }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="flex-container end">
+        <com-button fill routerLink="/conclusao/">
+          <ng-container slot="text">voltar</ng-container>
+        </com-button>
+      </div>
+    </div>
+  </div>
+</com-card>
