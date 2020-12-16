@@ -14,9 +14,14 @@
         warning
         ><com-icon slot="icon" outlined>delete</com-icon></com-button
       >
+
       <app-autocomplete-pessoas
-        [formControl]="control.get('pessoaId')"
+        [selectedItem]="control.get('pessoa').value"
+        [options]="itensOptions"
         label="Filtrar por nome, CPF ou SARAM"
+        (changed)="onChange($event)"
+        (confirmed)="onConfirmTree($event)"
+        (textBlurred)="blurTree()"
       ></app-autocomplete-pessoas>
     </div>
     <button

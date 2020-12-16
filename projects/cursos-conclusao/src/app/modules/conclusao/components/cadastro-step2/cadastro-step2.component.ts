@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
 import { ConclusaoFacade } from '../../conclusao.facade';
+import { SelectOption } from '../../types/select-option';
 
 @Component({
   selector: 'app-cadastro-step2',
@@ -20,10 +21,11 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class CadastroStep2Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
-  capacitacaoOptions = [{ option: 'teste', value: '3' }];
-
   @Output() next = new EventEmitter();
   @Output() back = new EventEmitter();
+
+  itensOptions: SelectOption[];
+
   @Input() form: FormArray;
 
   constructor(
@@ -39,7 +41,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
 
   addFormItem(): void {
     const formGroup = this.fb.group({
-      pessoaId: ['', Validators.required],
+      pessoa: ['', Validators.required],
     });
     this.form.push(formGroup);
   }
@@ -59,5 +61,28 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
     this.subs$.forEach((sub) => {
       sub.unsubscribe();
     });
+  }
+
+  onConfirmTree(value: SelectOption, i) {
+    this.form[i].setValue(value);
+  }
+
+  blurTree(i) {
+    if (!this.form[i].touched) {
+      this.form[i].markAsTouched();
+    }
+  }
+
+  onChange(value: string) {
+    this.facade.pessoaService.findAll({ nome: value }).subscribe(
+      (response) =>
+        (this.itensOptions = response.content.map((item) => ({
+          id: 2,
+          type: 'string', // tipo
+          path: [item.nrCpf], // vazio
+          title: item.nome,
+          code: item.organizacao?.sigla,
+        })))
+    );
   }
 }
