@@ -56,6 +56,7 @@ export class AutocompletePessoasComponent
   @Input() options: Array<SelectOption> = [];
   @Input() invalid: boolean;
   @Input() label = '';
+  @Input() index: number;
 
   @Output() changed = new EventEmitter();
   @Output() confirmed = new EventEmitter();

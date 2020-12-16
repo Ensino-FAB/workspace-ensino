@@ -51,7 +51,9 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   }
 
   removeFormItem(index: number) {
-    this.form.removeAt(index);
+    if (this.form.controls.length > 1) {
+      this.form.removeAt(index);
+    }
   }
 
   onSubmit(): void {}

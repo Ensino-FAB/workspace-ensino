@@ -6,6 +6,7 @@
         (removePerson)="removeFormItem(i)"
         [formControl]="control.get('pessoaId')"
         label="Filtrar por nome, CPF ou SARAM"
+        [index]="i"
         @fadeInOut
       ></app-autocomplete-pessoas>
     </div>

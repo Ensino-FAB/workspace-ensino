@@ -69,7 +69,7 @@
   <div class="item-tree flex-container" *ngIf="!selectedItem">
     <div class="flex-container row middle center">
       <div>Nenhum item selecionado</div>
-      <div>
+      <div *ngIf="index !== 0">
         <com-button (click)="removeFormItem()" transparent warning
           ><com-icon slot="icon" outlined>delete</com-icon></com-button
         >
