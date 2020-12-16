@@ -12,14 +12,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ConclusaoFacade } from '../../conclusao.facade';
-
-export interface SelectOption {
-  id: number;
-  type: string; // tipo
-  path: string[]; // vazio
-  title: string; // descricao
-  code: string; // codigoInterno
-}
+import { SelectOption } from '../../types/select-option';
 
 @Component({
   selector: 'app-autocomplete-pessoas',
@@ -43,16 +36,8 @@ export interface SelectOption {
       ]),
     ]),
   ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AutocompletePessoasComponent),
-      multi: true,
-    },
-  ],
 })
-export class AutocompletePessoasComponent
-  implements AfterViewChecked, ControlValueAccessor {
+export class AutocompletePessoasComponent implements AfterViewChecked {
   @Input() options: Array<SelectOption> = [];
   @Input() invalid: boolean;
   @Input() label = '';
@@ -68,14 +53,12 @@ export class AutocompletePessoasComponent
 
   @Input() selectedItem: SelectOption;
 
-  value = '';
+  inputValue = '';
 
   inputElement: HTMLInputElement;
   optionsParentElement: HTMLUListElement;
-  disabled: boolean;
-  onTouched: () => void;
 
-  constructor(public el: ElementRef, private facade: ConclusaoFacade) {}
+  constructor(public el: ElementRef) {}
 
   /* istanbul ignore next */
   ngAfterViewChecked(): void {
@@ -86,26 +69,6 @@ export class AutocompletePessoasComponent
     }
   }
 
-  onChange(value: string): void {
-    this.value = value;
-    this.changed.emit(value);
-  }
-  writeValue(value: string): void {
-    this.value = value;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
   open() {
     this.isOpen = true;
   }
@@ -113,7 +76,6 @@ export class AutocompletePessoasComponent
   close() {
     this.selectedIndex = null;
     this.isOpen = false;
-
     this.textBlurred.emit();
   }
 
@@ -196,33 +158,18 @@ export class AutocompletePessoasComponent
     }
   }
 
+  onChange(value: string): void {
+    this.inputValue = value;
+    this.changed.emit(value);
+  }
+
   onSelectItem(index: number) {
     this.selectedIndex = index;
     this.confirmed.emit(this.options[this.selectedIndex]);
     this.inputElement.blur();
     this.selectedItem = this.options[index];
     this.onChange(`${this.selectedItem.id}`);
-    this.value = '';
+    this.inputValue = '';
     this.inputElement.value = '';
-  }
-
-  removeFormItem() {
-    console.log('remove button:');
-    this.removePerson.emit();
-  }
-
-  searchOptions() {
-    this.facade.pessoaService
-      .findAll({ nome: this.inputElement.value })
-      .subscribe(
-        (response) =>
-          (this.options = response.content.map((item) => ({
-            id: 2,
-            type: 'string', // tipo
-            path: [item.nrCpf], // vazio
-            title: item.nome,
-            code: item.organizacao?.sigla,
-          })))
-      );
   }
 }

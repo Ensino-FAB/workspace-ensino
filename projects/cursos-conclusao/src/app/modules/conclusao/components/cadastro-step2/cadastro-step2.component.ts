@@ -14,6 +14,7 @@ import {
 } from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
 import { ConclusaoFacade } from '../../conclusao.facade';
+import { SelectOption } from '../../types/select-option';
 
 @Component({
   selector: 'app-cadastro-step2',
@@ -24,10 +25,11 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class CadastroStep2Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
-  capacitacaoOptions = [{ option: 'teste', value: '3' }];
-
   @Output() next = new EventEmitter();
   @Output() back = new EventEmitter();
+
+  itensOptions: SelectOption[] = [];
+
   @Input() form: FormArray;
 
   constructor(
@@ -38,19 +40,21 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    if (this.form.controls.length === 0) {
+    if (this.form.length === 0) {
       this.addFormItem();
     }
   }
 
   addFormItem(): void {
     const formGroup = this.fb.group({
-      pessoaId: ['', Validators.required],
+      pessoa: ['', Validators.required],
     });
     this.form.push(formGroup);
   }
 
   removeFormItem(index: number) {
+    console.log('remove');
+    this.form.removeAt(index);
     if (this.form.controls.length > 1) {
       this.form.removeAt(index);
     }
@@ -66,5 +70,28 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
     this.subs$.forEach((sub) => {
       sub.unsubscribe();
     });
+  }
+
+  onConfirmTree(value: SelectOption, i) {
+    this.form.controls[i].get('pessoa').setValue(value);
+  }
+
+  blurTree(i) {
+    if (!this.form.controls[i].get('pessoa').touched) {
+      this.form.controls[i].get('pessoa').markAsTouched();
+    }
+  }
+
+  onChange(value: string) {
+    this.facade.pessoaService.findAll({ nome: value }).subscribe(
+      (response) =>
+        (this.itensOptions = response.content.map((item) => ({
+          id: 2,
+          type: 'string', // tipo
+          cpf: item.nrCpf, // vazio
+          nome: item.nome,
+          organizacao: item.organizacao?.sigla,
+        })))
+    );
   }
 }

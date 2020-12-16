@@ -1,11 +1,18 @@
 <com-form (ngSubmit)="onSubmit()">
-  <com-form-section partly formTitle="Seleção de Pessoas" step="2">
-    <com-label comTooltipSize="1.4">Pessoas*</com-label>
+  <com-form-section partly formTitle="Cadastro" step="2">
+    <com-label
+      comTooltip="Aloca a FIN no planejamento estratégico selecionado, ou seja, alinha a necessidade as missões e visões da força"
+      comTooltipSize="1.4"
+      >Árvore Estratégica*</com-label
+    >
     <div *ngFor="let control of form.controls; let i = index">
       <app-autocomplete-pessoas
-        (removePerson)="removeFormItem(i)"
-        [formControl]="control.get('pessoaId')"
+        [selectedItem]="control.get('pessoa').value"
+        [options]="itensOptions"
         label="Filtrar por nome, CPF ou SARAM"
+        (changed)="onChange($event)"
+        (confirmed)="onConfirmTree($event, i)"
+        (textBlurred)="blurTree(i)"
         [index]="i"
         @fadeInOut
       ></app-autocomplete-pessoas>
@@ -15,7 +22,7 @@
       class="add-plan flex-container middle center"
     >
       <div
-        *ngIf="form.controls.length === 0; then thenBlock; else elseBlock"
+        *ngIf="form.length === 0; then thenBlock; else elseBlock"
         class="add-plan flex-container middle center"
       ></div>
       <ng-template #thenBlock
