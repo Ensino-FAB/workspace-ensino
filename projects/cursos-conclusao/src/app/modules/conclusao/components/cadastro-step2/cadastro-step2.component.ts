@@ -88,9 +88,9 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
         (this.itensOptions = response.content.map((item) => ({
           id: 2,
           type: 'string', // tipo
-          path: [item.nrCpf], // vazio
-          title: item.nome,
-          code: item.organizacao?.sigla,
+          cpf: item.nrCpf, // vazio
+          nome: item.nome,
+          organizacao: item.organizacao?.sigla,
         })))
     );
   }

@@ -34,8 +34,8 @@
             <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
           </p>
         </div>
-        <h4>{{ option.title }}</h4>
-        <com-tag primary>{{ option.code }}</com-tag>
+        <h4>{{ option.nome }}</h4>
+        <com-tag primary>{{ option.organizacao }}</com-tag>
       </div>
     </li>
   </ul>
@@ -54,8 +54,8 @@
             <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
           </p>
         </div>
-        <h4>{{ selectedItem.title }}</h4>
-        <com-tag primary>{{ selectedItem.code }}</com-tag>
+        <h4>{{ selectedItem.nome }}</h4>
+        <com-tag primary>{{ selectedItem.organizacao }}</com-tag>
       </div>
       <div>
         <com-button (click)="removeFormItem()" transparent warning
@@ -68,7 +68,7 @@
   <div class="item-tree flex-container" *ngIf="!selectedItem">
     <div class="flex-container row middle center">
       <div>Nenhum item selecionado</div>
-      <div *ngIf="index !== 0">
+      <div>
         <com-button (click)="removeFormItem()" transparent warning
           ><com-icon slot="icon" outlined>delete</com-icon></com-button
         >
