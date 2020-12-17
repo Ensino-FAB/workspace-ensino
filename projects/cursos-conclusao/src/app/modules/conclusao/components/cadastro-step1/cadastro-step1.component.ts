@@ -8,8 +8,6 @@ import {
   Output,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
 import { Subscription } from 'rxjs';
 import { ConclusaoFacade } from '../../conclusao.facade';
 
@@ -29,13 +27,6 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
   constructor(private facade: ConclusaoFacade) {}
 
   ngOnInit(): void {
-    // const search = {
-    //   ...this.conclusaoSearch.value,
-    //   page: this.page ? this.page - 1 : 0,
-    //   size: this.pageSize,
-    //   sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
-    // };
-
     this.reload();
   }
 
@@ -54,11 +45,15 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
   }
 
   confirmed(event): void {
-    console.log(typeof event);
+    this.form.patchValue({ capacitacaoId: event.value });
   }
 
   filter(event): void {
-    this.reload({ nome: event });
+    const cursoName: string = event;
+
+    if (cursoName.length > 3) {
+      this.reload({ nome: cursoName });
+    }
   }
 
   onSubmit(): void {}
