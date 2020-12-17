@@ -1,9 +1,9 @@
 <com-form (ngSubmit)="onSubmit()">
-  <com-form-section partly formTitle="Cadastro" step="2">
+  <com-form-section partly formTitle="Seleção de Pessoas" step="2">
     <com-label
-      comTooltip="Aloca a FIN no planejamento estratégico selecionado, ou seja, alinha a necessidade as missões e visões da força"
+      comTooltip="Selecione abaixo as pessoas para a conclusão, na caixa de texto, insira a informação referente à busca, as pessoas irão aparecer de acordo com o texto inserido."
       comTooltipSize="1.4"
-      >Árvore Estratégica*</com-label
+      >Pessoas*</com-label
     >
     <div *ngFor="let control of form.controls; let i = index">
       <app-autocomplete-pessoas
