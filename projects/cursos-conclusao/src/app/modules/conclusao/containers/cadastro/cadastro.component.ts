@@ -18,7 +18,6 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nome: [''],
       dataInicio: [''],
       dataTermino: [''],
       local: [''],
