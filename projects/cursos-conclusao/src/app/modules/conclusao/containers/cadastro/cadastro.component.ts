@@ -74,21 +74,13 @@ export class CadastroComponent implements OnInit {
           .value.map((item) => item.pessoa.id),
         capacitacaoId: this.form.get('capacitacaoId').value,
       };
-      this.facade.conclusaoService
-        .create(requestBody)
-        .pipe(
-          mergeMap((conclusao) =>
-            this.facade.conclusaoService.find(conclusao.id)
-          )
-        )
-        .subscribe((res: ConclusaoCursoResponse) => {
-          this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
-          ++this.currentStep;
+      this.facade.conclusaoService.create(requestBody).subscribe(() => {
+        this.toast.show({
+          message: 'A Conclusão foi salva com sucesso!',
+          type: 'success',
         });
-    }
-
-    if (this.currentStep < 3) {
-      this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'active';
+        this.router.navigate(['conclusao']);
+      });
     }
   }
 
