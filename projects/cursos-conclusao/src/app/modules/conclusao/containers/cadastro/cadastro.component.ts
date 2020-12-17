@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { fadeIn } from 'projects/ensino-commons/src/public-api';
+import { ConclusaoCursoRequest } from 'projects/cursos-conclusao/src/app/models/conclusao-curso-request.model';
+import { ConclusaoCursoResponse } from 'projects/cursos-conclusao/src/app/models/conclusao-curso-response.model';
+import { mergeMap } from 'rxjs/operators';
 import { ConclusaoFacade } from '../../conclusao.facade';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
-  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit {
   form: FormGroup;
@@ -14,10 +15,11 @@ export class CadastroComponent implements OnInit {
   currentStep = 1;
   statusMap = { first: 'active', second: 'disabled' };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private facade: ConclusaoFacade) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      nome: [''],
       dataInicio: [''],
       dataTermino: [''],
       local: [''],
@@ -51,21 +53,30 @@ export class CadastroComponent implements OnInit {
       this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
       ++this.currentStep;
     } else if (this.currentStep === 2) {
-      setTimeout(() => {
-        this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
-        ++this.currentStep;
-        console.log(this.form.value);
-      }, 1000);
-      //   this.facade
-      //     .createFin(FinRequestObject)
-      //     .pipe(mergeMap((fin) => this.facade.getFin(fin.id)))
-      //     .subscribe((res: Fin) => {
-      //       this.createdFin = res;
+      const requestBody: ConclusaoCursoRequest = {
+        id: 0,
+        dtFim: this.form.get('dataTermino').value,
+        dtInicio: this.form.get('dataInicio').value,
+        local: this.form.get('local').value,
+        pessoaList: this.form
+          .get('pessoas')
+          .value.map((item) => item.pessoa.id),
+        capacitacaoId: this.form.get('capacitacaoId').value,
+      };
+      this.facade.conclusaoService
+        .create(requestBody)
+        .pipe(
+          mergeMap((conclusao) =>
+            this.facade.conclusaoService.find(conclusao.id)
+          )
+        )
+        .subscribe((res: ConclusaoCursoResponse) => {
+          // this.this.refNameRef = React.createRef()
+          //  = res;
 
-      //       this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
-      //       ++this.currentStep;
-      //     });
-      // });
+          this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
+          ++this.currentStep;
+        });
     }
 
     if (this.currentStep < 3) {

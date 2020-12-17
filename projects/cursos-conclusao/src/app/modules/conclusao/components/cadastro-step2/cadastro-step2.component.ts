@@ -85,7 +85,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
     this.facade.pessoaService.findAll({ nome: value }).subscribe(
       (response) =>
         (this.itensOptions = response.content.map((item) => ({
-          id: 2,
+          id: item.id,
           type: 'string', // tipo
           cpf: [item.nrCpf], // vazio
           nome: item.nome,
