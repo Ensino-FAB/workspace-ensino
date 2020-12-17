@@ -44,9 +44,7 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
     );
   }
 
-  confirmed(event): void {
-    this.form.patchValue({ capacitacaoId: event.value });
-  }
+  confirmed(event): void {}
 
   filter(event): void {
     const cursoName: string = event;
