@@ -37,7 +37,10 @@
   <com-form-section block>
     <footer class="flex-container end">
       <com-button (click)="back.emit()">
-        <ng-container slot="text">voltar</ng-container>
+        <ng-container slot="text">anterior</ng-container>
+      </com-button>
+      <com-button fill routerLink="/conclusao">
+        <ng-container slot="text">voltar para a lista</ng-container>
       </com-button>
       <com-button (click)="next.emit()" [disabled]="form.invalid" fill confirm>
         <ng-container slot="text">confirmar e gravar conclusão</ng-container>

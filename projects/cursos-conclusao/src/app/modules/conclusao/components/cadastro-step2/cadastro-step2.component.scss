@@ -58,7 +58,10 @@ header {
 }
 
 footer {
-  & > *:first-child {
+  & > *:nth-child(1) {
+    margin-right: 2rem;
+  }
+  & > *:nth-child(2) {
     margin-right: 2rem;
   }
 }
