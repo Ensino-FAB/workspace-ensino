@@ -33,4 +33,4 @@ export const CONCLUSAO_ROUTES: Routes = [
   declarations: [],
   imports: [CommonModule],
 })
-export class PessoaRoutingModule {}
+export class ConclusaoRoutingModule {}
