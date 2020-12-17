@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConclusaoCursoRequest } from 'projects/cursos-conclusao/src/app/models/conclusao-curso-request.model';
 import { ConclusaoCursoResponse } from 'projects/cursos-conclusao/src/app/models/conclusao-curso-response.model';
-import { mergeMap } from 'rxjs/operators';
 import { ConclusaoFacade } from '../../conclusao.facade';
+import { Router } from '@angular/router';
+import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
+import { fadeIn } from '../../../../../../../ensino-commons/src/lib/utils/animation';
+import { mergeMap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit {
   form: FormGroup;
@@ -15,7 +20,12 @@ export class CadastroComponent implements OnInit {
   currentStep = 1;
   statusMap = { first: 'active', second: 'disabled' };
 
-  constructor(private fb: FormBuilder, private facade: ConclusaoFacade) {}
+  constructor(
+    private fb: FormBuilder,
+    private facade: ConclusaoFacade,
+    private router: Router,
+    private toast: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -31,6 +41,7 @@ export class CadastroComponent implements OnInit {
   newFin() {
     window.location.reload();
   }
+
   cleanForm() {}
 
   onStepperClick(step: number) {
@@ -71,9 +82,6 @@ export class CadastroComponent implements OnInit {
           )
         )
         .subscribe((res: ConclusaoCursoResponse) => {
-          // this.this.refNameRef = React.createRef()
-          //  = res;
-
           this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'checked';
           ++this.currentStep;
         });
@@ -83,6 +91,7 @@ export class CadastroComponent implements OnInit {
       this.statusMap[CHANGE_MAP[this.currentStep - 1]] = 'active';
     }
   }
+
   previousStep() {
     window.scroll({
       behavior: 'smooth',
