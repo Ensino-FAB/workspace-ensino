@@ -18,8 +18,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
   public isLoading = false;
 
   conclusaoSearch = new FormGroup({
-    capacitacao: new FormControl(''),
-    pessoa: new FormControl(''),
     local: new FormControl(''),
   });
 
@@ -44,12 +42,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
     {
       field: 'dtInicio',
-      title: 'Data de Início',
+      title: 'Data Início',
       width: '8%',
     },
     {
       field: 'dtFim',
-      title: 'Data de fim',
+      title: 'Data fim',
       width: '8%',
     },
   ];
@@ -80,9 +78,8 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.options = [
-      { name: 'Capacitação', value: 'capacitacao' },
-      { name: 'Pessoa', value: 'pessoa' },
-      { name: 'Local', value: 'local' },
+      { name: 'Data-Início', value: 'dtInicio' },
+      { name: 'Data-Fim', value: 'dtFim' },
     ];
     this.refresh();
   }
