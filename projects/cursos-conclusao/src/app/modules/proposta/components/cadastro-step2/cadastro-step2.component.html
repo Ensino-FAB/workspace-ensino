@@ -1,0 +1,50 @@
+<com-form (ngSubmit)="onSubmit()">
+  <com-form-section partly formTitle="Seleção de Pessoas" step="2">
+    <com-label
+      comTooltip="Selecione abaixo as pessoas para a conclusão, na caixa de texto, insira a informação referente à busca, as pessoas irão aparecer de acordo com o texto inserido."
+      comTooltipSize="1.4"
+      >Pessoas*</com-label
+    >
+    <div *ngFor="let control of form.controls; let i = index">
+      <app-autocomplete-pessoas
+        [selectedItem]="control.get('pessoa').value"
+        [options]="itensOptions"
+        label="Filtrar por nome, CPF ou SARAM"
+        (changed)="onChange($event)"
+        (confirmed)="onConfirmTree($event, i)"
+        (textBlurred)="blurTree(i)"
+        (removePerson)="removeFormItem(i)"
+        [index]="i"
+        @fadeInOut
+      ></app-autocomplete-pessoas>
+    </div>
+    <button
+      (click)="addFormItem()"
+      class="add-plan flex-container middle center"
+    >
+      <div
+        *ngIf="form.length === 0; then thenBlock; else elseBlock"
+        class="add-plan flex-container middle center"
+      ></div>
+      <ng-template #thenBlock
+        ><com-icon>add</com-icon> Adicionar pessoa</ng-template
+      >
+      <ng-template #elseBlock
+        ><com-icon>add</com-icon> Adicionar outra pessoa</ng-template
+      >
+    </button>
+  </com-form-section>
+  <com-form-section block>
+    <footer class="flex-container end">
+      <com-button (click)="back.emit()">
+        <ng-container slot="text">anterior</ng-container>
+      </com-button>
+      <com-button fill routerLink="/conclusao">
+        <ng-container slot="text">voltar para a lista</ng-container>
+      </com-button>
+      <com-button (click)="next.emit()" [disabled]="form.invalid" fill confirm>
+        <ng-container slot="text">confirmar e gravar proposta</ng-container>
+      </com-button>
+    </footer>
+  </com-form-section>
+</com-form>

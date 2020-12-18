@@ -1,0 +1,53 @@
+<com-form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <com-form-section partly formTitle="Dados da Capacitação" step="1">
+    <com-autocomplete
+      enableConfirmOnInexistentValue
+      autoActiveFirstOption
+      (changed)="filter($event)"
+      (confirmed)="confirmed($event)"
+      label="Capacitação*"
+      [options]="capacitacaoOptions"
+      [invalid]="
+        form.get('capacitacaoId').invalid && form.get('capacitacaoId').touched
+      "
+      formControlName="capacitacaoId"
+    >
+    </com-autocomplete>
+
+    <com-input
+      class="input"
+      type="date"
+      [invalid]="
+        (form.get('dataInicio').invalid && form.get('dataInicio').touched) ||
+        form.errors?.dataInicio
+      "
+      label="Início*"
+      formControlName="dataInicio"
+    ></com-input>
+    <com-input
+      class="input"
+      type="date"
+      [invalid]="
+        (form.get('dtFim').invalid && form.get('dtFim').touched) ||
+        form.errors?.dtFim
+      "
+      label="Início*"
+      formControlName="dtFim"
+    ></com-input>
+    <com-input
+      formControlName="local"
+      label="Local"
+      [invalid]="
+        (form.get('local').invalid && form.get('local').touched) ||
+        form.errors?.local
+      "
+    ></com-input>
+  </com-form-section>
+  <com-form-section block>
+    <footer class="flex-container end">
+      <com-button primary (click)="onNext()" [disabled]="form.invalid">
+        <span slot="text">próximo</span>
+      </com-button>
+    </footer>
+  </com-form-section>
+</com-form>

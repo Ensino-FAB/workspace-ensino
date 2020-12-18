@@ -1,0 +1,92 @@
+<com-input
+  class="no-margin"
+  [invalid]="invalid"
+  [value]="inputValue"
+  [label]="label"
+  (focused)="open()"
+  (blurred)="close()"
+  (ref)="this.inputElement = $event"
+  (immediate)="onChange($event)"
+  immediate
+></com-input>
+
+<div
+  (focusout)="close()"
+  [@inOutAnimation]
+  *ngIf="isOpen && options.length"
+  class="card"
+>
+  <ul>
+    <li
+      [ngClass]="{ focus: index === selectedIndex }"
+      *ngFor="let option of options; let index = index"
+      (mousedown)="$event.preventDefault()"
+      (click)="onSelectItem(index)"
+    >
+      <div>
+        <com-icon outlined slot="icon">person</com-icon>
+      </div>
+
+      <div>
+        <div class="flex-container row wrap">
+          <p *ngFor="let cpf of option.cpf" class="parents">
+            <span>{{ cpf }}</span>
+            <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+          </p>
+        </div>
+        <h4>{{ option.nome }}</h4>
+        <div *ngIf="option.organizacao; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <com-tag primary>{{ option.organizacao }}</com-tag>
+        </ng-template>
+        <ng-template #elseBlock
+          ><span class="parents">Organização não cadastrada</span></ng-template
+        >
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="item-tree-wrapper">
+  <div class="flex-container selected-item-tree" *ngIf="selectedItem">
+    <div>
+      <com-icon outlined slot="icon">person</com-icon>
+    </div>
+    <div class="selected-person">
+      <div>
+        <div>
+          <p *ngFor="let cpf of selectedItem.cpf" class="parents">
+            <span>{{ cpf }}</span>
+            <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+          </p>
+        </div>
+        <h4>{{ selectedItem.nome }}</h4>
+        <div
+          *ngIf="selectedItem.organizacao; then thenBlock; else elseBlock"
+        ></div>
+        <ng-template #thenBlock>
+          <com-tag primary>{{ selectedItem.organizacao }}</com-tag>
+        </ng-template>
+        <ng-template #elseBlock
+          ><span class="parents">Organização não cadastrada</span></ng-template
+        >
+      </div>
+      <div>
+        <com-button (click)="removePerson.emit()" transparent warning
+          ><com-icon slot="icon" outlined>delete</com-icon></com-button
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="item-tree flex-container" *ngIf="!selectedItem">
+    <div class="flex-container col middle center">
+      <div>Nenhum item selecionado</div>
+      <div *ngIf="index > 0">
+        <com-button (click)="removePerson.emit()" transparent warning
+          ><com-icon slot="icon" outlined>delete</com-icon></com-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

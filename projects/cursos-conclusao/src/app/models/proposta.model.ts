@@ -17,3 +17,15 @@ export interface CapacitacaoResponse {
   descricao?: string;
   cargaHorario?: number;
 }
+
+export interface PropostaRequest extends BaseModel {
+  dtFim?: Date;
+  dtInicio?: Date;
+  local?: string;
+  itens?: ItemPropostaRequest[];
+  capacitacaoId?: number;
+}
+
+export interface ItemPropostaRequest extends BaseModel {
+  pessoaId?: number;
+}

@@ -1,3 +1,4 @@
+import { PessoaService } from './../../services/pessoa.service';
 import { Injectable, Injector } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { Pageable } from '../../../../../ensino-commons/src/lib/models/pageable.model';
@@ -6,10 +7,11 @@ import { PropostaConclusaoService } from '../../services/proposta-conclusao.serv
 import { ProcessoConclusaoService } from '../../services/processo.service';
 import { TarefaService } from '../../services/tarefa.service';
 import { PropostaConclusaoSearch } from '../../models/proposta-conclusao-search.model';
-import { Proposta } from '../../models/proposta.model';
+import { Proposta, PropostaRequest } from '../../models/proposta.model';
 import { Processo } from '../../models/processo.model';
 import { Tarefa } from '../../models/tarefa.model';
 import { ProcessDiagram } from 'projects/ensino-commons/src/lib/types/ProcessDiagram';
+import { CapacitacaoService } from '../../services/capacitacao.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,9 @@ import { ProcessDiagram } from 'projects/ensino-commons/src/lib/types/ProcessDia
 export class PropostaFacade {
   private _propostaService: PropostaConclusaoService;
   private _processoService: ProcessoConclusaoService;
+  private _PessoaService: PessoaService;
   private _tarefaService: TarefaService;
+  private _CapacitacaoService: CapacitacaoService;
 
   constructor(private injector: Injector) {}
 
@@ -42,6 +46,20 @@ export class PropostaFacade {
     return this._tarefaService;
   }
 
+  public get capacitacaoService(): CapacitacaoService {
+    if (!this._CapacitacaoService) {
+      this._CapacitacaoService = this.injector.get(CapacitacaoService);
+    }
+    return this._CapacitacaoService;
+  }
+
+  public get pessoaService(): PessoaService {
+    if (!this._PessoaService) {
+      this._PessoaService = this.injector.get(PessoaService);
+    }
+    return this._PessoaService;
+  }
+
   public getAllProposta(
     search: PropostaConclusaoSearch
   ): Observable<Pageable<Proposta>> {
@@ -60,7 +78,7 @@ export class PropostaFacade {
     });
   }
 
-  public save(record: Proposta): any {
+  public save(record: PropostaRequest): any {
     return this.propotaService.save(record);
   }
 

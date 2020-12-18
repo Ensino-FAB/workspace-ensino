@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Pageable } from '../../../../ensino-commons/src/lib/models/pageable.model';
 import { take } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Proposta } from '../models/proposta.model';
+import { Proposta, PropostaRequest } from '../models/proposta.model';
 import { PropostaConclusaoSearch } from '../models/proposta-conclusao-search.model';
 @Injectable({
   providedIn: 'root',
@@ -43,7 +43,7 @@ export class PropostaConclusaoService {
     return this.http.get<Proposta>(`${this.endpoint}/${id}`).pipe(take(1));
   }
 
-  create(record: Proposta): Observable<Proposta> {
+  create(record: PropostaRequest): Observable<PropostaRequest> {
     return this.http.post(this.endpoint, record).pipe(take(1)) as Observable<
       Proposta
     >;
@@ -53,10 +53,7 @@ export class PropostaConclusaoService {
     return this.http.put(`${this.endpoint}/${id}`, record).pipe(take(1));
   }
 
-  public save(record: Proposta): any {
-    if (record.id) {
-      return this.update(record.id, record);
-    }
+  public save(record: PropostaRequest): any {
     return this.create(record);
   }
 

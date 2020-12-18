@@ -1,0 +1,104 @@
+@import '../../../../../assets/scss/flex.scss';
+
+header {
+  max-width: 1000px;
+  min-height: 9.3rem;
+  background: var(--white);
+  margin: auto;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  .indicator {
+    width: 16rem;
+    border: 0.1rem solid var(--primary);
+    position: relative;
+    background: var(--primary);
+    border-radius: 0.5rem 0 0 0.5rem;
+    font-size: 13.5rem;
+    color: var(--white);
+    line-height: 9.25rem;
+    overflow: hidden;
+
+    & > span {
+      user-select: none;
+      position: absolute;
+      top: -0.15rem;
+      right: -1.2rem;
+    }
+  }
+
+  .steps-list {
+    flex-grow: 1;
+    padding: 2rem;
+
+    & > div {
+      position: relative;
+      text-transform: uppercase;
+      border: 2px solid var(--primary);
+      border-radius: 0.5rem;
+      padding: 1rem 2.5rem;
+      color: var(--primary);
+      padding-left: 5.7rem;
+      cursor: pointer;
+
+      transition: border-color 0.15s ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 2.7rem;
+      }
+
+      &:not(:first-child) {
+        &::before {
+          position: absolute;
+          left: -2.9rem;
+          top: calc(50% - 1px);
+          display: block;
+          content: '';
+          height: 2px;
+          width: 2.7rem;
+          background: var(--primary);
+          pointer-events: none;
+        }
+
+        &.disabled {
+          &::before {
+            background: var(--light-grey);
+          }
+        }
+
+        &.invalid {
+          &::before {
+            background: var(--error);
+          }
+        }
+      }
+
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        border-color: var(--light-grey);
+        color: var(--light-grey);
+        .status {
+          background: var(--light-grey);
+        }
+      }
+
+      &.invalid {
+        border-color: var(--error);
+        color: var(--error);
+        .status {
+          background: var(--error);
+        }
+      }
+
+      .status {
+        height: 100%;
+        width: 3.6rem;
+        background: var(--primary);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: background-color 0.15s ease-in-out;
+      }
+    }
+  }
+}
