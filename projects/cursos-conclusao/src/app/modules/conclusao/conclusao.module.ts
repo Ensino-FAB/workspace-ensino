@@ -27,6 +27,7 @@ import { CadastroStep3Component } from './components/cadastro-step3/cadastro-ste
 import { AutocompletePessoasComponent } from './components/autocomplete-pessoas/autocomplete-pessoas.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
 import { DetalheConclusaoContainerComponent } from './components/detalhe-conclusao-container/detalhe-conclusao-container.component';
+import { EdicaoComponent } from './containers/edicao/edicao.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DetalheConclusaoContainerComponent } from './components/detalhe-conclus
     CadastroStep3Component,
     AutocompletePessoasComponent,
     DetalheConclusaoContainerComponent,
+    EdicaoComponent,
   ],
   imports: [
     CommonModule,
