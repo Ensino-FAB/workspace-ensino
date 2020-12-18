@@ -42,7 +42,6 @@ export class DetalheComponent implements OnInit {
         getOrganizacao$.subscribe((item) => {
           if (item) {
             this.organizacao = item;
-            console.log(item);
           }
         })
       );

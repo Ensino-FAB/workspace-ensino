@@ -19,7 +19,6 @@ export class GestaoComponent implements OnInit {
   ngOnInit(): void {
     this.subs$.push(
       this.facade.getGestaoData().subscribe((res) => {
-        console.log(res);
         this.data = res;
       })
     );

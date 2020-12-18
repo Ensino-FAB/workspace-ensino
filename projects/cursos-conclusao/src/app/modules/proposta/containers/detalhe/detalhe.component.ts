@@ -36,7 +36,6 @@ export class DetalheComponent implements OnInit, OnDestroy {
       isLoading$.subscribe((status) => (this.loading = status)),
       getProposta$.subscribe((item) => {
         if (item) {
-          console.log(item.entity);
           this.proposta = item.entity;
           this.tasks = item.tasks;
         }

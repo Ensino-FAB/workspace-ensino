@@ -72,7 +72,6 @@ export class AtividadeComplementarService {
 
   // tslint:disable-next-line: typedef
   remove(id: number) {
-    console.log(id);
     return this.http.delete(`${this.endpoint}/${id}`).pipe(take(1));
   }
 }

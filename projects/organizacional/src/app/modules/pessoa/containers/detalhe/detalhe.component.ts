@@ -37,7 +37,6 @@ export class DetalheComponent implements OnInit {
         getPessoa$.subscribe((item) => {
           if (item) {
             this.pessoa = item;
-            console.log(item);
           }
         })
       );

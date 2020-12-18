@@ -31,7 +31,7 @@
             <li *ngFor="let item of data">
               <div class="flex-container row between item-wrapper middle">
                 <a routerLink="detalhes/{{ item.variables.entity?.id }}">
-                  {{ item.variables.entity?.nome }}
+                  Proposta: {{ item.variables.entity?.id }}
                 </a>
                 <com-tag>{{ item.variables.entity?.status }}</com-tag>
               </div>

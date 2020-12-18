@@ -43,7 +43,6 @@ export class DetalheComponent implements OnInit {
         getAtividadeComplementar$.subscribe((item) => {
           if (item) {
             this.atividadeComplementar = item;
-            console.log(item);
           }
         })
       );

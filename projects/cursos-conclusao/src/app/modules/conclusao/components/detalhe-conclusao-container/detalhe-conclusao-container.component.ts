@@ -13,7 +13,5 @@ export class DetalheConclusaoContainerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.conclusao);
-  }
+  ngOnInit(): void {}
 }

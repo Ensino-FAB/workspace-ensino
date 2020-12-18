@@ -31,7 +31,6 @@ export class PessoaService {
   }
 
   findAll(search: PessoaSearch): Observable<Pageable<Pessoa>> {
-    console.log(search);
     this.removeEmptyFields(search);
     const params = new HttpParams({ fromObject: search });
     return this.http.get<any>(this.endpoint, {

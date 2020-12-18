@@ -89,8 +89,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }),
       getCatalogo$.subscribe((res) => {
         this.count = res.totalElements;
-        // console.log('Dados :' + JSON.stringify(res));
-
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           nome: `${item.nome}`,

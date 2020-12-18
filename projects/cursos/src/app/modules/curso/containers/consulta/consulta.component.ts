@@ -182,9 +182,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.cursoSearch.reset();
     this.refresh();
   }
-  handleFilterChange(event): void {
-    console.log(event);
-  }
+  handleFilterChange(event): void {}
 
   onDelete(id: number): void {
     this.subs$.push(

@@ -50,7 +50,6 @@ export class FluxoProcessoConclusaoComponent implements OnInit {
         pedidoAlteracaoId: this.tarefa.propostaId,
       })
       .subscribe((res) => {
-        console.log(res);
         this.notification.show({
           message: 'Etapa de processo atualizada com sucesso!',
           type: 'success',

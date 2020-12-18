@@ -44,7 +44,6 @@ export class DetalheComponent implements OnInit, OnDestroy {
         }),
         getAlteracaoOrcamentaria$.subscribe((item: any) => {
           if (item) {
-            console.log(item);
             this.alteracaoOrcamentaria = item.entity;
             this.tasks = item.tasks;
           }

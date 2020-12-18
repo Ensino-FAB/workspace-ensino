@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { PropostaResponse } from './../../../../models/proposta-response.model';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Proposta } from 'projects/cursos-conclusao/src/app/models/proposta.model';
 import { fadeIn } from 'projects/ensino-commons/src/public-api';
 
@@ -10,12 +17,10 @@ import { fadeIn } from 'projects/ensino-commons/src/public-api';
 })
 export class DetalheBasicoConclusaoComponent implements OnInit {
   @Input() header: string;
-  @Input() proposta: any;
+  @Input() proposta: PropostaResponse;
   @Input() loading: boolean;
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.proposta);
-  }
+  ngOnInit(): void {}
 }
