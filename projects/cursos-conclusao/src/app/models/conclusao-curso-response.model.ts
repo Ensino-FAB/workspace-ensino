@@ -1,8 +1,8 @@
 import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
 
 export interface ConclusaoCursoResponse extends BaseModel {
-  dtFim?: any;
-  dtInicio?: any;
+  dtFim?: Date;
+  dtInicio?: Date;
   local?: string;
   capacitacaoResponse?: CapacitacaoResponse;
   pessoaResponse?: PessoaResponse;

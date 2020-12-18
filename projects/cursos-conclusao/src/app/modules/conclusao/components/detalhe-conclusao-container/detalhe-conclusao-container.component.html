@@ -48,13 +48,13 @@
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data início</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ conclusao?.dtInicio }}
+                {{ conclusao?.dtInicio | date: 'dd/MM/yyyy' }}
               </span>
             </div>
             <div class="flex-container col" style="margin-bottom: 3rem">
               <com-label>Data fim</com-label>
               <span [ngClass]="{ skeleton: loading }">
-                {{ conclusao?.dtFim }}
+                {{ conclusao?.dtFim | date: 'dd/MM/yyyy' }}
               </span>
             </div>
           </div>

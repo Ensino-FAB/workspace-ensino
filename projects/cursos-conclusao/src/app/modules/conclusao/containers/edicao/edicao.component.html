@@ -1,1 +1,73 @@
-<p>edicao works!</p>
+<section @fadeIn>
+  <header>
+    <div class="flex-container between">
+      <h1>editar conclusão</h1>
+      <div class="flex-container middle"></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="wrapper">
+      <com-form
+        [id]="formId"
+        [formGroup]="conclusaoForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <com-form-section partly formTitle="Editar" step="1">
+          <com-input
+            formControlName="local"
+            label="Local"
+            [invalid]="
+              (conclusaoForm.get('local').invalid &&
+                conclusaoForm.get('local').touched) ||
+              conclusaoForm.errors?.id
+            "
+          ></com-input>
+          <com-input
+            type="date"
+            formControlName="dtInicio"
+            label="Data Início"
+            [invalid]="
+              (conclusaoForm.get('dtInicio').invalid &&
+                conclusaoForm.get('dtInicio').touched) ||
+              conclusaoForm.errors?.dtInicio
+            "
+          ></com-input>
+
+          <com-input
+            type="date"
+            formControlName="dtFim"
+            label="Data Fim"
+            [invalid]="
+              (conclusaoForm.get('dtFim').invalid &&
+                conclusaoForm.get('dtFim').touched) ||
+              conclusaoForm.errors?.dtFim
+            "
+          ></com-input>
+        </com-form-section>
+
+        <com-form-section block>
+          <com-fieldset>
+            <div class="flex-container row end middle">
+              <com-button
+                fill
+                routerLink="/conclusao/"
+                style="margin-right: 1em"
+              >
+                <ng-container slot="text">voltar</ng-container>
+              </com-button>
+              <com-button
+                fill
+                confirm
+                type="submit"
+                [form]="formId"
+                [disabled]="conclusaoForm.invalid"
+              >
+                <ng-container slot="text">confirmar edição</ng-container>
+              </com-button>
+            </div>
+          </com-fieldset>
+        </com-form-section>
+      </com-form>
+    </div>
+  </div>
+</section>

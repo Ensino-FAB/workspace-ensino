@@ -76,8 +76,15 @@
         (lastPage)="onLastPage()"
         *ngIf="!isLoading"
       >
-        <ng-template let-content name="status">
-          <div class="table-text-control">{{ content.field }}</div>
+        <ng-template let-content name="dtInicio">
+          <div class="table-text-control">
+            {{ content.field | date: 'dd/MM/yyyy' }}
+          </div>
+        </ng-template>
+        <ng-template let-content name="dtFim">
+          <div class="table-text-control">
+            {{ content.field | date: 'dd/MM/yyyy' }}
+          </div>
         </ng-template>
 
         <!-- Ações -->
