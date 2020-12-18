@@ -20,7 +20,19 @@ export class DetalheBasicoConclusaoComponent implements OnInit {
   @Input() proposta: PropostaResponse;
   @Input() loading: boolean;
 
+  isOpen = { value: false };
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  closed(): void {}
+
+  confirm(): void {
+    this.toggleOpen();
+  }
+
+  toggleOpen(): void {
+    this.isOpen.value = !this.isOpen.value;
+  }
 }

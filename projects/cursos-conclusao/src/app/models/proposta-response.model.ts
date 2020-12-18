@@ -1,3 +1,4 @@
+import { Organizacao } from './organizacao.model';
 import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
 
 export interface PropostaResponse extends BaseModel {
@@ -29,4 +30,5 @@ export interface PessoaResponse {
   nrCpf?: string;
   nrOrdem?: string;
   siglaPosto?: string;
+  organizacao: Organizacao;
 }

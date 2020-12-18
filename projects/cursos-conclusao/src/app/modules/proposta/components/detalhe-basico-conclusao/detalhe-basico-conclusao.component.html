@@ -21,15 +21,37 @@
                 {{ proposta?.dtFim }}
               </span>
             </div>
-            <div class="flex-container col" style="margin-bottom: 3rem">
-              <com-label>Pessoas</com-label>
-              <span [ngClass]="{ skeleton: loading }"> lista de pessoas </span>
-            </div>
           </div>
           <div class="flex-container col" style="width: 48%"></div>
         </div>
+
+        <com-modal
+          header="Lista de Pessoas da Proposta"
+          actionText="Fechar"
+          (confirm)="confirm()"
+          (closed)="toggleOpen(); closed()"
+          *ngIf="isOpen.value"
+        >
+          <div style="margin-left: 3rem" *ngFor="let item of proposta?.itens">
+            <li>{{ item?.pessoa.nome }}</li>
+            <div
+              *ngIf="item?.pessoa.organizacao; then thenBlock; else elseBlock"
+            >
+              <ng-template #thenBlock>
+                <com-tag primary>{{ item?.pessoa.organizacao.sigla }}</com-tag>
+              </ng-template>
+              <ng-template #elseBlock
+                ><span>Sem Organização cadastrada</span></ng-template
+              >
+            </div>
+          </div>
+        </com-modal>
       </section>
+
       <div class="flex-container end">
+        <com-button style="margin-right: 1rem" fill (click)="toggleOpen()">
+          <ng-container slot="text">listar pessoas</ng-container>
+        </com-button>
         <com-button fill routerLink="/proposta/listar">
           <ng-container slot="text">voltar</ng-container>
         </com-button>
