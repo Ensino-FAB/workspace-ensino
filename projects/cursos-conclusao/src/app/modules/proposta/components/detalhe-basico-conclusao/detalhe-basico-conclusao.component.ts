@@ -17,6 +17,7 @@ import { fadeIn } from 'projects/ensino-commons/src/public-api';
 })
 export class DetalheBasicoConclusaoComponent implements OnInit {
   @Input() header: string;
+  @Input() header2: string;
   @Input() proposta: PropostaResponse;
   @Input() loading: boolean;
 
