@@ -343,7 +343,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cursosConclusao",
+            "outputPath": "dist",
             "index": "projects/cursos-conclusao/src/index.html",
             "baseHref": "/esistens-cursos-conclusao/",
             "main": "projects/cursos-conclusao/src/main.ts",
