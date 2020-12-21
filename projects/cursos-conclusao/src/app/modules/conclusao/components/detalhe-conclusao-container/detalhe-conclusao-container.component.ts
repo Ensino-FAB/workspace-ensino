@@ -8,6 +8,7 @@ import { ConclusaoCursoResponse } from '../../../../models/conclusao-curso-respo
 })
 export class DetalheConclusaoContainerComponent implements OnInit {
   @Input() header: string;
+  @Input() header2: string;
   @Input() conclusao: ConclusaoCursoResponse;
   @Input() loading: boolean;
 

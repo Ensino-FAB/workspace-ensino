@@ -8,6 +8,7 @@
     <div class="grid-item">
       <app-detalhe-conclusao-container
         [loading]="isLoading"
+        [header2]="conclusao?.capacitacaoResponse.codigo"
         [header]="conclusao?.capacitacaoResponse.nome"
         [conclusao]="conclusao"
       >
