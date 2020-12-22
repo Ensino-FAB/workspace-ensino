@@ -49,10 +49,23 @@
               autoActiveFirstOption
               (changed)="filter($event)"
               (confirmed)="confirmed($event)"
-              label="Filtrar por nome"
+              label="Filtrar por Pessoa"
+              class="full-width"
               [options]="pessoaOptions"
               formControlName="pessoaId"
             ></com-autocomplete>
+            <div>
+              <com-autocomplete
+                class="full-width"
+                enableConfirmOnInexistentValue
+                autoActiveFirstOption
+                (changed)="filter($event)"
+                (confirmed)="confirmed($event)"
+                label="Filtrar por Capacitação"
+                [options]="capacitacaoOptions"
+                formControlName="capacitacaoId"
+              ></com-autocomplete>
+            </div>
           </com-form-section>
           <com-form-section block>
             <div class="flex-container row button-set">

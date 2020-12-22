@@ -18,11 +18,14 @@ export class ConsultaComponent implements OnInit, OnDestroy {
 
   pessoaOptions: SelectOption[] = [];
 
+  capacitacaoOptions: SelectOption[] = [];
+
   public isLoading = false;
 
   conclusaoSearch = new FormGroup({
     local: new FormControl(''),
     pessoaId: new FormControl(''),
+    capacitacaoId: new FormControl(''),
   });
 
   columns: TableColumn[] = [
@@ -87,6 +90,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     ];
     this.refresh();
     this.findPessoas();
+    this.findCapacitacao();
   }
 
   // tslint:disable-next-line: typedef
@@ -232,5 +236,19 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.subs$.forEach((sub) => {
       sub.unsubscribe();
     });
+  }
+
+  findCapacitacao(search = {}): void {
+    this.capacitacaoOptions = [];
+    this.subs$.push(
+      this.facade.capacitacaoService.findAll(search).subscribe((response) => {
+        response.content.map((capacitacao) => {
+          this.capacitacaoOptions.push({
+            name: capacitacao.nome,
+            value: capacitacao.id,
+          });
+        });
+      })
+    );
   }
 }
