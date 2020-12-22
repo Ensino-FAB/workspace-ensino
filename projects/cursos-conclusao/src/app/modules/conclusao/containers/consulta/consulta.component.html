@@ -44,6 +44,15 @@
               placeholder="Digite o Nome do Local"
               label="Nome do Local"
             ></com-input>
+            <com-autocomplete
+              enableConfirmOnInexistentValue
+              autoActiveFirstOption
+              (changed)="filter($event)"
+              (confirmed)="confirmed($event)"
+              label="Filtrar por nome"
+              [options]="pessoaOptions"
+              formControlName="pessoaId"
+            ></com-autocomplete>
           </com-form-section>
           <com-form-section block>
             <div class="flex-container row button-set">

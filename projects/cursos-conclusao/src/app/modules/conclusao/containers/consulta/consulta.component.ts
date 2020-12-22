@@ -5,6 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TableColumn } from '@cca-fab/cca-fab-components-common';
 import { mapTo, mergeAll, share, takeUntil } from 'rxjs/operators';
 import { ConclusaoFacade } from '../../conclusao.facade';
+import { SelectOption } from '@cca-fab/cca-fab-components-common/types/select';
 
 @Component({
   selector: 'app-consulta',
@@ -15,10 +16,13 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
+  pessoaOptions: SelectOption[] = [];
+
   public isLoading = false;
 
   conclusaoSearch = new FormGroup({
     local: new FormControl(''),
+    pessoaId: new FormControl(''),
   });
 
   columns: TableColumn[] = [
@@ -82,6 +86,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Data-Fim', value: 'dtFim' },
     ];
     this.refresh();
+    this.findPessoas();
   }
 
   // tslint:disable-next-line: typedef
@@ -92,6 +97,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       size: this.pageSize,
       sort: this.orderBy.map((item) => (this.asc ? item : item + ',desc')),
     };
+
     const getConclusao$ = this.facade.conclusaoService
       .findAll(search)
       .pipe(share());
@@ -196,6 +202,30 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         });
       })
     );
+  }
+
+  findPessoas(search = {}): void {
+    this.pessoaOptions = [];
+    this.subs$.push(
+      this.facade.pessoaService.findAll(search).subscribe((response) => {
+        response.content.map((pessoa) => {
+          this.pessoaOptions.push({
+            name: pessoa.nome,
+            value: pessoa.id,
+          });
+        });
+      })
+    );
+  }
+
+  confirmed(event): void {}
+
+  filter(event): void {
+    const pessoaNome: string = event;
+
+    if (pessoaNome.length > 3) {
+      this.findPessoas({ nome: pessoaNome });
+    }
   }
 
   ngOnDestroy(): void {
