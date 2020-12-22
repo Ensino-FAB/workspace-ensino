@@ -41,18 +41,18 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     {
       field: 'local',
       title: 'Local',
-      width: '20%',
+      width: '15%',
     },
 
     {
       field: 'dtInicio',
-      title: 'Data Início',
-      width: '8%',
+      title: 'Data de Início',
+      width: '10%',
     },
     {
       field: 'dtFim',
-      title: 'Data fim',
-      width: '8%',
+      title: 'Data de Término',
+      width: '10%',
     },
   ];
 
