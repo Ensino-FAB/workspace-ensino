@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConclusaoCursoResponse } from './../../../../models/conclusao-curso-response.model';
 import { PropostaRequest } from 'projects/cursos-conclusao/src/app/models/proposta.model';
-import { ToastService } from 'projects/ensino-commons/src/public-api';
+import { ToastService, fadeIn } from 'projects/ensino-commons/src/public-api';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  animations: [fadeIn()],
 })
 export class CadastroComponent implements OnInit {
   form: FormGroup;
