@@ -232,6 +232,14 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     }
   }
 
+  filterCapacitacao(event): void {
+    const capacitacaoNome: string = event;
+
+    if (capacitacaoNome.length > 3) {
+      this.findCapacitacao({ nome: capacitacaoNome });
+    }
+  }
+
   ngOnDestroy(): void {
     this.subs$.forEach((sub) => {
       sub.unsubscribe();
@@ -244,7 +252,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       this.facade.capacitacaoService.findAll(search).subscribe((response) => {
         response.content.map((capacitacao) => {
           this.capacitacaoOptions.push({
-            name: capacitacao.nome,
+            name: capacitacao.codigo + ' - ' + capacitacao.nome,
             value: capacitacao.id,
           });
         });
