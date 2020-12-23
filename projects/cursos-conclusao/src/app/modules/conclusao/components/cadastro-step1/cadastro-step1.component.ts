@@ -47,8 +47,8 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
   filter(value): any {
     return this.capacitacaoOptions.filter((option: any | null) =>
       typeof option === 'string'
-        ? option.toLowerCase().startsWith(value.toLowerCase())
-        : option.name.toLowerCase().startsWith(value.toLowerCase())
+        ? option.toLowerCase().includes(value.toLowerCase())
+        : option.name.toLowerCase().includes(value.toLowerCase())
     );
   }
 
