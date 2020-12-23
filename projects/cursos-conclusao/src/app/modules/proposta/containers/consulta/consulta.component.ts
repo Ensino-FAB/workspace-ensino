@@ -7,6 +7,7 @@ import { mapTo, mergeAll, share, takeUntil } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { PropostaFacade } from '../../proposta.facade';
 import { fadeIn } from '../../../../../../../ensino-commons/src/lib/utils/animation';
+import { SelectOption } from '@cca-fab/cca-fab-components-common/types/select';
 
 @Component({
   selector: 'app-consulta',
@@ -17,11 +18,15 @@ import { fadeIn } from '../../../../../../../ensino-commons/src/lib/utils/animat
 export class ConsultaComponent implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
 
+  pessoaOptions: SelectOption[] = [];
+
+  capacitacaoOptions: SelectOption[] = [];
+
   public isLoading = false;
 
   propostaSearch = new FormGroup({
-    descricao: new FormControl(''),
-    nome: new FormControl(''),
+    pessoaId: new FormControl(''),
+    capacitacaoId: new FormControl(''),
     status: new FormControl(''),
   });
 
@@ -86,10 +91,12 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.optionsStatus = [
       { name: 'Em elaboração', value: 'Em elaboração' },
       { name: 'Aguardando Análise', value: 'Aguardando Análise' },
-      { name: 'Aprovado', value: 'Aprovado' },
+      { name: 'Aprovada', value: 'Aprovada' },
       { name: 'Reprovado', value: 'Reprovado' },
     ];
 
+    this.findPessoas();
+    this.findCapacitacao();
     this.refresh();
   }
 
@@ -183,6 +190,24 @@ export class ConsultaComponent implements OnInit, OnDestroy {
     this.refresh();
   }
 
+  confirmed(event): void {}
+
+  filter(event): void {
+    const pessoaNome: string = event;
+
+    if (pessoaNome.length > 3) {
+      this.findPessoas({ nome: pessoaNome });
+    }
+  }
+
+  filterCapacitacao(event): void {
+    const capacitacaoNome: string = event;
+
+    if (capacitacaoNome.length > 3) {
+      this.findCapacitacao({ nome: capacitacaoNome });
+    }
+  }
+
   // tslint:disable-next-line: typedef
   onSubmit() {
     this.page = 1;
@@ -202,6 +227,34 @@ export class ConsultaComponent implements OnInit, OnDestroy {
         this.toastService.show({
           message: 'Proposta deletada com sucesso!',
           type: 'success',
+        });
+      })
+    );
+  }
+
+  findPessoas(search = {}): void {
+    this.pessoaOptions = [];
+    this.subs$.push(
+      this.facade.pessoaService.findAll(search).subscribe((response) => {
+        response.content.map((pessoa) => {
+          this.pessoaOptions.push({
+            name: pessoa.nome,
+            value: pessoa.id,
+          });
+        });
+      })
+    );
+  }
+
+  findCapacitacao(search = {}): void {
+    this.capacitacaoOptions = [];
+    this.subs$.push(
+      this.facade.capacitacaoService.findAll(search).subscribe((response) => {
+        response.content.map((capacitacao) => {
+          this.capacitacaoOptions.push({
+            name: capacitacao.codigo + ' - ' + capacitacao.nome,
+            value: capacitacao.id,
+          });
         });
       })
     );

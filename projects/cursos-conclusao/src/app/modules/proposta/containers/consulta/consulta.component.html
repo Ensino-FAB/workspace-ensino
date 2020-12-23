@@ -37,6 +37,16 @@
               [options]="optionsStatus"
               [label]="'Status da proposta'"
             ></com-select>
+            <com-autocomplete
+              class="full-width"
+              enableConfirmOnInexistentValue
+              autoActiveFirstOption
+              (changed)="filterCapacitacao($event)"
+              (confirmed)="confirmed($event)"
+              label="Filtrar por Capacitação"
+              [options]="capacitacaoOptions"
+              formControlName="capacitacaoId"
+            ></com-autocomplete>
           </com-form-section>
           <com-form-section block>
             <div class="flex-container row button-set">
