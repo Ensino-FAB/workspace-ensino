@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConclusaoCursoRequest } from 'projects/cursos-conclusao/src/app/models/conclusao-curso-request.model';
 import { ConclusaoFacade } from '../../conclusao.facade';
 import { Router } from '@angular/router';
@@ -29,12 +29,11 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nome: [''],
-      dataInicio: [''],
-      dataTermino: [''],
+      capacitacaoId: ['', Validators.required],
+      dataInicio: ['', Validators.required],
+      dataTermino: ['', Validators.required],
       local: [''],
-      capacitacaoId: [''],
-      pessoas: this.fb.array([]),
+      pessoas: this.fb.array([], Validators.required),
     });
   }
 

@@ -1,6 +1,6 @@
 import { PropostaFacade } from '../../../proposta/proposta.facade';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConclusaoCursoResponse } from './../../../../models/conclusao-curso-response.model';
 import { PropostaRequest } from 'projects/cursos-conclusao/src/app/models/proposta.model';
 import { ToastService, fadeIn } from 'projects/ensino-commons/src/public-api';
@@ -27,11 +27,11 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      dataInicio: [''],
-      dtFim: [''],
+      capacitacaoId: ['', Validators.required],
+      dataInicio: ['', Validators.required],
+      dtFim: ['', Validators.required],
       local: [''],
-      capacitacaoId: [''],
-      pessoas: this.fb.array([]),
+      pessoas: this.fb.array([], Validators.required),
     });
   }
 

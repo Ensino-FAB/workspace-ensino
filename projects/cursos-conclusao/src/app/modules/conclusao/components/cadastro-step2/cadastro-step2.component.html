@@ -42,7 +42,7 @@
       <com-button fill routerLink="/conclusao">
         <ng-container slot="text">voltar para a lista</ng-container>
       </com-button>
-      <com-button (click)="next.emit()" [disabled]="form.invalid" fill confirm>
+      <com-button (click)="next.emit()" [disabled]="formInvalid" fill confirm>
         <ng-container slot="text">confirmar e gravar conclusão</ng-container>
       </com-button>
     </footer>
