@@ -5,6 +5,8 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../../../../../ensino-commons/src/lib/services/toast.service';
 import { fadeIn } from '../../../../../../../ensino-commons/src/lib/utils/animation';
+import { ConclusaoCursoResponse } from '../../../../models/conclusao-curso-response.model';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cadastro',
@@ -72,13 +74,15 @@ export class CadastroComponent implements OnInit {
           .value.map((item) => item.pessoa.id),
         capacitacaoId: this.form.get('capacitacaoId').value,
       };
-      this.facade.conclusaoService.create(requestBody).subscribe(() => {
-        this.toast.show({
-          message: 'A Conclusão foi salva com sucesso!',
-          type: 'success',
+      this.facade.conclusaoService
+        .create(requestBody)
+        .subscribe((conclusao) => {
+          this.toast.show({
+            message: 'A Conclusão foi salva com sucesso!',
+            type: 'success',
+          });
+          this.router.navigate(['conclusao']);
         });
-        this.router.navigate(['conclusao']);
-      });
     }
   }
 
