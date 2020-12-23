@@ -31,6 +31,7 @@ export class CadastroStep2Component implements OnInit, OnDestroy {
   itensOptions: SelectOption[] = [];
 
   @Input() form: FormArray;
+  @Input() formInvalid = true;
 
   constructor(
     private fb: FormBuilder,
