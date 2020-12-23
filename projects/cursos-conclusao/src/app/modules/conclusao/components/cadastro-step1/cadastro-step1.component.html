@@ -5,9 +5,9 @@
     <com-autocomplete
       enableConfirmOnInexistentValue
       autoActiveFirstOption
-      (changed)="update(filter($event))"
+      (changed)="filter($event)"
       label="Filtrar por nome, ou sigla"
-      [options]="options"
+      [options]="capacitacaoOptions"
       [invalid]="
         form.get('capacitacaoId').invalid && form.get('capacitacaoId').touched
       "

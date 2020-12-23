@@ -19,7 +19,6 @@ import { ConclusaoFacade } from '../../conclusao.facade';
 export class CadastroStep1Component implements OnInit, OnDestroy {
   private subs$: Subscription[] = [];
   capacitacaoOptions: SelectOption[] = [];
-  options: SelectOption[] = [];
   @Output() next = new EventEmitter();
   @Input() form: FormGroup;
 
@@ -39,31 +38,16 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
             value: capacitacao.id,
           });
         });
-        this.options = [...this.capacitacaoOptions];
       })
     );
   }
 
-  filter(value): any {
-    return this.capacitacaoOptions.filter((option: any | null) =>
-      typeof option === 'string'
-        ? option.toLowerCase().includes(value.toLowerCase())
-        : option.name.toLowerCase().includes(value.toLowerCase())
-    );
+  filter(event): void {
+    const cursoName: string = event;
+    if (cursoName.length > 3) {
+      this.reload({ nome: cursoName });
+    }
   }
-
-  update(value: any[]) {
-    this.options.splice(0, this.options.length, ...value);
-    return this.options;
-  }
-
-  // filter(event): void {
-  //   const cursoName: string = event;
-
-  //   if (cursoName.length > 3) {
-  //     this.reload({ nome: cursoName });
-  //   }
-  // }
 
   onSubmit(): void {}
 
