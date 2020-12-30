@@ -10,7 +10,7 @@ import { PropostaConclusaoSearch } from '../../models/proposta-conclusao-search.
 import { Proposta, PropostaRequest } from '../../models/proposta.model';
 import { Processo } from '../../models/processo.model';
 import { Tarefa } from '../../models/tarefa.model';
-import { ProcessDiagram } from 'projects/ensino-commons/src/lib/types/ProcessDiagram';
+import { ProcessDiagram } from '../../../../../../projects/ensino-commons/src/lib/types/ProcessDiagram';
 import { CapacitacaoService } from '../../services/capacitacao.service';
 
 @Injectable({
@@ -78,6 +78,10 @@ export class PropostaFacade {
     });
   }
 
+  public getAllTasks(processInstanceId: string): Observable<any> {
+    return this.processoService.findTasks(processInstanceId);
+  }
+
   public save(record: PropostaRequest): any {
     return this.propotaService.save(record);
   }
@@ -118,6 +122,7 @@ export class PropostaFacade {
         });
     });
   }
+
   public getTarefa(taskInstance: string): Observable<Tarefa> {
     return this.tarefaService.findTask(taskInstance);
   }
