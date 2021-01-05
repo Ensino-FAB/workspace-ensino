@@ -34,7 +34,7 @@ export class CadastroStep1Component implements OnInit, OnDestroy {
       this.facade.capacitacaoService.findAll(search).subscribe((response) => {
         response.content.map((capacitacao) => {
           this.capacitacaoOptions.push({
-            name: capacitacao.codigo + ' - ' + capacitacao.nome,
+            name: capacitacao.nome + ' - ' + capacitacao.codigo,
             value: capacitacao.id,
           });
         });

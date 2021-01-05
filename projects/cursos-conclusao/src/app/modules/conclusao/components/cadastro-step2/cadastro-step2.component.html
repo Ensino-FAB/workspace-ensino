@@ -9,7 +9,7 @@
       <app-autocomplete-pessoas
         [selectedItem]="control.get('pessoa').value"
         [options]="itensOptions"
-        label="Filtrar por nome, CPF ou SARAM"
+        label="Filtrar por nome"
         (changed)="onChange($event)"
         (confirmed)="onConfirmTree($event, i)"
         (textBlurred)="blurTree(i)"

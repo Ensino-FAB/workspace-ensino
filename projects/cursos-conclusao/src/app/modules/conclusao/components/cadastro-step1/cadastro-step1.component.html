@@ -6,7 +6,7 @@
       enableConfirmOnInexistentValue
       autoActiveFirstOption
       (changed)="filter($event)"
-      label="Filtrar por nome, ou sigla"
+      label="Filtrar por nome"
       [options]="capacitacaoOptions"
       [invalid]="
         form.get('capacitacaoId').invalid && form.get('capacitacaoId').touched
