@@ -92,7 +92,7 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       { name: 'Em elaboração', value: 'Em elaboração' },
       { name: 'Aguardando Análise', value: 'Aguardando Análise' },
       { name: 'Aprovada', value: 'Aprovada' },
-      { name: 'Reprovado', value: 'Reprovado' },
+      { name: 'Reprovada', value: 'Reprovada' },
     ];
 
     this.findPessoas();
@@ -121,7 +121,6 @@ export class ConsultaComponent implements OnInit, OnDestroy {
       }),
       getProposta$.subscribe((res) => {
         this.count = res.totalElements;
-
         this.data = res.content.map((item) => ({
           id: `${item?.id}`,
           capacitacao: `${item?.capacitacao.nome}`,

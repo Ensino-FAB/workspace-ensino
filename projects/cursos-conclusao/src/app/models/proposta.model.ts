@@ -1,4 +1,4 @@
-import { BaseModel } from 'projects/ensino-commons/src/lib/models/base.model';
+import { BaseModel } from '../../../../ensino-commons/src/lib/models/base.model';
 
 export interface Proposta extends BaseModel {
   dtFim?: Date;
